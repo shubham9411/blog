@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Using Monit to send email alert on unauthorized login"
-tldr: Apart from process monitoring, monit can also send alert messages on certain events. This feature can be used to get notifiec whenever someone logs into your unix/linux server
+title: "Using Monit to get email alert on unauthorized login"
+tldr: Apart from process monitoring, monit can also send alert messages on certain events. This feature can be used to get notified whenever someone logs into your unix/linux server
 modified: 2014-06-04 09:57:11 +0530
 category: technology
 tags: [ssh, monit, alert]
