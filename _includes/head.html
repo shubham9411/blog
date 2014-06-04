@@ -7,10 +7,10 @@
 {% if site.owner.twitter %}<!-- Twitter Cards -->
     {% if page.image.feature %}
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:image" content="{{ site.url }}/images/{{ page.image.feature }}">
+        <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}">
     {% else %}
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}/images/{{ page.image.thumb }}{% else %}{{ site.url }}/images/{{ site.logo }}{% endif %}">
+        <meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}{{ site.baseurl }}/images/{{ page.image.thumb }}{% else %}{{ site.url }}{{ site.baseurl }}/images/{{ site.logo }}{% endif %}">
      {% endif %}
      <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
      <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
 <meta property="og:site_name" content="{{ site.title }}">
 
 {% if site.google_verify %}
@@ -33,7 +33,7 @@
     <meta name="msvalidate.01" content="{{ site.bing_verify }}">
 {% endif %}
 
-{% capture canonical %}{{ site.url }}
+{% capture canonical %}{{ site.url }}{{ site.baseurl }}
     {% if site.permalink contains '.html' %}
         {{ page.url }}
     {% else %}
@@ -42,7 +42,7 @@
 {% endcapture %}
 
 <link rel="canonical" href="{{ canonical }}">
-<link href="{{ site.url }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+<link href="{{ site.url }}{{ site.baseurl }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
 
 {% if site.owner.google_plus %}
 	<link rel="author" href="{{ site.owner.google_plus }}?rel=author">
@@ -54,7 +54,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="{{ site.url }}/assets/css/main.min.css">
+<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/main.min.css">
 
 <!-- Webfonts -->
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:600,300,300italic|The+Girl+Next+Door" rel="stylesheet" type="text/css">
@@ -65,21 +65,21 @@
 <meta http-equiv="cleartype" content="on">
 
 <!-- Load Modernizr -->
-<script src="{{ site.url }}/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="{{ site.url }}/favicon.ico">
+<link rel="shortcut icon" href="{{ site.url }}{{ site.baseurl }}/favicon.ico">
 <!-- adding jquery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="{{ site.url }}{{ site.baseurl }}/assets/js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
 <!-- end of jquery -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
 
 <!-- Optional theme -->
-<link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/bootstrap-theme.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -87,8 +87,8 @@
 <!-- Font Awesome -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="{{ site.url }}/assets/css/customize.css">
+<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/customize.css">
 
-<script src="{{ site.url }}/assets/js/lunr.min.js"></script>
-<script src="{{ site.url }}/assets/js/lunr-search.js"></script>
-<script src="{{ site.url }}/assets/js/plugins/headroom.min.js"></script>
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/lunr.min.js"></script>
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/lunr-search.js"></script>
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/plugins/headroom.min.js"></script>

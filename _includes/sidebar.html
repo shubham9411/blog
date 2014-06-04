@@ -11,7 +11,7 @@
 			<ul class=" sidebar-category">
 			  {% for category in site.categories %}
 			  	<li> 
-			  		<a name="{{ category | first | capitalize }}" href="{{ site.url }}/{{ category | first }}.html" >  {{ category | first | capitalize }} </a>
+			  		<a name="{{ category | first | capitalize }}" href="{{ site.url }}{{ site.baseurl }}/{{ category | first }}.html" >  {{ category | first | capitalize }} </a>
 			  	</li>
 			  {% endfor %}
 			</ul>

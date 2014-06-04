@@ -19,21 +19,21 @@
 <div id="main" role="main" >
 
   <article class="hentry">
-    {% if page.image.feature %}<img src="{{ site.url }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if page.image.credit %}<p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>{% endif %}{% endif %}
+    {% if page.image.feature %}<img src="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if page.image.credit %}<p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>{% endif %}{% endif %}
     <div class="page-header">
       <header class="entry-header">
 
-        <span class="entry-tags">{% for tag in page.tags %}<a href="{{ site.url }}/tags/#{{ tag | cgi_encode }}" title="Pages tagged {{ tag }}">{{ tag }}</a>{% unless forloop.last %}&nbsp;&bull;&nbsp;{% endunless %}{% endfor %}
+        <span class="entry-tags">{% for tag in page.tags %}<a href="{{ site.url }}{{ site.baseurl }}/tags/#{{ tag | cgi_encode }}" title="Pages tagged {{ tag }}">{{ tag }}</a>{% unless forloop.last %}&nbsp;&bull;&nbsp;{% endunless %}{% endfor %}
         <div class=' social-sharing pull-right'>        
           {% if page.share %}
               <span class="social-share-facebook">
-                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square fa-lg"></i> Like</a>
+                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square fa-lg"></i> Like</a>
               </span>&nbsp;&nbsp;
               <span class="social-share-twitter">
-                 <a href="https://twitter.com/intent/tweet?hashtags={{ page.categories | join: ',' }}&text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{site.owner.twitter}}" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square  fa-lg"></i></i> Tweet</a>
+                 <a href="https://twitter.com/intent/tweet?hashtags={{ page.categories | join: ',' }}&text={{ page.title }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}&via={{site.owner.twitter}}" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square  fa-lg"></i></i> Tweet</a>
               </span>&nbsp;&nbsp;
               <span class="social-share-googleplus">
-                 <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square fa-lg"></i> +1</a>
+                 <a href="https://plus.google.com/share?url={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square fa-lg"></i> +1</a>
               </span>
           <!-- /.social-share -->
           {% endif %}   
@@ -64,7 +64,7 @@
 
           </div>
           <div class='pull-right date-show'>
-            <span><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}"><i class="fa fa-link"></i> Permalink</a></span>
+            <span><a href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" rel="bookmark" title="{{ page.title }}"><i class="fa fa-link"></i> Permalink</a></span>
           </div>
            <br>
           <div class="panel panel-default">
@@ -86,7 +86,7 @@
       <div class="well-sm">
       {% for post_author in site.data.authors %}
          {% if post_author.id == page.author %}
-            <img src="{{ site.url }}/images/{{ post_author.avatar }}" alt="{{ post_author.name }} photo" class="author-photo">
+            <img src="{{ site.url }}{{ site.baseurl }}/images/{{ post_author.avatar }}" alt="{{ post_author.name }} photo" class="author-photo">
             <span class="author vcard">By <span class="fn">{{ post_author.name }}</span></span>
 
             <div class="social-icons">
@@ -124,10 +124,10 @@
     <nav class="navbar nav-justified" role="navigation">
       <ul class="pager">
         {% if page.previous %}
-          <li class="previous"><a href="{{ site.url }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous Post</a></li>
+          <li class="previous"><a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous Post</a></li>
         {% endif %}
         {% if page.next %}
-          <li class="next"><a href="{{ site.url }}{{ page.next.url }}" title="{{ page.next.title }}">Next Post &rarr;</a></li>
+          <li class="next"><a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}">Next Post &rarr;</a></li>
         {% endif %}
       </ul>
     </nav>
