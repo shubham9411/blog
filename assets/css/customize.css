@@ -42,16 +42,10 @@ pre code {
 }
 
 .nav-icon-size-reduce {
-  font-size: 18px;
+  font-size: 14px;
 }
+  
 
-.headroom--pinned {
-    display: block;
-}
-
-.headroom--unpinned {
-    display: none;
-}
 
 .col-md-8 {
   margin: 0px 14px 0px 14px;

@@ -27,3 +27,19 @@ $('#site-nav').click(function(event){
 $(function() {
 	$("article").fitVids();
 });
+
+
+// $(document).ready(function() {
+//   // Headroom
+//   $("header").headroom({
+//     "tolerance": 5,
+//     "offset": 205,
+//     "classes": {
+//       "initial": "animated",
+//       "pinned": "down",
+//       "unpinned": "bounceIn",
+//       "top": "headroom--top",
+//       "notTop": "headroom--not-top"
+//     }
+//   });
+// });

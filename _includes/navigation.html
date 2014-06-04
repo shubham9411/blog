@@ -1,4 +1,4 @@
-<header class="headroom">
+<header id="header" class="header header--fixed hide-from-print" role="banner">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,7 +24,7 @@
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default insertCategory dropdown-toggle" data-toggle="dropdown"> All&nbsp; <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                      <li><a href="#" class="selectCategory" id="All">All</a></li>
+                        <li><a href="#" class="selectCategory" id="All">All</a></li>
                       {% for category in site.categories %}
                         <li > <a href="#" class="selectCategory" id="{{ category | first }}">{{ category | first }} </a></li>
                       {% endfor %}
@@ -40,34 +40,37 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right nav-icon-size-reduce">
-
-
           {% for link in site.links %}
           <li>
             {% if link.external %}
               <a href="{{ link.url }}"><i class="{{link.icon}}"></i> {{ link.title }}</a>
             {% else %}
-              <a href="{{ site.url }}{{ site.baseurl }}{{ link.url }}"><i class="{{link.icon}}"></i> {{ link.title }}</a>
+              <a href="{{ site.baseurl }}{{ link.url }}"><i class="{{link.icon}}"></i> {{ link.title }}</a>
             {% endif %} 
           </li>
           {% endfor %}
-          <li><a href="{{ site.url }}{{ site.baseurl }}/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
-          
-
-
+          <li><a href="{{ site.baseurl }}/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
       </ul>
-
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 {% include browser-upgrade.html %}
 </header>
 <script type='text/javascript'>
-var myElement = document.querySelector("header");
-var headroom  = new Headroom(myElement);
-headroom.init();
+  var elem = document.querySelector("header");
+  var headroom = new Headroom(elem, {
+      "tolerance": 5,
+      "offset": 205,
+      "classes": {
+          "initial": "animated",
+          "pinned": "slideDown",
+          "unpinned": "slideUp",
+          "top": "headroom--top",
+          "notTop": "headroom--not-top"
+      }
+  });
+  headroom.init();
 </script>
-
 <!-- 
 {% if site.search %}
   <div class="search-wrapper">
