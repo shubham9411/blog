@@ -1,0 +1,151 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+{% include head.html %}
+</head>
+
+<body id="post">
+  <div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+
+{% include navigation.html %}
+
+
+<div id="main" role="main" >
+
+  <article class="hentry">
+    {% if page.image.feature %}<img src="{{ site.url }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if page.image.credit %}<p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>{% endif %}{% endif %}
+    <div class="page-header">
+      <header class="entry-header">
+
+        <span class="entry-tags">{% for tag in page.tags %}<a href="{{ site.url }}/tags/#{{ tag | cgi_encode }}" title="Pages tagged {{ tag }}">{{ tag }}</a>{% unless forloop.last %}&nbsp;&bull;&nbsp;{% endunless %}{% endfor %}
+        <div class=' social-sharing pull-right'>        
+          {% if page.share %}
+              <span class="social-share-facebook">
+                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square fa-lg"></i> Like</a>
+              </span>&nbsp;&nbsp;
+              <span class="social-share-twitter">
+                 <a href="https://twitter.com/intent/tweet?hashtags={{ page.categories | join: ',' }}&text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{site.owner.twitter}}" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square  fa-lg"></i></i> Tweet</a>
+              </span>&nbsp;&nbsp;
+              <span class="social-share-googleplus">
+                 <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square fa-lg"></i> +1</a>
+              </span>
+          <!-- /.social-share -->
+          {% endif %}   
+          </div>
+
+        </span>
+      
+        {% if page.link %}
+        <!-- <div class="page-title-summary"> -->
+            <h1 class="no-padding"><a href="{{ page.link }}">{% if page.headline %}{{ page.headline }}{% else %}{{ page.title }}{% endif %} <span class="link-arrow">&rarr;</span></a></h1>
+          {% else %}
+            <h1 class="no-padding">{% if page.headline %}{{ page.headline }}{% else %}{{ page.title }}{% endif %}</h1>
+        <!-- </div> -->
+        {% endif %}
+
+      </header>
+
+      <div>
+        {% if page.tldr %}
+          <div class='pull-left date-show'>
+            <span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}"><i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</time></span>&nbsp;
+<!--             {% if page.modified %}
+               <span class="entry-date date modified"><time datetime="{{ page.modified }}"><i class="fa fa-pencil"></i> {{ page.modified | date: "%B %d, %Y" }}</time></span>&nbsp;
+            {% endif %} -->
+            {% if site.disqus_shortname and page.comments %}
+                <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
+            {% endif %}
+
+          </div>
+          <div class='pull-right date-show'>
+            <span><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}"><i class="fa fa-link"></i> Permalink</a></span>
+          </div>
+           <br>
+          <div class="panel panel-default">
+            <div class="panel-heading ">
+              <h3 class="panel-title">TL;DR</h3>
+
+            </div>
+            <div class="panel-body">
+              {{ page.tldr }}
+            </div>
+          </div>
+
+          
+        {% endif %}
+        <div class="post-content-justify">
+          {{ content }}
+        </div>
+
+      <div class="well-sm">
+      {% for post_author in site.data.authors %}
+         {% if post_author.id == page.author %}
+            <img src="{{ site.url }}/images/{{ post_author.avatar }}" alt="{{ post_author.name }} photo" class="author-photo">
+            <span class="author vcard">By <span class="fn">{{ post_author.name }}</span></span>
+
+            <div class="social-icons">
+            {% for post_author in site.data.authors %}
+              {% if post_author.id == page.author %}
+                {% if post_author.twitter %}
+                  <a href="http://twitter.com/{{ post_author.twitter }}"  title="{{ post_author.name }} on Twitter"  target="_blank"><i class="fa fa-twitter"></i></a>
+                {% endif %}
+
+                {% if post_author.linkedin %}
+                  <a href="http://linkedin.com/in/{{ post_author.linkedin }}" title="{{ post_author.name}} on LinkedIn" target="_blank"><i class="fa fa-linkedin"></i></a>
+                {% endif %}
+
+                {% if post_author.stackexchange %}
+                  <a href="{{ post_author.stackexchange }}" title="{{ post_author.name}} on StackExchange" target="_blank"><i class="fa fa-stack-overflow"></i></a>
+                {% endif %}
+
+                {% if post_author.github %}
+                  <a href="http://github.com/{{ post_author.github }}" title="{{ post_author.name}} on Github" target="_blank"><i class="fa fa-github"></i></a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div><!-- /.social-icons -->
+
+
+            
+
+         {% endif %}
+      {% endfor %}
+      </div>
+
+        {% if site.disqus_shortname and page.comments %}<div id="disqus_thread"></div><!-- /#disqus_thread -->{% endif %}
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="navbar nav-justified" role="navigation">
+      <ul class="pager">
+        {% if page.previous %}
+          <li class="previous"><a href="{{ site.url }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous Post</a></li>
+        {% endif %}
+        {% if page.next %}
+          <li class="next"><a href="{{ site.url }}{{ page.next.url }}" title="{{ page.next.title }}">Next Post &rarr;</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </article>
+</div>
+
+<!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    {% include footer.html %}
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<!-- {% include scripts.html %}	  -->
+</div>       
+<div class="col-md-2">
+  </div>
+</div>
+</body>
+</html>

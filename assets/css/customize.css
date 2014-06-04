@@ -1,0 +1,136 @@
+
+body { padding-top: 70px; }
+
+.navbar-brand
+{
+  float: left;
+  padding-top: 5px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+}
+
+.post-content-justify{
+  text-align: justify;
+
+}
+
+/* setting the width of dropdown for search*/
+.dropdown-menu {
+
+  word-wrap: break-word;
+
+  width: 100%; 
+}
+#search-box:focus {
+  width: 400px;
+  border-color: blue;
+}
+.social-sharing {
+  line-height: 100%;
+}
+
+pre code {
+  font-size: 75%;
+}
+
+.search-box-margin {
+  margin: 6px 0px 6px 150px;
+}
+
+.nav-icon-size-reduce {
+  font-size: 18px;
+}
+
+.headroom--pinned {
+    display: block;
+}
+
+.headroom--unpinned {
+    display: none;
+}
+
+.col-md-8 {
+  margin: 0px 14px 0px 14px;
+}
+
+.entry-title-summary, .no-padding {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.search-results, .date-show, .entry-date {
+  font-size: 70%;
+  max-width: 100%;
+  white-space: normal;
+
+}
+.dropdown-menu > li > a {
+  white-space: inherit;
+}
+.highlightText {
+  color: red;
+}
+
+.sidebar-category > li {
+  min-width: 100%;
+  font-size: 16px;
+}
+.form-control {
+  width: 10px;
+}
+.input-group-btn > .btn, .input-group-btn > .dropdown-menu {
+  font-size: 16px;
+}
+
+.insertCategory {
+  width: 120px;
+}
+
+.categories-heading{
+  font-weight: bold;
+  font-size: 16px;
+}
+.fa-circle{
+  font-size: 50%;
+  vertical-align: middle;
+}
+
+.sidebar-padding{
+  padding-top: 10px;
+}
+/*.author-photo {
+    display: block;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 10px;
+    border-radius: 75px;
+}
+
+span + .entry-title {
+    max-width: 800px;
+    font-size: 3.25rem;
+    font-family: 'Open Sans',serif;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.entry-title {
+  font-style: normal;
+}
+
+.entry-title-summary {
+    max-width: 800px;
+    font-family: 'Open Sans',serif;
+    font-style: normal;
+    font-size: 3.25rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+*/

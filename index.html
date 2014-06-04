@@ -1,0 +1,30 @@
+---
+layout: page
+title: Recent Posts
+description: "List of recent blog posts."
+tags: [eLitmus, recent]
+---
+
+<ul class="post-list">
+{% for post in site.posts limit:10 %} 
+  <li>
+    <span class="entry-date date published">
+      <time datetime="{{ post.date | date_to_xmlschema }}">
+        <i class="fa fa-calendar"></i> {{ post.date | date: "%B %d, %Y" }}
+      </time>
+    </span>
+    <article>
+      <header class="entry-header">
+        <h3 class="entry-title-summary">
+          <a href="{{ site.url }}{{ post.url }}">
+          {{ post.title }} 
+          </a>
+        </h3>
+        <div>
+          {{ post.excerpt }}
+        </div>
+      </header>
+    </article>
+  </li>
+{% endfor %}
+</ul>
