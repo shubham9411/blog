@@ -7,7 +7,7 @@ search:           true
 # You don't need to specify the protocol if you want it available on http and https. Example: //localhost:4000
 # url:              //shireeshj.github.io
 url:              ""
-baseurl:          /blog
+baseurl:          "" # /blog
 # Owner/author information
 owner:
   name:           eLitmus.com
