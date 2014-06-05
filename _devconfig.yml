@@ -44,7 +44,7 @@ links:
   - title: eLitmus
     url: //www.elitmus.com/
     external: true
-    icon: "icon"
+    icon: "el el-elitmuslogo"
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Asia/Kolkata
