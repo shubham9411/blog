@@ -9,12 +9,12 @@
     url("../fonts/elitmuslogo.svg#elitmuslogo") format("svg");
   font-weight: normal;
   font-style: normal;
-
 }
 
 [data-icon]:before {
   font-family: "elitmuslogo" !important;
   content: attr(data-icon);
+  display: inline-block;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -28,6 +28,7 @@
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "elitmuslogo" !important;
+  display: inline-block;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
