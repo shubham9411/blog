@@ -35,14 +35,15 @@ Some R&D was all it took to discover how to proceed with the original approach.
 
 RDS comes with a bunch of stored procedures, which help you configure it as a slave. There is almost a one-to-one mapping of these stored procedures with the commands that are disallowed.
 
-       MySQL Command     |    Corrosponding Stored Proc      
-    -------------------- | ---------------------------------
-    CHANGE MASTER TO     |   mysql.rds_set_external_master   
-    START SLAVE          |   mysql.rds_start_replication     
-    STOP SLAVE           |   mysql.rds_stop_replication      
-    RESET MASTER         |   mysql.rds_reset_external_master 
-  
 
+<table class="table table-bordered table-condensed table-hover">
+<tr><th>MySQL Command</th><th>Corrosponding Stored Proc</th></tr>
+<tr><td>CHANGE MASTER TO</td><td>mysql.rds_set_external_master</td></tr>
+<tr><td>START SLAVE</td><td>mysql.rds_start_replication</td></tr>
+<tr><td>STOP SLAVE</td><td>mysql.rds_stop_replication</td></tr>
+<tr><td>RESET MASTER</td><td>mysql.rds_reset_external_master </td></tr>
+</table>
+    
 So, Using these stored procedures, you can now configure your RDS instance as a slave to your self managed MySQL server
 
 
