@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>eLitmus Logo</metadata>
+<defs>
+<font id="elitmuslogo" horiz-adv-x="512">
+<font-face font-family="elitmuslogo" units-per-em="512" ascent="480" descent="-32"/>
+<missing-glyph horiz-adv-x="512" />
+
+<glyph unicode="&#101;" d="M508 45l-56 0 0 433-142 0 0 34 198 0z m-504 422l56 0 0-433 142 0 0-34-198 0z m176-262c6-11 18-19 31-23 33-10 69 0 94 24 9 9 17 20 24 34l117 35c-15-51-70-103-145-134-105-42-211-25-236 38-26 63 39 148 144 191 105 42 211 25 236-38 4-9 6-18 6-27-91-33-181-66-271-100z m-6 42c52 19 104 38 156 57-15 27-42 32-67 28-44-7-83-39-89-85z"/>
+</font></defs></svg>
