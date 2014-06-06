@@ -73,7 +73,7 @@
 
             </div>
             <div class="panel-body">
-              {{ page.tldr }}
+              <aside>{{ page.tldr }}</aside>
             </div>
           </div>
 
@@ -82,7 +82,6 @@
         <div class="post-content-justify">
           {{ content }}
         </div>
-        
         <hr/>
 
 {% for post_author in site.data.authors %}
