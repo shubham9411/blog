@@ -11,7 +11,7 @@ image:
   credit: 
   creditlink: 
 comments: 
-share: 
+share: true
 ---
 
 
