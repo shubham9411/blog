@@ -2,4 +2,10 @@
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta name="twitter:description" content="{{ page.excerpt }}">
 <meta name="twitter:site" content="@elitmus">
-<meta name="twitter:creator" content="@{{ site.owner.twitter }}">
+{% for post_author in site.data.authors %}
+    {% if post_author.id == page.author %}
+        {% if post_author.twitter %}
+            <meta name="twitter:creator" content="@{{ post_author.twitter }}">
+        {% endif %}
+    {% endif %}
+{% endfor %}
