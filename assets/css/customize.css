@@ -33,9 +33,6 @@ body { padding-top: 70px; }
   line-height: 100%;
 }
 
-pre code {
-  font-size: 75%;
-}
 
 .search-box-margin {
   margin: 6px 0px 6px 150px;
