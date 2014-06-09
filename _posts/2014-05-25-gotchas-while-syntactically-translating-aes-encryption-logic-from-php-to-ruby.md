@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Gotcha's while syntatically translating AES encryption logic from PHP to Ruby"
-tldr: "Attempting to syntatically translate PHP code, that dealt with AES encryption logic, into Ruby stumped our Payment Gateway Service provider"
+title: "Gotcha's while syntactically translating AES encryption logic from PHP to Ruby"
+tldr: "Attempting to syntactically translate PHP code, that dealt with AES encryption logic, into Ruby stumped our Payment Gateway Service provider"
 modified: 2014-05-25 20:39:45 +0530
 tags: [ruby, PHP, AES, Cryptography, Encryption, Decryption]
 category: technology
