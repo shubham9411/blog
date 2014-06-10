@@ -52,7 +52,9 @@
             </div>
            
             <div>
-                  <span class='text-danger entry-tags'> <a href="{{ site.baseurl }}/categories.html" > {{ page.category }} </a></span>
+                <div>
+                  <span class='label label-success'> <a href="{{ site.baseurl }}/categories.html" > {{ page.category }} </a></span>
+                </div>
               {% if page.tldr %}
                 <div class='pull-left date-show'>
                   <span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}"><i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</time></span>&nbsp;
