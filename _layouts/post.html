@@ -23,24 +23,15 @@
             {% if page.image.feature %}<img src="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if page.image.credit %}<p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>{% endif %}{% endif %}
             <div >
               <header>
+
                 <span class="entry-tags">
                   {% for tag in page.tags %}
                     <a href="{{ site.url }}{{ site.baseurl }}/tags/#{{ tag | cgi_encode }}" title="Pages tagged {{ tag }}">{{ tag }}</a>
                     {% unless forloop.last %}&nbsp;&bull;&nbsp;{% endunless %}
                   {% endfor %}
-                  <div class=' social-sharing pull-right'>        
-                    {% if page.share %}
-                      <span class="social-share-facebook">
-                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square fa-lg"></i> Like</a>
-                      </span>&nbsp;&nbsp;
-                      <span class="social-share-twitter">
-                         <a href="https://twitter.com/share?hashtags={{ page.categories | join: ',' }}&text={{ page.title }}&via={{site.owner.twitter}}" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square  fa-lg"></i></i> Tweet</a>
-                      </span>&nbsp;&nbsp;
-                      <span class="social-share-googleplus">
-                         <a href="https://plus.google.com/share?url={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square fa-lg"></i> +1</a>
-                      </span><!-- /.social-share -->
-                    {% endif %}   
-                  </div>
+
+                  {% include social-shares.html %}
+
                 </span>
               
                 {% if page.link %}
@@ -61,9 +52,11 @@
             </div>
            
             <div>
+                  <span class='text-danger entry-tags'> <a href="{{ site.baseurl }}/categories.html" > {{ page.category }} </a></span>
               {% if page.tldr %}
                 <div class='pull-left date-show'>
                   <span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}"><i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</time></span>&nbsp;
+
                     {% if site.disqus_shortname and page.comments %}
                         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
                     {% endif %}
@@ -90,7 +83,10 @@
                 <div class="post-content-justify">
                   {{ content }}
                 </div>
-                <hr/>
+                <div class="entry-tags">
+                  {% include social-shares.html %}
+                </div>
+                <div class="clearfix"><br/></div>
 
                 {% include author-widget.html %}
 

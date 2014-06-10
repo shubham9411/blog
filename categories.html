@@ -1,0 +1,30 @@
+---
+layout: page
+title: Category Index
+description: "List of recent blog posts."
+tags: [eLitmus, recent]
+---
+
+
+
+
+
+{% for category in site.categories %}
+  <a name="{{ category | first }}"><strong>{{ category | first | capitalize }}</strong></a>
+    <ul class='post-list'>
+    {% for posts in category %}
+      {% for post in posts %}
+      	{% if post.url %}
+        	<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+
+
+{% for post in site.categories.quickstart %}
+<!-- h2><a href=".{{ post.url }}">{{ post.title }}</a></h2 -->
+<!-- {{ post.content }} -->
+{% endfor %}

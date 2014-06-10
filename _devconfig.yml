@@ -8,6 +8,7 @@ search:           true
 # url:              //lvh.me:4000
 url:              ""
 baseurl:          /blog
+url_for_sitemaps: //www.elitmus.com
 # Owner/author information
 owner:
   name:           eLitmus.com
