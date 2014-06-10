@@ -14,26 +14,25 @@ comments:
 share: true
 ---
 
-I was experimenting with `chef` to manage our Linux boxes. As a standard practice, our application user `deployer` is home'd in `/applications/deployer` rather than the usual `/home/deployer`. 
+I was experimenting with `chef` to manage our Linux boxes. As a standard practice, our application user `deployer` is homed in `/applications/deployer` rather than the usual `/home/deployer`.
 
 To enable password less login, I appended my public key to `~/.ssh/authorized_keys` 
 
      ssh-copy-id -i ~/.ssh/id_rsa deployer@remote.server
 
-The first time I run this command, I will be prompted for a password so as to install my key. 
-After this, I can run the below command to login without a password
+The first time I run this command, I will be prompted for a password to install my key. After this, I can run the below command to login without a password:
 
     ssh -i ~/.ssh/id_rsa deployer@remote.server
 
-However, that did not work as expected. 
+However, that did not work as expected.
 
 For some reason, `sshd` was unable to read the `authorized_keys` file. I checked all the usual things.. all looked fine. Everything seem to work just fine when `SELinux` was running in `permissive` mode on the remote server, but not when it was in `enforcing` mode.
 
-Discovered that if `.ssh` folder was created by hand (or even the folder containing `.ssh` folder), we need to do few additional things
+Discovered that if `.ssh` folder was created by hand (or even the folder containing `.ssh` folder), we need to do few additional things.
 
 **Step 1:** 
 
-Open this file `/etc/selinux/targeted/contexts/files/file_contexts.homedirs` and append the following line to the bottom
+Open this file /etc/selinux/targeted/contexts/files/file_contexts.homedirs and append the following line to the bottom
 
      /applications/deployer/[^/]*/\.ssh(/.*)?     system_u:object_r:ssh_home_t:s0
 
@@ -45,9 +44,9 @@ Note: remember to adjust the path as per your needs.
 
     restorecon -R -v /applications/deployer/.ssh
 
-Again, remember to adjust the path as per your needs. 
+Again, remember to adjust the path as per your needs.
 
-Now you are all set! 
+Now you are all set!
 
      ssh -i ~/.ssh/id_rsa deployer@remote.server
 

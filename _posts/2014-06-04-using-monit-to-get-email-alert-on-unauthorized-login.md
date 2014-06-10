@@ -15,7 +15,7 @@ share: true
 ---
 
 
-For a long time, we had our custom written `perl` script to alert us whenever someone logged into our production servers from an ip address we do not recognize (not white listed). The script looked somewhat like this...
+For a long time, we had our own custom written perl script to alert us whenever someone logged into our production servers from an ip address we do not recognize (not whitelisted). The script looked somewhat like this…
 
 {% highlight perl %}
 #!/usr/bin/perl
@@ -49,18 +49,19 @@ while (<>) {
 }
 {% endhighlight %}
 
-All we need to do is to run this script in the background as a daemon, and it will send us an email alert whenever someone logs in successfully. As root user start the script like this:
+All we needed to do was to run this script in the background as a daemon, and it would send us an email alert whenever someone logged in successfully. As root user start the script like this:
 
       # (perl alert_on_login.pl /var/log/auth.log &)
 
 
-Eversince we started using [monit][1] for the usual purpose (monitoring processes), we have also entrusted [monit][1] to do the job of the above perl script. [monit][1] makes this super simple...
+Ever since we started using [monit][1] for the usual purpose (monitoring processes), we have also entrusted [monit][1] to do the job of the above perl script. [Monit][1] makes this super simple…
 
 [Monit][1] is a popular opensource process monitoring tool. It is used mostly for monitoring health of any linux process and take necessary action if any of the set parameters are breached. Monit can restart a process if the process failed for some reason. Monit can also notify you of incidents and actions taken.
 
+
 [See this][2] to learn more about [monit's][1] alert capabilities.
 
-Monit's global configuration file is usually `/etc/monit/monitrc`. Here is what [monit][1] needs to be told about how to send email alerts
+[Monit’s][1] global configuration file is usually /etc/monit/monitrc. Here is what [monit][1] needs to be told about how to send email alerts:
 
 {% highlight bash %}
 ...
@@ -89,7 +90,7 @@ set alert recepient1@elitmus.com NOT ON { action, instance, pid, ppid, nonexist 
 ...
 {% endhighlight %}
 
-And then we add this config file `ssh_logins.conf` specific to sshd relating stuff
+And then we add this config file `ssh_logins.conf` specific to sshd related stuff:
 
 {% highlight bash %}
 check file ssh_logins with path /var/log/auth.log
@@ -97,10 +98,9 @@ check file ssh_logins with path /var/log/auth.log
   if match "Accepted publickey" then alert
 {% endhighlight %}
 
-Notice how we tell [monit][1] to ignore logins from known ip addresses. We can now store all whitelist ip addresses in a separate file `/etc/monit/whitelist_ips.regex`, one per line.
+Notice how we tell [monit][1] to ignore logins from known ip addresses. We can now store all whitelist ip addresses in a separate file `/etc/monit/whitelist_ips.regex`, one address per line.
 
-**Note:** We have disabled password based login and hence do not monitor for passworded logins. If you use passworded login, you should change `"Accepted publickey"` to `"Accepted password"` 
-
+**Note:** We have disabled password based login and hence do not monitor for passworded logins. If you use passworded login, you should change `"Accepted publickey"` to `"Accepted password"`
 
 Happy monitoring!
 

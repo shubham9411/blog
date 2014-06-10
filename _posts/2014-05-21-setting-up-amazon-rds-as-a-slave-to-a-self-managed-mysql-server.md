@@ -14,24 +14,24 @@ comments: false
 share: true
 ---
 
-Last week, we migrated our MySQL database server, which was running on an EC2 instance, to RDS. We hoped the migration process will be smooth.
+Last week, we migrated our MySQL database server, which was running on an EC2 instance, to RDS. We hoped the migration process would be smooth.
 
 As always, migrating a large database has its challenges. Business folks expect the minimum possible downtime.
 
-The plan was simple. 
+The plan was simple.
 
   1. Launch an RDS instance
   2. Load a full dump into it
   3. Configure it to act as a slave of the self-managed server (current master)
   4. On the D-day, pull the website down and promote the RDS instance to take over as the new master
 
-We soon discovered that RDS comes with curtailed root permissions. There are several commands that are disallowed. Some of these include "CHANGE MASTER TO...."
+We soon discovered that RDS comes with curtailed root permissions. There are several commands that are disallowed. Some of these include “CHANGE MASTER TO….”
 
 What do we do now?
 
-One option is, to carry out the migration in one go, while the website is offline. This meant the downtime is going to be for several hours, instead of minutes. Not an acceptable option.
+One option was to carry out the migration in one go, while the website was offline. This meant the downtime would have been several hours, instead of minutes. Obviously, not an acceptable option at all.
 
-Some R&D was all it took to discover how to proceed with the original approach. 
+Some R&D was all it took to discover how to proceed with the original approach.
 
 RDS comes with a bunch of stored procedures, which help you configure it as a slave. There is almost a one-to-one mapping of these stored procedures with the commands that are disallowed.
 
@@ -44,8 +44,7 @@ RDS comes with a bunch of stored procedures, which help you configure it as a sl
 <tr><td>RESET MASTER</td><td>mysql.rds_reset_external_master </td></tr>
 </table>
     
-So, Using these stored procedures, you can now configure your RDS instance as a slave to your self managed MySQL server
-
+So, Using these stored procedures, you can now configure your RDS instance as a slave to your self-managed MySQL server
 
 After loading a full dump to RDS, Call the stored procedure `mysql.rds_set_external_master` like this
 
@@ -55,7 +54,7 @@ Then
     
     CALL mysql.rds_start_replication;
 
-This will make RDS a slave of your self managed mysql server. You can run "SHOW SLAVE STATUS" to see its working.
+This will make RDS a slave of your self managed mysql server. You can run “SHOW SLAVE STATUS” to see its working.
 
 When it is time to promote RDS to master. You call these stored procedures
 
@@ -63,18 +62,13 @@ When it is time to promote RDS to master. You call these stored procedures
 
     CALL mysql.rds_reset_external_master;
 
-That's it. Now point your applications to the RDS instance and take your site live.
+That’s it. Now point your applications to the RDS instance and take your site live.
 
+**Note:**
 
-*Note:*
-
-For your RDS to work as a slave, it needs permissions to connect to port 3306 of your current master. Make sure you open this port for the RDS instance. 
+For your RDS to work as a slave, it needs permissions to connect to port 3306 of your current master. Make sure you open this port for the RDS instance.
 
 You can run the following command to find out the ip address of your rds instance
 
+
     ping -c rdsname.cpesx66wwe7y.ap-southeast-1.rds.amazonaws.com
-
-
-
-
-
