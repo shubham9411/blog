@@ -53,7 +53,7 @@
            
             <div>
                 <div>
-                  <span class='label label-success'> <a href="{{ site.baseurl }}/categories.html" > {{ page.category }} </a></span>
+                  <span class='label label-warning'> <a href="{{ site.baseurl }}/categories.html" > {{ page.category }} </a></span>
                 </div>
               {% if page.tldr %}
                 <div class='pull-left date-show'>
@@ -120,13 +120,15 @@
       </div>
 
     </div><!-- /row -->
-
-    <div class="footer-wrapper">
+    </div>
+    <div class="footer-color">
       <footer role="contentinfo">
-        {% include footer.html %}
+        <center>
+          {% include footer.html %}
+        </center>
       </footer>
     </div><!-- /.footer-wrapper -->
     {% include scripts.html %}  
-    </div>
+
   </body>
 </html>
