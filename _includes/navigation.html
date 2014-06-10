@@ -32,9 +32,9 @@
                   </div>     
                 {% endif %}      
                 <input data-toggle="dropdown" placeholder="Search...." id="search-box" class="input-sm search-input">
-                <ul class="dropdown-menu list-group" id="search-dropdown" role="menu" aria-labelledby="dLabel">
-                  <li role='presentation' class='search-results'> Type more.... </li>
-                </ul>
+                <div class="dropdown-menu list-group" id="search-dropdown" >
+                  <a role='presentation' class='search-results list-group-item'> Type more.... </a>
+                </div>
             </div>
           </div>
         </li>
@@ -56,11 +56,7 @@
 </nav>
 {% include browser-upgrade.html %}
 </header>
-<script type='text/javascript'>
-var myElement = document.querySelector("header");
-var headroom  = new Headroom(myElement);
-headroom.init();
-</script>
+
 
 <!-- 
 {% if site.search %}

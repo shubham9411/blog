@@ -8,33 +8,30 @@
 </head>
 
 <body id="post">
+  {% include navigation.html %}
+  <div class="container-fluid">
+
   <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-2">
+
+    </div>
       <div class="col-md-8">
-      {% include navigation.html %}
-        <div id="main" role="main" >
+        
+
+        <div id="main" role="main" class="marginal">
           <article class="hentry">
             {% if page.image.feature %}<img src="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if page.image.credit %}<p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>{% endif %}{% endif %}
-            <div class="page-header">
-              <header class="entry-header">
+            <div >
+              <header>
+
                 <span class="entry-tags">
                   {% for tag in page.tags %}
                     <a href="{{ site.url }}{{ site.baseurl }}/tags/#{{ tag | cgi_encode }}" title="Pages tagged {{ tag }}">{{ tag }}</a>
                     {% unless forloop.last %}&nbsp;&bull;&nbsp;{% endunless %}
                   {% endfor %}
-                  <div class=' social-sharing pull-right'>        
-                    {% if page.share %}
-                      <span class="social-share-facebook">
-                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square fa-lg"></i> Like</a>
-                      </span>&nbsp;&nbsp;
-                      <span class="social-share-twitter">
-                         <a href="https://twitter.com/share?hashtags={{ page.categories | join: ',' }}&text={{ page.title }}&via={{site.owner.twitter}}" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square  fa-lg"></i></i> Tweet</a>
-                      </span>&nbsp;&nbsp;
-                      <span class="social-share-googleplus">
-                         <a href="https://plus.google.com/share?url={{ site.url }}{{ site.baseurl }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square fa-lg"></i> +1</a>
-                      </span><!-- /.social-share -->
-                    {% endif %}   
-                  </div>
+
+                  {% include social-shares.html %}
+
                 </span>
               
                 {% if page.link %}
@@ -55,9 +52,13 @@
             </div>
            
             <div>
+                <div>
+                  <span class='label label-warning'> <a href="{{ site.baseurl }}/categories.html" > {{ page.category }} </a></span>
+                </div>
               {% if page.tldr %}
                 <div class='pull-left date-show'>
                   <span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}"><i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</time></span>&nbsp;
+
                     {% if site.disqus_shortname and page.comments %}
                         <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
                     {% endif %}
@@ -84,70 +85,12 @@
                 <div class="post-content-justify">
                   {{ content }}
                 </div>
-                <hr/>
+                <div class="entry-tags">
+                  {% include social-shares.html %}
+                </div>
+                <div class="clearfix"><br/></div>
 
-                {% for post_author in site.data.authors %}
-                  {% if post_author.id == page.author %}
-                    <div class="panel panel-default">
-                      <div class="panel-body">
-                        <div class="container-fluid">
-                          <div class="row">
-                            <div class="col-xs-6 col-md-4">
-                                <img src="{{ site.url }}{{ site.baseurl }}/images/{{ post_author.avatar }}" alt="{{ post_author.name }} photo" class="author-photo img-circle"/>
-                                <span class="author vcard"><span class="fn">{{ post_author.name }}</span></span>
-
-                                <div class="social-icons">
-                                  {% if post_author.twitter %}
-                                    <a href="http://twitter.com/{{ post_author.twitter }}"  title="{{ post_author.name }} on Twitter"  target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
-                                  {% endif %}
-                                  {% if post_author.facebook %}
-                                    <a href="http://facebook.com/{{ post_author.facebook }}"  title="{{ post_author.name }} on Facebook"  target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
-                                  {% endif %}
-                                  
-                                  {% if post_author.google_plus %}
-                                    <a href="{{ post_author.google_plus }}" title="{{ post_author.name}} on Google+" target="_blank"><i class="fa fa-google-plus fa-lg"></i></a>
-                                  {% endif %}
-
-                                  {% if post_author.linkedin %}
-                                    <a href="http://linkedin.com/in/{{ post_author.linkedin }}" title="{{ post_author.name}} on LinkedIn" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
-                                  {% endif %}
-
-                                  {% if post_author.stackexchange %}
-                                    <a href="{{ post_author.stackexchange }}" title="{{ post_author.name}} on StackExchange" target="_blank"><i class="fa fa-fa-stack-overflow fa-lg"></i></a>
-                                  {% endif %}
-
-                                  {% if post_author.instagram %}
-                                    <a href="http://instagram.com/{{ post_author.instagram }}" title="{{ post_author.name}} on Instagram" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
-                                  {% endif %}
-
-                                  {% if post_author.flickr %}
-                                    <a href="http://www.flickr.com/photos/{{ post_author.flickr }}" title="{{ post_author.name}} on Flickr" target="_blank"><i class="fa fa-flickr fa-lg"></i></a>
-                                  {% endif %}
-
-                                  {% if post_author.github %}
-                                    <a href="http://github.com/{{ post_author.github }}" title="{{ post_author.name}} on Github" target="_blank"><i class="fa fa-github fa-lg"></i></a>
-                                  {% endif %}
-
-                                  {% if post_author.tumblr %}
-                                    <a href="http://{{ post_author.tumblr }}.tumblr.com" title="{{ post_author.name}} on Tumblr" target="_blank"><i class="fa fa-tumblr fa-lg"></i></a>
-                                  {% endif %}   
-                                </div><!-- /.social-icons -->
-                            </div>
-
-                            <!-- Add the extra clearfix for only the required viewport -->
-                            <div class="clearfix visible-xs"></div>
-
-                            <div class="col-md-offset-4">
-                              {% if post_author.bio %}
-                                <span class="author-bio">{{ post_author.bio}}</span>
-                              {% endif %}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% endfor %}
+                {% include author-widget.html %}
 
                 {% if site.disqus_shortname and page.comments %}
                   <div id="disqus_thread">
@@ -156,25 +99,36 @@
                 {% endif %}
               </div><!-- /.entry-content -->
             </div><!-- /.entry-wrapper -->
+
+          </article>
             <nav class="navbar nav-justified" role="navigation">
               <ul class="pager">
                 {% if page.previous %}
-                  <li class="previous"><a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous Post</a></li>
+                  <li class="previous showElem"><a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr;<span class="showPrevNex"> Previous </span> </a></li>
                 {% endif %}
                 {% if page.next %}
-                  <li class="next"><a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}">Next Post &rarr;</a></li>
+                  <li class="next showElem"><a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}"> <span class='showPrevNex'> Next </span> &rarr; </a></li>
                 {% endif %}
               </ul>
             </nav>
-          </article>
+        
         </div><!-- /#main -->
-      </div><!--/col-md-2 -->
+
+      <!--/col-md-2 -->
+      <div class="col-md-2">
+
+      </div>
+
     </div><!-- /row -->
-    <div class="footer-wrapper">
+    </div>
+    <div class="footer-color">
       <footer role="contentinfo">
-        {% include footer.html %}
+        <center>
+          {% include footer.html %}
+        </center>
       </footer>
     </div><!-- /.footer-wrapper -->
     {% include scripts.html %}  
+
   </body>
 </html>

@@ -24,7 +24,7 @@
           </p>
       {% endif %}
     {% endif %}
-    
+    <div class="container-fluid">
     <div class="row">
       <header class="entry-header">
         <h1><center>{% if page.headline %}{{ page.headline }}{% else %}{{ page.title }}</center></h1>{% endif %}
@@ -33,20 +33,22 @@
         {% include sidebar.html %}
       </div>
       <div class="col-md-8">
-        <div class="post-content-justify">
+        <div class="post-content-justify marginal">
           {{ content }}
         </div>
       </div><!-- /.entry-content -->
       <div class="col-md-2">
       </div>
-    </div><!-- /.entry-wrapper -->
+    </div><!-- /row -->
+   </div>
   </article>
 </div><!-- /#main -->
 
-<div class="footer-wrapper">
+<div class="footer-color">
   <footer role="contentinfo">
-
-    {% include footer.html %}
+    <center>
+      {% include footer.html %}
+    </center>
   </footer>
 </div><!-- /.footer-wrapper -->
 
