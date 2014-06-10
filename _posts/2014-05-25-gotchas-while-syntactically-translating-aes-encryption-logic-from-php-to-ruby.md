@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Gotcha's while syntatically translating AES encryption logic from PHP to Ruby"
-tldr: "Attempting to syntatically translate PHP code, that dealt with AES encryption logic, into Ruby stumped our Payment Gateway Service provider"
+title: "Gotcha's while syntactically translating AES encryption logic from PHP to Ruby"
+tldr: "Attempting to syntactically translate PHP code, that dealt with AES encryption logic, into Ruby stumped our Payment Gateway Service provider"
 modified: 2014-05-25 20:39:45 +0530
 tags: [ruby, PHP, AES, Cryptography, Encryption, Decryption]
 category: technology
@@ -16,28 +16,27 @@ share: true
 
 Our Payment Gateway service provider recently launched a new platform with some nice-to-have features. We wanted those features and so we decided to migrate. Being one of the earliest adopters of the new platform, there was no integration kit available. We had to build it ourselves. Not a problem. Since we are a Ruby On Rails shop, we built our own Ruby integration kit. All went well and we pushed it to production.
 
-A month or two later, we got an email from our gateway provider seeking our help with writing the encryption and decryption logic for the Ruby integration kit they were developing. We were a little surprised, because we noticed they had already published integration kits for PHP, Python, JAVA etc. How difficult can it be to translate that to Ruby?
+A month or two later, we got an email from our gateway provider seeking our help with writing the `encryption` and `decryption` logic for the Ruby integration kit they were developing. We were a little surprised, because we noticed they had already published integration kits for PHP, Python, JAVA etc. How difficult can it be to translate that to Ruby?
 
-Turns out, syntatic transalation of code from one programming language to another does not always work. A slightly more deeper knowledge helps. We could almost guess where they were getting stuck.
+Turns out, syntactic transalation of code from one programming language to another does not always work. A slightly more deeper knowledge helps. We could almost guess where they were getting stuck.
 
-Before we get to the story, some backgroung on the encryption algo will add clarity. 
+Before we get to the story, some backgroung on the encryption algo will add clarity.
 
-For secure communication between our server and the gateway, the prescribed cipher was AES, specifically symmetric-key block cipher with a 128 bit secret key in CBC mode. Since OpenSSL already implements this algo and is avaliable on almost all platforms, most programming languages just bundle a wrapper for OpenSSL. 
+For secure communication between our server and the gateway, the prescribed cipher was AES, specifically symmetric-key block cipher with a 128 bit secret key in CBC mode. Since OpenSSL already implements this algo and is avaliable on almost all platforms, most programming languages just bundle a wrapper for OpenSSL.
 
-So if its the same OpenSSL that the wrappers call, why couldn't the gateway service provider translate their own PHP code to Ruby?
+So if its the same OpenSSL that the wrappers call, why couldn’t the gateway service provider translate their own PHP code to Ruby?
 
-**Here is why:**
+### Here is why:
 
-AES works by breaking the plain text (the text to be encrypted) into blocks of 128 bits (or 16 bytes). In CBC mode, each block is XORed with the key to get cipher text of that block.  The cipher text of the previous block is used for encrypting the next block...so on and so forth, until all the blocks are encrypted.
+AES works by breaking the plain text (the text to be encrypted) into blocks of 128 bits (or 16 bytes). In CBC mode, each block is XORed with the key to get cipher text of that block. The cipher text of the previous block is used for encrypting the next block... so on and so forth, until all the blocks are encrypted.
 
-Note that the length of the cipher text will be exactly same as that of the plain text. 
+Note that the length of the cipher text will be exactly same as that of the plain text.
 
 The problem occures with the last block. If the length of the plain text is not a multiple of 128. the last block will be shorter than 128 bits. Since the algo can work only on blocks of 128 bits, It is a common practice to pad the last block so that it becomes equal to 128 bits in lenght. This padding is subsequently discarded after decryption.
 
+**Note:** The actual algo is more complicated than this. We have deliberately left out details that are not relevent for this post.
 
-_Note:_ The actual algo is more complicated than this. We have deliberately left out details that are not relevent for this post.
-
-This is the `encryption` method in the PHP integration kit published by the gateway service provider
+This is the encryption method in the PHP integration kit published by the gateway service provider
 
 {% highlight PHP linenos%}
 function encrypt($plainText,$key)
@@ -80,15 +79,12 @@ end
 
 Notice any difference?
 
-It turns out, Unlike in Python, PHP and few other languages, Ruby wrapper for OpenSSL automatically takes care of padding (default behaviour). This is clearly mentioned in the [documentation][1]. For some reason, techies at our gateway service provider overlooked this and hit a dead-end.
+It turns out that, unlike in Python, PHP and few other languages, Ruby wrapper for OpenSSL automatically takes care of padding (default behaviour). This is clearly mentioned in the [documentation][1]. For some reason, techies at our gateway service provider overlooked this and hit a dead-end.
 
 By the they, they were gracious enough to acknowledge our contribution in their Ruby Integration Kit (accessible only to their subscribers)
 
 But We have open sourced our code here '[cca_crypto][2]'. We have plans of make this into a complete package - with view generators etc., and publish this as a rubygem. We shall gladly accept any pull request!
 
-*Note:*
-
-This implementation of algo is based on our gateway providers api and specifications
 
 [1]: http://ruby-doc.org/stdlib-2.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html#method-i-final
 [2]: https://github.com/elitmus/cca_crypto

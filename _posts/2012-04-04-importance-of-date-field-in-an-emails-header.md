@@ -14,31 +14,31 @@ comments:
 share: true
 ---
 
-Thus far, we paid less attention to email delivery issues. We knew delivering to rediffmail is a pain. So we discouraged our users from using rediffmail. Apart from that we had FCrDNS and SPF configured and working fine. 
-We had also configured [DKIM][6]. And then a month ago, we also added [DMARC][7] in monitor mode.
+So far, we paid little attention to email delivery issues. We knew delivering to rediffmail is a pain. So we discouraged our users from using rediffmail. Apart from that we had FCrDNS and SPF configured and working fine. We had also configured [DKIM][6]. And then a month ago, we also added [DMARC][7] in monitor mode.
 
 We were happy! Until...
 
-Recently, we started getting loads of phishing emails from what appeared to originate from our own domain name [not our servers]. 
+
+Recently, we started getting loads of phishing emails from what appeared to originate from our own domain name [not our servers].
 
 It told us two things. 
   
    1. [eLitmus.com][1] was growing in popularity
    2. We cannot ignore email delivery issue any longer
 
-We ran our email through [Spam Assassin][4] checks and were surprised to see that we got a score of 6. Anything above 5 is BAD. It's a straight spam! But we knew we were not spamming. These were transactional emails triggered by our website on certain events, such as *New registration, or Forgot Password*.
+We ran our email through [Spam Assassin][4] checks and were surprised to see that we got a score of 6. Anything above 5 is BAD. It’s a straight spam! But we knew we were not spamming. These were transactional emails triggered by our website on certain events, such as *New registration, or Forgot Password*.
 
-It was almost by accident, we noticed that the timezone in the Date header of the email was appearing as +0580. Indian Standard Time (IST) is 5 hours and 30 minutes ahead of UTC. So this value should have been +0530, not +0580. Apparently, that is good enough reason for SpamAssassin to treat our mails as spam.
+It was almost by accident, we noticed that the timezone in the Date header of the email was appearing as +0580. Indian Standard Time (IST) is 5 hours and 30 minutes ahead of UTC. So this value should have been +0530, not +0580. Apparently, that is good enough reason for Spam Assassin to treat our mails as spam.
 
 Tracing backwards, we discovered a bug in our application code and fixed it. It was a single line fix.
 
-With this change,  [Spam Assassin][4] was happy to give us a score of zero.
+With this change, [Spam Assassin][4] was happy to give us a score of zero.
 
 That is just one part of one header. There are ten others which have to be configured correctly.
 
-Here is an article with good insights in to how gmail calculates sender reputation. Its a little dated, but still relevent. [Sender reputation in a large webmail service (PDF)][3] 
+Here is an article with good insights in to how gmail calculates sender reputation. Its a little dated, but still relevent. [Sender reputation in a large webmail service (PDF)][3]
 
-By the way, here is a nice and free JSon API to check your [email's reputation][5]
+By the way, here is a nice and free JSon API to check your [email’s reputation][5].
 
 [1]: http://www.elitmus.com
 [2]: http://www.yahoo.com
