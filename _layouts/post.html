@@ -13,11 +13,7 @@
 
   <div class="row">
     <div class="col-md-2">
-      <ul class="pager affix">
-          {% if page.previous %}
-            <li class="previous"><a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; </a></li>
-          {% endif %}
-      </ul>
+
     </div>
       <div class="col-md-8">
         
@@ -107,16 +103,22 @@
             </div><!-- /.entry-wrapper -->
 
           </article>
+            <nav class="navbar nav-justified" role="navigation">
+              <ul class="pager">
+                {% if page.previous %}
+                  <li class="previous showElem"><a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr;<span class="showPrevNex"> Previous </span> </a></li>
+                {% endif %}
+                {% if page.next %}
+                  <li class="next showElem"><a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}"> <span class='showPrevNex'> Next </span> &rarr; </a></li>
+                {% endif %}
+              </ul>
+            </nav>
         
         </div><!-- /#main -->
 
       <!--/col-md-2 -->
       <div class="col-md-2">
-        <ul class="pager affix">
-          {% if page.next %}
-            <li class="next"><a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}"> &rarr;</a></li>
-          {% endif %}
-        </ul>
+
       </div>
 
     </div><!-- /row -->

@@ -97,6 +97,10 @@ body { padding-top: 70px; }
 .sidebar-padding{
   padding-top: 10px;
 }
+.showPrevNex{
+  display: none;
+}
+
 /*
 span + .entry-title {
     max-width: 800px;

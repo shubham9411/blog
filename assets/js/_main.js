@@ -31,6 +31,21 @@ $(function() {
 
 
 $(document).ready(function(){
+
+// displaying prev next
+  $('.showElem').mouseenter(
+  	function(){
+  	$(this).find('span').show();
+  }
+
+  );
+  $('.showElem').mouseleave(
+  function(){
+  	$(this).find('span').hide();
+  }
+  );
+
+
   var myElement = document.querySelector("header");
   var headroom  = new Headroom(myElement, {
     "tolerance": 25
@@ -38,4 +53,5 @@ $(document).ready(function(){
   headroom.init(); 
   headroom.destroy();
 });
+
 
