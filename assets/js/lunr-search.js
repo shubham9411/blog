@@ -57,7 +57,6 @@ $(document).ready(function() {
 
     });
     $('#search-box').keyup(function() {
-
         var textToInsert = '';
         var highlighted = '';
         // search value will add category to the search term, so we only get posts from category
@@ -79,20 +78,28 @@ $(document).ready(function() {
                 textToInsert = "<a class='search-results list-group-item' href='#'> No results found </a>";
             }
             $('#search-dropdown').html(textToInsert);
+            $('.search-results').hover(function(){
+                $('#search-box').width(400);
+            });
         }
         else{
             $('#search-dropdown').html("<a class='search-results list-group-item'> Enter atleast 3 characters.. </a>");
         }
+
     });
+
 
 })
 
 $(document).ready(function(){
+
     $(".selectCategory").click(function(){
         $('.insertCategory').html($(this).attr("id") + "&nbsp;<span class='caret'></span>");
         $('.insertCategory').val($(this).attr("id"));
     });
 })
+
+
 
 
 
