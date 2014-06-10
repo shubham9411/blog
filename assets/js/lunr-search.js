@@ -66,21 +66,22 @@ $(document).ready(function() {
             result = idx.search(searchValue);
             var searchArray = [];
             if (result.length > 0) {
-                var sliceText = "<li role='presentation' class='search-results list-group-item'><a role='menuitem' tabindex='-1' href=' "
+                var sliceText = "<a  class='search-results list-group-item' href=' "
                 for (var index in result) {
-                    textToInsert = textToInsert + sliceText + result[index].ref + " '> <b>" + urlToTitle(result[index].ref) + "</b><br>";
-                    highlighted = getMoreData(result[index].ref, jsonData, originalJsonData, this.value) + "</a></li>"
+                    textToInsert = textToInsert + sliceText + result[index].ref + " '> <b>" + urlToTitle(result[index].ref) + "</b><br><p class='list-group-item-text'>";
+                    highlighted = getMoreData(result[index].ref, jsonData, originalJsonData, this.value) + "</p></a>"
                     textToInsert = textToInsert + highlighted;
                 }
 
             }
+            console.log('the text to insert is '+ textToInsert);
             if (textToInsert == '') {
-                textToInsert = "<li class='search-results'> No results found </li>";
+                textToInsert = "<a class='search-results list-group-item' href='#'> No results found </a>";
             }
             $('#search-dropdown').html(textToInsert);
         }
         else{
-            $('#search-dropdown').html("<li class='search-results'> Enter atleast 3 characters.. </li>");
+            $('#search-dropdown').html("<a class='search-results list-group-item'> Enter atleast 3 characters.. </a>");
         }
     });
 
