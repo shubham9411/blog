@@ -1,0 +1,58 @@
+{% for post_author in site.data.authors %}
+  {% if post_author.id == page.author %}
+
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <img src="{{ site.url }}{{ site.baseurl }}/images/{{ post_author.avatar }}" alt="{{ post_author.name }} photo" class="author-photo img-circle"/>
+                <span class="author vcard"><span class="fn">{{ post_author.name }}</span></span>
+
+                <div class="social-icons">
+                  {% if post_author.twitter %}
+                    <a href="http://twitter.com/{{ post_author.twitter }}"  title="{{ post_author.name }} on Twitter"  target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
+                  {% endif %}
+                  {% if post_author.facebook %}
+                    <a href="http://facebook.com/{{ post_author.facebook }}"  title="{{ post_author.name }} on Facebook"  target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+                  {% endif %}
+                  
+                  {% if post_author.google_plus %}
+                    <a href="{{ post_author.google_plus }}" title="{{ post_author.name}} on Google+" target="_blank"><i class="fa fa-google-plus fa-lg"></i></a>
+                  {% endif %}
+
+                  {% if post_author.linkedin %}
+                    <a href="http://linkedin.com/in/{{ post_author.linkedin }}" title="{{ post_author.name}} on LinkedIn" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
+                  {% endif %}
+
+                  {% if post_author.stackexchange %}
+                    <a href="{{ post_author.stackexchange }}" title="{{ post_author.name}} on StackExchange" target="_blank"><i class="fa fa-fa-stack-overflow fa-lg"></i></a>
+                  {% endif %}
+
+                  {% if post_author.instagram %}
+                    <a href="http://instagram.com/{{ post_author.instagram }}" title="{{ post_author.name}} on Instagram" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
+                  {% endif %}
+
+                  {% if post_author.flickr %}
+                    <a href="http://www.flickr.com/photos/{{ post_author.flickr }}" title="{{ post_author.name}} on Flickr" target="_blank"><i class="fa fa-flickr fa-lg"></i></a>
+                  {% endif %}
+
+                  {% if post_author.github %}
+                    <a href="http://github.com/{{ post_author.github }}" title="{{ post_author.name}} on Github" target="_blank"><i class="fa fa-github fa-lg"></i></a>
+                  {% endif %}
+
+                  {% if post_author.tumblr %}
+                    <a href="http://{{ post_author.tumblr }}.tumblr.com" title="{{ post_author.name}} on Tumblr" target="_blank"><i class="fa fa-tumblr fa-lg"></i></a>
+                  {% endif %}   
+                </div><!-- /.social-icons -->
+            </div>
+
+            <!-- Add the extra clearfix for only the required viewport -->
+            <div class="clearfix visible-xs"></div>
+
+            <div class="col-md-offset-4">
+              {% if post_author.bio %}
+                <span class="author-bio">{{ post_author.bio}}</span>
+              {% endif %}
+            </div>
+          </div>
+
+  {% endif %}
+{% endfor %}
