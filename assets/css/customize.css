@@ -51,7 +51,7 @@ body { padding-top: 70px; }
 }
 
 .marginal {
-  margin: 0px 14px 0px 14px;
+  padding: 0px 14px 0px 14px;
 }
 
 .entry-title-summary, .no-padding {
