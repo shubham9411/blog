@@ -8,7 +8,7 @@ search:           true
 # url:              //shireeshj.github.io
 url:              ""
 baseurl:          /blog
-url_for_sitemaps: //www.elitmus.com
+url_for_sitemaps: https://www.elitmus.com
 # Owner/author information
 owner:
   name:           eLitmus.com
