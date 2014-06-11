@@ -65,7 +65,7 @@ $(document).ready(function() {
             result = idx.search(searchValue);
             var searchArray = [];
             if (result.length > 0) {
-                var sliceText = "<a  class='search-results list-group-item' href='/blog"
+                var sliceText = "<a  class='search-results list-group-item' href='{{ site.baseurl }}"
                 for (var index in result) {
                     textToInsert = textToInsert + sliceText + result[index].ref + " '> <b>" + urlToTitle(result[index].ref) + "</b><br><p class='list-group-item-text'>";
                     highlighted = getMoreData(result[index].ref, jsonData, originalJsonData, this.value) + "</p></a>"
