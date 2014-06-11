@@ -8,9 +8,16 @@ layout: nil
     </url>
     
     {% for page in site.pages %}
-    <url>
-        <loc>{{ site.url_for_sitemaps }}{{site.baseurl}}{{ page.url }}</loc>
-    </url>
+        {% if page.layout != nil %}
+        {% if page.layout != feed %}
+
+        <url>
+            <loc>{{ site.url_for_sitemaps }}{{site.baseurl}}{{ page.url | remove: '404.html' | remove: 'sitemap.xml' | remove: 'feed.xml' | remove: 'browserconfig.xml' }}</loc>
+        </url>
+
+        {% endif %}
+        {% endif %}
+
     {% endfor %}
 
     {% for post in site.posts %}
