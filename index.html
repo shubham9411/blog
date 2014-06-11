@@ -21,7 +21,13 @@ tags: [eLitmus, recent]
           </a>
         </h3>
         <div>
-          {{ post.excerpt | remove: '</p>' }}<a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">...read more</a></p>
+          {% if post.excerpt %} 
+            {% capture full_url %} 
+              {{ site.url }}{{ site.baseurl }}{{ post.url }} 
+            {% endcapture %}
+
+            {{ post.excerpt | read_more: full_url }} 
+          {% endif %}
         </div>
       </header>
     </article>
