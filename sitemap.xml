@@ -4,14 +4,14 @@ layout: nil
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https:{{ site.url_for_sitemaps }}{{site.baseurl}}</loc>
+        <loc>{{ site.url_for_sitemaps }}{{site.baseurl}}</loc>
     </url>
     
     {% for page in site.pages %}
         {% if page.layout != nil and page.layout != feed %}
         {% if page.url != '/404.html' and page.url != '/sitemap.xml' and page.url != '/feed.xml' and page.url != '/browserconfig.xml'  %}
         <url>
-            <loc>https:{{ site.url_for_sitemaps }}{{site.baseurl}}{{ page.url }}</loc>
+            <loc>{{ site.url_for_sitemaps }}{{site.baseurl}}{{ page.url }}</loc>
         </url>
 
         {% endif %}
@@ -20,7 +20,7 @@ layout: nil
 
     {% for post in site.posts %}
     <url>
-        <loc>https:{{ site.url_for_sitemaps }}{{site.baseurl}}{{ post.url }}</loc>
+        <loc>{{ site.url_for_sitemaps }}{{site.baseurl}}{{ post.url }}</loc>
     </url>
     {% endfor %}
 </urlset>
