@@ -25,8 +25,9 @@ tags: [eLitmus, recent]
             {% capture full_url %} 
               {{ site.url }}{{ site.baseurl }}{{ post.url }} 
             {% endcapture %}
-
-            {{ post.excerpt | read_more: full_url }} 
+            
+            {{ post.excerpt }} 
+            <a href="{{ full_url }}" rel="nofollow" class="read-more pull-right"> read more &raquo;</a>
           {% endif %}
         </div>
       </header>
