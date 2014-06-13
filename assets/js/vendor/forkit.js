@@ -174,12 +174,15 @@
 	function open() {
 		dragging = false;
 		state = STATE_OPENED;
+		//  change by surendra jquery to hide
+		$('.navbar').hide();
 		dispatchEvent( 'forkit-open' );
 	}
 
 	function close() {
 		dragging = false;
 		state = STATE_CLOSED;
+		$('.navbar').show();
 		dom.ribbonTag.innerHTML = closedText;
 		dispatchEvent( 'forkit-close' );
 	}
