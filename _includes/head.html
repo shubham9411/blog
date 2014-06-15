@@ -19,7 +19,7 @@
     <meta name="msvalidate.01" content="{{ site.bing_verify }}">
 {% endif %}
 
-{% capture canonical %}{{ site.url }}{{ site.baseurl }}
+{% capture canonical %}{{ site.canonical_domain }}{{ site.baseurl }}
     {% if site.permalink contains '.html' %}
         {{ page.url }}
     {% else %}

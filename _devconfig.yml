@@ -9,6 +9,7 @@ search:           true
 url:              ""
 baseurl:          /blog
 url_for_sitemaps: https://www.elitmus.com
+canonical_domain: ""
 # Owner/author information
 owner:
   name:           eLitmus.com
