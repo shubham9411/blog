@@ -5,7 +5,7 @@ body {
 	background-color: @white;
 	border-top: 5px solid @black;
 	@media @medium {
-		.font-rem(20);
+		.font-rem(21);
 	}
 }
 
@@ -472,3 +472,42 @@ span + .entry-title {
 .read-more {
 	font-size: 0.75em;	
 }
+// hiding job post animation for small and medium devices
+
+@media screen and (max-device-width: 979px) {
+	.forkit{
+	display: none; 
+	}
+	.search-box-margin {
+	  margin: 6px 0px 6px 0px;
+	}	
+	#search-box:focus {
+		width: 150%;
+		border-color: rgb(204, 204, 204);
+	}
+	#search-box {
+		width: 150px;
+	}
+}
+@media screen and (min-device-width: 980px){
+	.search-box-margin {
+	  margin: 6px 0px 6px 150px;
+	}	
+	#search-box:focus {
+	  width: 400px;
+	  border-color: rgb(204, 204, 204);
+	}
+	.category-list-box {
+		height: 180px;
+	}
+
+}
+.dropdown-menu {
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+
+
+
+

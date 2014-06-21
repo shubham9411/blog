@@ -8,14 +8,13 @@
 </head>
 
 <body id="page">
+{% include navigation.html %}
 
-{% if page.url != '/job_post.html' %}
 
 {% include special-effect.html %}
 
-{% include navigation.html %}
 
-{% endif %}
+
 <div id="main" role="main">
   <article class="entry">
     {% if page.image.feature %}

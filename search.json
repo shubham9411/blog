@@ -7,7 +7,7 @@
 		  "category" : "{{ post.category }}",
 		  "url"     : "{{ post.url }}",
 		  "date"     : "{{ post.date }}",
-		  "content"	: "{{ post.content | strip_html | handleize | strip_newlines | remove: '\.' | remove: '\' | remove: '\\' | xml_escape  }}"
+		  "content"	: "{{ post.content | strip_html | xml_escape | newline_to_br | strip_newlines | remove: '\n' | remove: '\.' | replace: '&amp;quot;;', '&ldquo;' | replace: '&amp;quot;', '&ldquo;', | replace: ',',' ,' | replace: '&amp;lt','&#60;' | replace: '&amp;gt' | '&#62;'  }}"
 		} {% if forloop.last %}{% else %},{% endif %}
 	{% endfor %}
 ]
