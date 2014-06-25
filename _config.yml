@@ -74,4 +74,4 @@ kramdown:
 include: [".htaccess"]
 exclude: ["server.sh","lib", "config.rb", "Gemfile", "Capfile", "README.md", "LICENSE", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
 gems: []
-show_job: false
+show_job: true
