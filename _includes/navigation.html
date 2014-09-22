@@ -20,17 +20,7 @@
             <div class="input-group">
                 {% capture category_count %} {{ site.categories | size }}* {% endcapture %}
                 {% assign count = category_count | plus: 0 %}
-                {% if  count > 1 %}
-                  <div class="input-group-btn">
-                    <button type="button" class="btn btn-default insertCategory dropdown-toggle" data-toggle="dropdown"> All&nbsp; <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#" class="selectCategory" id="All">All</a></li>
-                      {% for category in site.categories %}
-                        <li > <a href="#" class="selectCategory" id="{{ category | first }}">{{ category | first }} </a></li>
-                      {% endfor %}
-                    </ul>  
-                  </div>     
-                {% endif %}      
+   
                 <input data-toggle="dropdown" placeholder="Search...." id="search-box" class="input-sm search-input">
                 <div class="dropdown-menu list-group" id="search-dropdown" >
                   <a role='presentation' class='search-results list-group-item'> Type more.... </a>
