@@ -52,14 +52,14 @@ In the Options window, choose "Profile Management" from the left side menu
 
 
 ###Step 6: 
-Click on "New" button to create a new profile. Give it a name, such as "airtel 3g". Also, make sure the "Access Nunber" is set to `*99#`. Click "Save", then "Ok".
+Click on "New" button to create a new profile. Give it a name, such as "airtel 3g". Also, make sure the "Access Number" is set to `*99#`. Click "Save", then "Ok".
 
 
 ![Configuring a new profile]({{site.baseurl}}/images/airtel3g-yosemite/4-new-profile-and-access-number.png)
 
 
 ###Step 7: 
-Insert your Dongel into an USB port. You should see "Mobile Partner" application starting automatically. Choose the profile you created in Step 6 ("airtel 3g") and "Connect"
+Insert your Dongel into an USB port. You should see "Mobile Partner" application starting automatically. Choose the profile you created in Step 6 ("airtel 3g") and "Connect".
 
 
 ![The Dialer Screen]({{site.baseurl}}/images/airtel3g-yosemite/5-dialer-screen.png)
