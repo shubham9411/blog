@@ -22,7 +22,7 @@ Anyway, I could find multiple ways to overcome the problem. Here I am writing ab
 
 
 ###Step 1: 
-Download the new driver from Huawei website [`Mac-V200R003B015D11SP00C983%28for Mac10.10%29.rar`][1]
+Click on this link to download the new compitable driver from Huawei website [`Mac-V200R003B015D11SP00C983(for Mac10.10).rar`][1]
 
 ![Huawei Website Screenshot]({{site.baseurl}}/images/airtel3g-yosemite/1-huawei-website.png)
 
