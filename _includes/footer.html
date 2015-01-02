@@ -1,7 +1,15 @@
-
 	<span class='footer-text'>
-		
-		&copy;{{ site.time | date: '%Y' }}, {{ site.owner.name }}. | <a class='footer-text' href="/terms_of_use/">Terms of Use</a> &middot; <a  class='footer-text' href="/privacy_policy/">Privacy Policy</a>
+		&copy; <span id="blog-footer-year"></span>, {{ site.owner.name }}. | <a class='footer-text' href="/terms_of_use/">Terms of Use</a> &middot; <a  class='footer-text' href="/privacy_policy/">Privacy Policy</a>
 
 	</span>
+
+	<script>
+		function autoFooterYear() {
+		    var d = new Date();
+		    var n = d.getFullYear();
+		    document.getElementById("blog-footer-year").innerHTML = n;
+		}
+		document.getElementById("blog-footer-year").addEventListener("load", autoFooterYear);
+	</script>
+
 
