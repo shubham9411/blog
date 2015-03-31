@@ -15,7 +15,7 @@ share:
 ---
 
 
-At elitmus we use ruby to create most of our tools and most of our applications  are written in ruby. Recently I started exploring ways to build our tools especially the backend tools in languages other than ruby which have much lesser memory footprint and better efficiency. One such cases was to create a sandboxed environment for running  untrusted code on our servers. After evaluating multiple languages, I decided to use golang because of it’s excellent library support coupled with the fact the docker(a sandboxed env) was also written in go.
+At elitmus we use ruby to create most of our tools and most of our applications  are also written in ruby. Recently I started exploring ways to build our tools especially the backend tools in languages other than ruby which have much lesser memory footprint and better efficiency. One such cases was to create a sandboxed environment for running  untrusted code on our servers. After evaluating multiple languages, I decided to use golang because of it’s excellent library support coupled with the fact the docker(a sandboxed env) was also written in go.
 
 One of the many challenges we faced while creating our sandbox was  redirection of the standard output of untrusted code, as this simple code below will fill up the disk if redirected to file or use all system resources if redirected to a buffer.
 
@@ -99,5 +99,9 @@ func main() {
 On running this code, it worked as expected, hopefully will be deployed in production.
 The same goes for files as well.
 
+**Note:** useful links, [on docker][3],[on golang bytes package][4]
+
 [1]: https://github.com/davecheney
 [2]: http://golang.org/src/bytes/buffer.go?s=4155:4206#L115
+[3]: https://www.docker.com/
+[4]: http://golang.org/pkg/bytes/
