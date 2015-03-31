@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Custom Capacity Buffers In Go"
-tldr: 
+tldr: "Create Buffers and Files in Golang with Custom Capacity by creating wrapper over Buffer struct in Golang"
 modified: 2015-03-31 11:58:04 +0530
 category: technology
 tags: [go,ruby,buffer]
@@ -11,7 +11,7 @@ image:
   credit: 
   creditlink: 
 comments: 
-share: 
+share: true
 ---
 
 
