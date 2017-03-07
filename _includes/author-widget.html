@@ -1,6 +1,7 @@
+<div class="panel panel-default">
 {% for post_author in site.data.authors %}
-  {% if post_author.id == page.author %}
-    <div class="panel panel-default">
+  {% if page.author contains post_author.id %}
+    
       <div class="panel-body">
         <div class="container-fluid">
           <div class="row">
@@ -59,7 +60,7 @@
           </div>
         </div>
       </div>
-    </div>
 
   {% endif %}
 {% endfor %}
+</div>
