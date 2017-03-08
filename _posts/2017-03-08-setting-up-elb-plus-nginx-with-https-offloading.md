@@ -11,44 +11,9 @@ image:
   credit: 
   creditlink: 
 comments: 
-share: 
+share: true
 ---
-<head>
-  <style>
-  table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 60%;
-      font-size: 16px;
-  }
 
-  td, th {
-      text-align: left;
-      padding: 8px;
-  }
-
-  .back-trace-div{
-    color: #C7C7C7;
-    background: #222;
-    line-height: 1.4em;
-    font-size: 13px;
-    padding: 2px 8px;
-    vertical-align: top;
-    white-space: nowrap;
-    border-top: none;
-    width: 100%;
-    margin: 0;
-    text-align: left;
-    border: 0;
-    outline: 0;
-  }
-
-  .back-trace-row{
-    color: #aaa; 
-    font-size: 113%;
-  }
-  </style>
-</head>
 “HTTPS everywhere” is not a luxury anymore. It is a necessity. Thankfully, obtaining an SSL certificate has become easier too, with initiatives such as [Let’s Encrypt][1], [GeoTrust][10], [Positive SSL][11], [StartSSL][12]. Even cloud based services such as [Cloudflare][2] and [Amazon AWS][3] provide free SSL certificates to their customers. 
 
 <b>Here is setting some context to help the reader appreciate the discussion</b>:<br>
@@ -56,7 +21,7 @@ We host our rails applications on [Amazon AWS][3]. We generally use three differ
 
 We use [chef-solo][5] to manage our cloud infrastructure as well as to deploy code to various environments.
 
-<h4><b>The Problem Statement:</b></h4>
+####**The Problem Statement:**
 For the sake of this discussion, we shall limit ourselves to configuring SSL certificates obtained from the two free providers, namely [Let's Encrypt][1] and [Amazon AWS][3].
 
 Using [Let’s Encrypt][1] in a clustered setup is tricky, since you need to make one of the instances stateful, in the sense, one instance needs to be given the responsibility of obtaining and renewing SSL certificate from [Let’s Encrypt][1]. All other instances need to copy this certificate every time its renewed. This requirement unnecessarily complicates the setup and also takes away some amount of flexibility. Also, [Let's Encrypt][1] does not issue wildcard certificates and the validity of a certificate is just 90 days
@@ -65,18 +30,18 @@ The certificates provisioned from the other provider, [Amazon AWS][3], can only 
 
 This leaves us with these options
 
-<table>
+<table class="custom_table">
   <tr>
-    <th>Environment</th>
-    <th>Best Option</th>
+    <th class="custom-t">Environment</th>
+    <th class="custom-t">Best Option</th>
   </tr>
   <tr>
-    <td>Staging</td>
-    <td>Let's Encrypt</td>
+    <td class="custom-t">Staging</td>
+    <td class="custom-t">Let's Encrypt</td>
   </tr>
   <tr>
-    <td>Production</td>
-    <td>Amazon AWS</td>
+    <td class="custom-t">Production</td>
+    <td class="custom-t">Amazon AWS</td>
   </tr>
 </table>
 <br>
@@ -86,7 +51,7 @@ We first configured our Staging environment and everything worked as expected.
 
 However, the same application, in production environment, started throwing `CSRF detected` Error whenever an [OAuth2][6] callback happened. This was really strange. Our application integrated with two different OAuth providers, and the problem was consistent with both these providers.
  
-<h4><b>What's the issue?</b></h4>
+####**What's the issue?**
 
 The only difference between our Staging and Production setups was the [ELB][4]. 
 
@@ -98,9 +63,9 @@ A closer look would reveal that the rails application had no way to know if the 
 
 [OAuth2][6], by design, does not accept plain HTTP callbacks (unless it is to localhost).
 
-<b>How do we move forward?</b>
+**How do we move forward?**
 
-<h4><b>PoC to prove the theory</b></h4>
+####**PoC to prove the theory**
 
 Just to confirm what we think is the cause, we <b>enabled HTTPS</b> on [NGINX][7] (like we did in our staging environment). This was in addition to HTTPS on the Load balancer. We reconfigured the Load Balancer to NOT offload HTTPS but forward the request as-is to [NGINX][7].
 
@@ -110,7 +75,7 @@ This confirmed our theory.
 
 But the question now is, how do we achieve our desired configuration of offloading HTTPS at the [ELB][4] ? Is it just not possible ? 
 
-<b>The Solution</b>
+**The Solution**
 
 We have been using <b>X-Forwarded-For</b> header while reverse proxying to unicorn so that our rails application knows the client IP address (rather than the IP address of the Load Balancer). We need this for logging and tracking.
 
@@ -128,32 +93,9 @@ For [NGINX][7], we do it like this:
 
 Voila, Rails is happy and things are back to normal!
 
-{% highlight NGINX linenos%}
-  server {
-          listen 443 ssl spdy;
-          server_name www.site.com;
-          ssl_certificate ----
-          ssl_certificate_key ---
-          ssl_protocols ---
-          ssl_ciphers ---
-          ssl_prefer_server_ciphers on;
-          location / {
-                  proxy_pass      http://www.site.com:12345/;
-                  proxy_read_timeout      90;
-                  proxy_redirect  http://www.site.com:12345/ https://www.site.com;
-                  proxy_set_header        Host               $host;
-                  proxy_set_header        X-Real-IP          $remote_addr;
-                  proxy_set_header        X-Forwarded-For    $proxy_add_x_forwarded_for;
-                  proxy_set_header        X-Forwarded-Host   $host:443;
-                  proxy_set_header        X-Forwarded-Server $host;
-                  proxy_set_header        X-Forwarded-Proto  https;
-          }
-  }
-{% endhighlight %}
+**<u>Details:</u>**
 
-<b><u>Details:</u></b>
-
-<b>Csrf detected!</b>
+**Csrf detected!**
 
 Rails bothers about SSL only at two places, 
 <br>
@@ -162,7 +104,7 @@ Rails bothers about SSL only at two places,
 2. At external included Gem like [Omniauth][8]. 
 <br>
 
-In <b><em>Rails environment config</em></b>.
+In ***Rails environment config***.
 
 {% highlight ruby %}
   config.force_ssl = true
@@ -170,7 +112,7 @@ In <b><em>Rails environment config</em></b>.
 
 This does the trick, but doesn’t seem like a good idea to enable this option in Rails because, we offload https at [NGINX][7]. For Rails, request came in http, so it does a permanent redirect to https, which ends in a infinite loop.
 
-Our stack trace gave a clue that error might be inside <q><em><b>omniauth</b></em></q> gem.
+Our stack trace gave a clue that error might be inside <q>***omniauth***</q> gem.
 
 <div class="back-trace-div">
     <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/abstract_controller/<b>base.rb</b>:132 → process</span><br>
