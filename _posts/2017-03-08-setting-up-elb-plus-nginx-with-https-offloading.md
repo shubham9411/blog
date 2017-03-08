@@ -16,12 +16,12 @@ share: true
 
 “HTTPS everywhere” is not a luxury anymore. It is a necessity. Thankfully, obtaining an SSL certificate has become easier too, with initiatives such as [Let’s Encrypt][1], [GeoTrust][10], [Positive SSL][11], [StartSSL][12]. Even cloud based services such as [Cloudflare][2] and [Amazon AWS][3] provide free SSL certificates to their customers. 
 
-<b>Here is setting some context to help the reader appreciate the discussion</b>:<br>
+####**Here is setting some context to help the reader appreciate the discussion**:
 We host our rails applications on [Amazon AWS][3]. We generally use three different environments - development, staging and production. Development environment is generally local to a developer while staging and production are hosted on the cloud. There is a minor difference in the way we configure our staging and production environments. Our staging environment typically contains a single machine instance hosting our application. This single instance is exposed to internet directly (has a public IP). On the other hand, our production environment typically contains a cluster of instances for the sake of horizontal scaling. These instances typically do not have a public IP and hence not exposed to internet directly. We put this cluster behind an internet-facing [Elastic Load Balancer (ELB)][4].
 
 We use [chef-solo][5] to manage our cloud infrastructure as well as to deploy code to various environments.
 
-####**The Problem Statement:**
+#####**The Problem Statement:**
 For the sake of this discussion, we shall limit ourselves to configuring SSL certificates obtained from the two free providers, namely [Let's Encrypt][1] and [Amazon AWS][3].
 
 Using [Let’s Encrypt][1] in a clustered setup is tricky, since you need to make one of the instances stateful, in the sense, one instance needs to be given the responsibility of obtaining and renewing SSL certificate from [Let’s Encrypt][1]. All other instances need to copy this certificate every time its renewed. This requirement unnecessarily complicates the setup and also takes away some amount of flexibility. Also, [Let's Encrypt][1] does not issue wildcard certificates and the validity of a certificate is just 90 days
@@ -51,7 +51,7 @@ We first configured our Staging environment and everything worked as expected.
 
 However, the same application, in production environment, started throwing `CSRF detected` Error whenever an [OAuth2][6] callback happened. This was really strange. Our application integrated with two different OAuth providers, and the problem was consistent with both these providers.
  
-####**What's the issue?**
+#####**What's the issue?**
 
 The only difference between our Staging and Production setups was the [ELB][4]. 
 
@@ -63,9 +63,9 @@ A closer look would reveal that the rails application had no way to know if the 
 
 [OAuth2][6], by design, does not accept plain HTTP callbacks (unless it is to localhost).
 
-**How do we move forward?**
+####**How do we move forward?**
 
-####**PoC to prove the theory**
+#####**PoC to prove the theory**
 
 Just to confirm what we think is the cause, we <b>enabled HTTPS</b> on [NGINX][7] (like we did in our staging environment). This was in addition to HTTPS on the Load balancer. We reconfigured the Load Balancer to NOT offload HTTPS but forward the request as-is to [NGINX][7].
 
