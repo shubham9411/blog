@@ -6,7 +6,9 @@ source 'https://rubygems.org'
 #    github-pages gem. When production changes, our bundler will start telling us
 require 'json'
 require 'open-uri'
-versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+# versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+versions = {}
+versions['github-pages'] = '43'
 
 gem 'github-pages', versions['github-pages']
 # This are auto included by github-pages gem. No need to mention them

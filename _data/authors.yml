@@ -42,3 +42,21 @@
    stackexchange: 
    linkedin: 
    bio: "Aseem heads Corporate Sales at eLitmus. He started his career with a brief stint in paper industry post which he worked with Infosys and iFlex and developed custom software in the banking and enterprise domains. After that, he worked as an adviser in recruitment strategy to companies like Synectics (now Logica), eCredit and Quidnunc. He was also the founder of Browse Consulting, a highly successful recruitment firm in the software industry."
+-  id: sivapraveen
+   name: Siva Praveen R
+   avatar: sivapraveen.jpg
+   email: sivapraveen@elitmus.com
+   twitter: SivaPraveenR
+   github:
+   stackexchange:
+   linkedin: siva-praveen-b9656725
+   bio: "Siva Praveen is a member of technology team at eLitmus.He is team player and is passionate about computers,technology,Web development (Loves Ruby and any framework that is built on Ruby) and Badminton."
+-  id: akash
+   name: Akash Srivastava
+   avatar: akash.jpg
+   email: akash.srivastava@elitmus.in
+   twitter: akkee19
+   github: akkee
+   stackexchange:
+   linkedin: akash-srivastava-640aa826
+   bio: "Akash Srivastava is a member of Technology at eLitmus. He is passionate about anything remotely related to movies when sane, and resorts to competitive coding and writing blogs when sleepless."
