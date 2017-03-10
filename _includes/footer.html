@@ -1,18 +1,3 @@
-  <div id='discourse-comments'></div>
-
-  <script type="text/javascript">
-    DiscourseEmbed = { discourseUrl: 'https://adda.elitmus.com/',
-                       discourseEmbedUrl: {{ site.url_for_sitemaps }}{{ site.baseurl }}{{ page.url }} 
-                     };
-
-
-    (function() {
-      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
-      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
-    })();
-  </script>
-
   <span class='footer-text'>
     &copy;  2005-<script> document.write(new Date().getFullYear()) </script>, {{ site.owner.name }}. | <a class='footer-text' href="/terms_of_use/">Terms of Use</a> &middot; <a  class='footer-text' href="/privacy_policy/">Privacy Policy</a>
 
