@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Setting up OAuth NGINX callbacks in Rails production environment with load balancers and HTTPS offloading"
-tldr: "Setting up HTTPS offloading with load balancer for a Rails application, OAuth may give <b>'CSRF detected'</b> errors"
+title: "Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers"
+tldr: "If you use OAuth2 with your Rails application and your application sits behind a load balancer (where you offload HTTPS), then you may start seeing <b>'CSRF detected'</b> errors thrown by Rails."
 modified: 2017-03-08 09:47:23 +0530
 category: technology
 tags: [ELB,NGINX,https offloading,OAuth,Rails]
