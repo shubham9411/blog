@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # -- We want to use the same environment for our local setup as
-#    Github is using for GithubPages. So we first fetch version information from 
+#    Github is using for GithubPages. So we first fetch version information from
 #    https://pages.github.com/versions.json and use that version for our local
 #    github-pages gem. When production changes, our bundler will start telling us
-require 'json'
+# require 'json'
 require 'open-uri'
 # versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 versions = {}
