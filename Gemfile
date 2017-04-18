@@ -8,7 +8,7 @@ require 'json'
 require 'open-uri'
 # versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 versions = {}
-versions['github-pages'] = '43'
+versions['github-pages'] = '133'
 
 gem 'github-pages', versions['github-pages']
 # This are auto included by github-pages gem. No need to mention them
@@ -25,5 +25,6 @@ gem 'coderay'
 gem 'rake'
 gem 'thor'
 gem 'activesupport'
+gem 'pygments.rb'
 # gem 'nokogiri'
 # gem 'iconv'
