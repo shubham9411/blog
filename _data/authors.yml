@@ -60,6 +60,13 @@
    stackexchange:
    linkedin: akash-srivastava-640aa826
    bio: "Akash Srivastava is a member of Technology at eLitmus. He is passionate about anything remotely related to movies when sane, and resorts to competitive coding and writing blogs when sleepless."
+-  id: cariappa
+   name: Roshan Cariappa (eLitmus Alumni)
+   avatar: cariappa.jpeg
+   website: https://medium.com/@carygottheblues
+   bio: "Full time Startup guy / occasional Musician & Writer / Interests: Barbells, Bharat, Dharma, Econ, Product, Marketing, Music & Startups. Views personal."
+   twitter: carygottheblues
+   linkedin: 
 -  id: crahul
    name: Rahul C
    avatar: crahul.jpg
@@ -69,3 +76,4 @@
    stackexchange:
    linkedin: cspacerahul
    bio: "Rahul is part of the Technology team at eLitmus. He is still figuring out what he must write here."
+
