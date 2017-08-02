@@ -13,6 +13,13 @@ image:
 comments: 
 share: 
 ---
+
+<br/>
+
+>
+> This article was originally published  on [Medium][1]. We are republishing it here with the permission of the author
+>
+
 _It seems like only recently, startups would hire folks to do just about everything, all at once, and then somehow, we’ve arrived at a ‘Product Manager of Paytm Experience’. How tunnel vision syndrome is eroding the startup spirit._
 
 ---
@@ -38,3 +45,5 @@ When people ask me what changed over the years, I give them the following analog
 But, gradually, **the goth kids turned cool.** The makeup, now, seemed superficial and the cult constantly disowned its own — for how much wisdom can be gained from tweaking button sizes over years? The law of diminishing marginal returns applied: increasing number of new members to the cult caused the marginal product of others to be smaller than the marginal product of the previous members at this point. And that’s how we got _‘Product Manager of Paytm Experience’._
 
 But, what of the goth kids? They do lurk around. You won’t find them in conferences or hackathons or by the vending machines mooching off’ the free stuff. They’re likely in an intimate corner, head immersed in the laptop, being productive and maybe checking on Twitter once a while. If you’re ever in the position of hiring for your startup, my suggestion is for you to find and hire the goth kid. He’ll remind you why you started up in the first place. And also, he won’t ask you about your company’s pet policy.
+
+[1]: https://medium.com/@carygottheblues/to-the-goth-kids-632d8ae50df2
