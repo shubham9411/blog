@@ -26,7 +26,7 @@ tags: [eLitmus, recent]
               {{ site.url }}{{ site.baseurl }}{{ post.url }} 
             {% endcapture %}
             
-            {{ post.excerpt }} 
+            {{ post.excerpt | remove: '<p>' | remove: '</p>' }} 
             <a href="{{ full_url }}" rel="nofollow" class="read-more pull-right"> read more &raquo;</a>
           {% endif %}
         </div>

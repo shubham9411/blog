@@ -12,19 +12,15 @@ image:
   creditlink: https://medium.com/@carygottheblues/to-the-goth-kids-632d8ae50df2
 comments: 
 share: 
+excerpt_separator: <!--more-->
 ---
-
-<br/>
-
->
-> This article was originally published  on [Medium][1]. We are republishing it here with the permission of the author
->
+<br>
 
 _It seems like only recently, startups would hire folks to do just about everything, all at once, and then somehow, we’ve arrived at a ‘Product Manager of Paytm Experience’. How tunnel vision syndrome is eroding the startup spirit._
-
----
+<!--more-->
 
 Recently, a startup valued at around half a billion dollars laid off 10 of its Product Managers, leaving them with another 30\. Just last year, the same startup hired Product guys at 20–30% premium from the market at average CTCs well over ₹20L. Even more intriguing, some of these guys were techie turned MBAs with less than four years’ experience. Having always been on the sales side of things, where one had to justify a minimum of 4x one’s salary to the company, I was fascinated by this lot. **What did they do that was worth that much money?**
+
 
 One product guy I spoke to said he managed Paytm experience; which meant he had to ensure there were no drop-offs when the user chose to pay through Paytm. He also said he was mandated to prioritise payment through Paytm. And there were similar folks for each of the other alternate payment processes. “But, is Paytm the most competitive payment solution?”, I asked. He didn’t care, really. **All that mattered was ‘mukesh23’ got through paying on the platform **without, gods forbid, choosing to click on the refresh button. Even better if he came through one of the exclusive Paytm promotions that he had brokered with his counterpart from the other side.
 
@@ -45,5 +41,10 @@ When people ask me what changed over the years, I give them the following analog
 But, gradually, **the goth kids turned cool.** The makeup, now, seemed superficial and the cult constantly disowned its own — for how much wisdom can be gained from tweaking button sizes over years? The law of diminishing marginal returns applied: increasing number of new members to the cult caused the marginal product of others to be smaller than the marginal product of the previous members at this point. And that’s how we got _‘Product Manager of Paytm Experience’._
 
 But, what of the goth kids? They do lurk around. You won’t find them in conferences or hackathons or by the vending machines mooching off’ the free stuff. They’re likely in an intimate corner, head immersed in the laptop, being productive and maybe checking on Twitter once a while. If you’re ever in the position of hiring for your startup, my suggestion is for you to find and hire the goth kid. He’ll remind you why you started up in the first place. And also, he won’t ask you about your company’s pet policy.
+
+>
+> This article was originally published  on [Medium][1]. We are republishing it here with the permission of the author
+>
+
 
 [1]: https://medium.com/@carygottheblues/to-the-goth-kids-632d8ae50df2
