@@ -8,9 +8,7 @@ source 'https://rubygems.org'
 require 'open-uri'
 # versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 versions = {}
-# versions['github-pages'] = '133'
-versions['github-pages'] = '172'
-
+versions['github-pages'] = '183'
 
 gem 'github-pages', versions['github-pages']
 # This are auto included by github-pages gem. No need to mention them
