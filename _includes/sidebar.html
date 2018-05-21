@@ -3,21 +3,24 @@
 
 {% assign count = category_count | plus: 0 %}
 {% if  count > 1 %}
+<div class="container">
 	<div class="row sidebar-padding">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 fixed-sidebar">
-			<a href="#" class="categories-heading "><i class="fa fa-th-list"></i> Categories </a> 
 
-			<ul class=" sidebar-category">
+		<div class="col-md-12 fixed-sidebar">
+			
+			<ul class="sidebar-category list-group">
+				<li class="categories-heading list-group-item list-group-item-dark">
+					<span class="fa fa-th-list"></span> Categories
+				</li>
 			  {% for category in site.categories %}
-			  	<li> 
-			  		<a name="{{ category | first | capitalize }}" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category | first }}/" >  {{ category | first | capitalize }} </a>
+			  	<li class="list-group-item list-group-item-action"> 
+			  		<a name="{{ category | first | capitalize }}" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category | first }}/">  {{ category | first | capitalize }} </a>
 			  	</li>
 			  {% endfor %}
 			</ul>
 		</div>
-		<div class="col-md-2">
-		</div>
+
 	</div>
+</div>
 
 {% endif %}

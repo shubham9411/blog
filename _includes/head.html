@@ -1,38 +1,18 @@
 <meta charset="utf-8">
 <title>{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}</title>
-<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-
-{% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
-
-{% if site.owner.twitter %}<!-- Twitter Cards -->
-    {% include twitter_card.html %}
-{% endif %}
-
-<!-- Open Graph -->
-{% include open_graph.html %}
-
-{% if site.google_verify %}
-    <meta name="google-site-verification" content="{{ site.google_verify }}">
-{% endif %}
-
-{% if site.bing_verify %}
-    <meta name="msvalidate.01" content="{{ site.bing_verify }}">
-{% endif %}
-
-{% capture canonical %}{{ site.canonical_domain }}{{ site.baseurl }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
-
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">{% if page.tags %}
+<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %} {% if site.owner.twitter %}
+<!-- Twitter Cards -->{% include twitter_card.html %} {% endif %}
+<!-- Open Graph -->{% include open_graph.html %} {% if site.google_verify %}
+<meta name="google-site-verification" content="{{ site.google_verify }}">{% endif %} {% if site.bing_verify %}
+<meta name="msvalidate.01" content="{{ site.bing_verify }}">{% endif %} {% capture canonical %}{{ site.canonical_domain }}{{ site.baseurl }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
 <link rel="canonical" href="{{ canonical }}">
-<link href="{{ site.url }}{{ site.baseurl }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
-
-{% if site.owner.google_plus %}
-	<link rel="author" href="{{ site.owner.google_plus }}?rel=author">
-{% endif %}
-
+<link href="{{ site.url }}{{ site.baseurl }}/feed.xml" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">{% if site.owner.google_plus %}
+<link rel="author" href="{{ site.owner.google_plus }}?rel=author">{% endif %}
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <!-- Icons -->
 <!-- apple touch icons -->
 <link rel="apple-touch-icon" sizes="57x57" href="{{ site.url }}{{ site.baseurl }}/images/apple-touch-icon-57x57.png">
@@ -45,30 +25,32 @@
 <link rel="apple-touch-icon" sizes="152x152" href="{{ site.url }}{{ site.baseurl }}/images/apple-touch-icon-152x152.png">
 <!-- Favicons default 16x16 -->
 <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{{ site.url }}{{ site.baseurl }}/favicon.ico">
-
 <!-- Favicons others -->
 <link rel="icon" type="image/png" href="{{ site.url }}{{ site.baseurl }}/images/favicon-196x196.png" sizes="196x196">
 <link rel="icon" type="image/png" href="{{ site.url }}{{ site.baseurl }}/images/favicon-160x160.png" sizes="160x160">
 <link rel="icon" type="image/png" href="{{ site.url }}{{ site.baseurl }}/images/favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/png" href="{{ site.url }}{{ site.baseurl }}/images/favicon-16x16.png" sizes="16x16">
 <link rel="icon" type="image/png" href="{{ site.url }}{{ site.baseurl }}/images/favicon-32x32.png" sizes="32x32">
-
 <!-- Icons for Windows 8 Tiles -->
-<meta name="msapplication-TileColor" content="#ffffff"/>
+<meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="msapplication-TileImage" content="{{ site.url }}{{ site.baseurl }}/images/mstile-144x144.png">
 
 <!-- For all browsers -->
-
-
 <!-- Webfonts -->
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:600,300,300italic|The+Girl+Next+Door" rel="stylesheet" type="text/css">
 <link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300' rel='stylesheet' type='text/css'>
-
 <meta http-equiv="cleartype" content="on">
 
-<!-- Latest compiled and minified CSS -->
+<!-- bootstrap 4 -->
 <link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/main.min.css">
+
+<!-- bootstrap 3 -->
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/bootstrap.min.css"> -->
+
+<!-- below css file is used for navbar in individual blogposts -->
+<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/main.min.css">
+
 <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
 
 <!-- Optional theme -->
@@ -76,13 +58,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Font Awesome -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
-<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/font-elitmuslogo.css"/>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/font-elitmuslogo.css" />
 
 <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/customize.css">
-
-<!-- <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/demo.css"> -->
-
 <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/forkit.css">
-
-
