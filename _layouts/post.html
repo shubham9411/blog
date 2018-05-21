@@ -29,8 +29,13 @@
 
         <div id="main" role="main" class="marginal">
           <article class="hentry">
-            {% if page.image.feature %}<img src="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if page.image.credit %}<p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>{% endif %}{% endif %}
-            <div >
+            {% if page.image.feature %}
+            <img src="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>
+            {% if page.image.credit %}
+            <p class="image-credit">Photo Credit: 
+              <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>
+              {% endif %}{% endif %}
+            <div>
               <header>
 
                 <span class="entry-tags">
@@ -62,7 +67,7 @@
            
             <div>
                 <div>
-                  <span class='label label-warning'> <a href="{{ site.baseurl }}/categories/{{ page.category }}/index.html" > {{ page.category }} </a></span>
+                  <span class='badge badge-warning'> <a href="{{ site.baseurl }}/categories/{{ page.category }}/index.html" > {{ page.category }} </a></span>
                 </div>
               {% if page.tldr %}
                 <div class='pull-left date-show'>

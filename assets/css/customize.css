@@ -1,3 +1,13 @@
+@media (min-width: 767px) and (max-width: 1000px) { 
+	.fixed-sidebar {
+		width: 80%;
+	}
+
+	.entry-header {
+		width: 576px;
+	}
+}
+
 .navbar-brand
 {
 	vertical-align: middle;
@@ -137,10 +147,12 @@ footer {
 }
 
 .sidebar-padding {
+	padding: auto;
 	padding-top: 10px;
 }
 
 /*
+
 .single-post {
 	border: 8px white solid;
 	margin: 20px;
@@ -156,7 +168,6 @@ footer {
 	transition: all 0.5s ease;
 }
 */
-
 
 .bg-black {
 	background: #2d2727;
