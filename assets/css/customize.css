@@ -1,13 +1,6 @@
 .navbar-brand
 {
-  float: left;
-  padding-top: 5px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  font-size: 18px;
-  line-height: 20px;
-  height: 50px;
+	vertical-align: middle;
 }
 
 .entry {
@@ -49,7 +42,7 @@
 .search-results,
 .date-show,
 .entry-date {
-	font-size: 80%;
+	font-size: 90%;
 	max-width: 100%;
 	white-space: normal;
 }
@@ -127,7 +120,7 @@ footer {
 }
 
 .img-logo {
-	width: 48px;
+	height: 50px;
 }
 
 .list-group {
@@ -164,25 +157,16 @@ footer {
 }
 */
 
-/*
 
-.navbar-toggler .icon-bar {
-	background-color: #888;
-}
-    
-.navbar-toggler .icon-bar {
-	display: block;
-	width: 22px;
-	height: 2px;
-	border-radius: 1px;
+.bg-black {
+	background: #2d2727;
 }
 
-.navbar-toggler .icon-bar + .icon-bar {
-	margin-top: 4px;
-}
 
-*/
 
+
+
+/* ---------- old code ------------ */
 /*
 span + .entry-title {
     max-width: 800px;
