@@ -1,4 +1,5 @@
-@media (min-width: 767.99px) and (max-width: 1000px) { 
+/*
+@media (min-width: 767.9px) and (max-width: 1000px) { 
 	.fixed-sidebar {
 		width: 90%;
 		margin: 50px 10px -40px;
@@ -9,19 +10,65 @@
 		width: 576px;
 	}
 }
+*/
+
+
+.list-group,
+.fixed-sidebar,
+.list-group-item {
+	text-align: left;
+}
+
+
+/* for screens less than 768px */
+@media only screen and (max-width: 768px) {
+	.list-group {
+		display: inline;
+	}
+	.list-group-item {
+		display: inline;
+	}
+	.fixed-sidebar {
+		text-align: center;
+	}
+}
+
+.navbar-toggler-icon {
+	height: 20px;
+	width: 20px;
+	border: 0;
+}
+
+
+.entry-header {
+	padding-top: 10px;
+}
+
+/* for screens more than 932px */
+@media only screen and (min-width: 932px) {
+	.fixed-sidebar {
+		max-width: 200px;
+	}
+}
 
 .container-fluid {
 	max-width: 1400px;
 	margin: 0 auto;
 }
 
+.navbar {
+	padding: 0 12px;
+}
+
 .navbar-brand
 {
 	vertical-align: middle;
+	padding: 0;
+	margin: 0;
 }
 
 .navbar {
-	min-height: 3rem;
+	min-height: 2rem;
 }
 
 .entry {
@@ -147,14 +194,15 @@ footer {
 .list-group {
 	margin-top: 10px;
 	width: 100%;
+	box-shadow: none;
 }
 
 .list-group-item {
 	margin-top: 2px;
-	padding: 7px;
+	padding: 5px;
 	width: 150px;
-	margin-right: auto;
 	margin-left: auto;
+	border: 0;
 }
 
 .sidebar-padding {
@@ -162,8 +210,7 @@ footer {
 	padding-top: 10px;
 }
 
-/* shodow effects only for screen width of 1000px or more */
-
+/* shodow effects only for screen width of 1000px or more
 @media (min-width: 1000px) {
 
 	.single-post {
@@ -181,6 +228,7 @@ footer {
 		transition: all 0.5s ease;
 	}
 }
+*/
 
 .bg-black {
 	background: #2d2727;

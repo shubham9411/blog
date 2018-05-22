@@ -6,16 +6,17 @@
 
 <div class="fixed-sidebar mx-auto">
 	
-	<ul class="sidebar-category list-group mx-auto">
-		<li class="categories-heading list-group-item list-group-item-dark">
+	<ul class="sidebar-category list-group ml-auto">
+		<li class="categories-heading list-group-item">
 			<span class="fa fa-th-list"></span> Categories
 		</li>
 	  {% for category in site.categories %}
-	  	<li class="list-group-item list-group-item-action"> 
+	  	<li class="list-group-item badge badge-info"> 
 	  		<a name="{{ category | first | capitalize }}" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category | first }}/">  {{ category | first | capitalize }} </a>
 	  	</li>
 	  {% endfor %}
 	</ul>
+
 </div>
 
 {% endif %}
