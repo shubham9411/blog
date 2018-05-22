@@ -3,7 +3,7 @@
 	<nav class="navbar navbar-expand-md navbar-dark bg-black" role="navigation">
 
 			<a class="navbar-brand" href="{{ site.baseurl }}/">
-				<img src="{{ site.baseurl }}/images/logo-white.png" class="img-logo">
+				<img src="{{ site.baseurl }}/images/logo-white.png" class="img-logo"><sup><div class="blog-label">blog</div></sup>
 			</a>
 
 			<!-- the toggle button -->
@@ -21,11 +21,11 @@
 							<div class="form-inline">
 								{% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
 
-								<input data-toggle="dropdown" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle"aria-haspopup="true" aria-expanded="false">
+								<input data-toggle="dropdown" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
 
 
 								<div class="dropdown-menu" id="search-dropdown">
-	                  				<a role='presentation' class='dropdown-item search-results list-group-item'> Type more.... </a>
+	                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
 								</div>
 
 

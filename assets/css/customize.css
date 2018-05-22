@@ -21,7 +21,7 @@
 
 
 /* for screens less than 768px */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767.9px) {
 	.list-group {
 		display: inline;
 	}
@@ -31,6 +31,24 @@
 	.fixed-sidebar {
 		text-align: center;
 	}
+
+	.fa,
+	.fa-th-list {
+		display: none;
+	}
+
+	.category {
+		display: inline-block;
+	    padding: 4px;
+	    font-size: 80%;
+	    font-weight: 600;
+	    line-height: 1;
+	    text-align: center;
+	    white-space: nowrap;
+	    vertical-align: baseline;
+	    border-radius: .25rem;
+	    background: #eee;
+	}
 }
 
 .navbar-toggler-icon {
@@ -39,6 +57,18 @@
 	border: 0;
 }
 
+.blog-label {
+	display: inline-block;
+	padding: 0;
+	font-size: 80%;
+	font-weight: 600;
+	line-height: 1;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25rem;
+	color: orange;
+}
 
 .entry-header {
 	padding-top: 10px;
@@ -79,14 +109,16 @@
 	text-align: justify;
 }
 
-/* setting the width of dropdown for search*/
-
 .social-sharing {
 	line-height: 100%;
 }
 
 .nav-icon-size-reduce {
 	font-size: 14px;
+}
+
+.nav-item {
+	padding: 4px;
 }
 
 .headroom--pinned {
@@ -107,7 +139,6 @@
 	margin-bottom: 4px;
 }
 
-.search-results,
 .date-show,
 .entry-date {
 	font-size: 90%;
@@ -188,7 +219,9 @@ footer {
 }
 
 .img-logo {
-	height: 50px;
+	height: 45px;
+	padding: 0;
+	margin: 0;
 }
 
 .list-group {
@@ -200,9 +233,11 @@ footer {
 .list-group-item {
 	margin-top: 2px;
 	padding: 5px;
-	width: 150px;
-	margin-left: auto;
 	border: 0;
+}
+
+.list-group-item-text {
+	padding: 5px;
 }
 
 .sidebar-padding {

@@ -8,11 +8,11 @@
 	
 	<ul class="sidebar-category list-group ml-auto">
 		<li class="categories-heading list-group-item">
-			<span class="fa fa-th-list"></span> Categories
+			<span class="fa fa-th-list"></span> Categories:
 		</li>
 	  {% for category in site.categories %}
-	  	<li class="list-group-item badge badge-info"> 
-	  		<a name="{{ category | first | capitalize }}" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category | first }}/">  {{ category | first | capitalize }} </a>
+	  	<li class="list-group-item"> 
+	  		<a name="{{ category | first | capitalize }}" href="{{ site.url }}{{ site.baseurl }}/categories/{{ category | first }}/" class="category">  {{ category | first | capitalize }} </a>
 	  	</li>
 	  {% endfor %}
 	</ul>
