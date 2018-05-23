@@ -1,6 +1,9 @@
 ---
 ---
 
+//remove the comment-starter below this line
+/*
+
 function urlToTitle(refer) {
     refer = refer.substring(1, refer.length - 1);
     return refer.split('-').join(' ');
@@ -52,12 +55,10 @@ $(document).ready(function() {
     $.getJSON("{{ site.url }}{{ site.baseurl }}/search.json", function(json) {
         // this will show the info it in firebug console
         idx = lunr(function() {
-            this.field('category',{ boost: 100})
-            this.field('title', {
-                boost: 10
-            })
-            this.field('content')
-            this.ref('url')
+            this.field('category',{ boost: 100});
+            this.field('title', { boost: 10 });
+            this.field('content');
+            this.ref('url');
         })
         for (var index in json) {
             idx.add(json[index]);
@@ -110,6 +111,8 @@ $(document).ready(function(){
     });
 })
 
+//remove the comment below this line
+*/
 
 
 

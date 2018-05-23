@@ -18,6 +18,8 @@
 					<!-- first item = dropdown search -->
 					<li class="nav-item">
 						<div class="dropdown search-box-margin">
+
+						<!--
 							<div class="form-inline">
 								{% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
 
@@ -27,12 +29,42 @@
 								<div class="dropdown-menu" id="search-dropdown">
 	                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
 								</div>
-
-
 							</div>
+						-->
+
+
+
+
+
+							<!-- the below line will pass "search word" to search.html -->
+
+
+							<form class="form-inline" action="{{ site.url }}{{ site.baseurl }}/search" method="get">
+								{% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
+
+
+								<label for="search_box">Search</label>
+								<input data-toggle="dropdown" type="text" name="query" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+								<div class="dropdown-menu" id="search-dropdown">
+	                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+								</div>
+
+								<input type="submit" value="search">
+
+							</form>
+
+
+							<!-- end of form -->
+
+
+
+
+
+
+
 						</div>
 					</li>
-
 				</ul>
 
 				
