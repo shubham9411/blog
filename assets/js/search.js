@@ -1,3 +1,5 @@
+// this file helps in searching
+
 // this template came from cloudcannon's course, search for searching using lunr.js
 // link to git repo: https://github.com/CloudCannon/bakery-store-jekyll-template/tree/lunrjs
 
@@ -76,8 +78,8 @@
 
     var idx = lunr(function () {
       this.field('id');
-      this.field('category', { boost: 100});
-      this.field('title', { boost: 10 });
+      //this.field('category', { boost: 8 });
+      //this.field('title', { boost: 4 });
       this.field('content');
 
       //below line is not working
@@ -107,7 +109,7 @@
 
 //// copy paste the below code in console one section at a time ////
 
-//// then see the value of searchTerm, searchResults, results, windows.store ////
+//// then see the value of searchTerm, searchResults, results, window.store ////
 
 
 /*
