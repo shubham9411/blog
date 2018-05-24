@@ -1,18 +1,3 @@
-/*
-@media (min-width: 767.9px) and (max-width: 1000px) { 
-	.fixed-sidebar {
-		width: 90%;
-		margin: 50px 10px -40px;
-	}
-
-	.entry-header {
-		padding-top: 20px;
-		width: 576px;
-	}
-}
-*/
-
-
 .list-group,
 .fixed-sidebar,
 .list-group-item {
@@ -51,6 +36,13 @@
 	}
 }
 
+/* for screens more than 932px */
+@media only screen and (min-width: 932px) {
+	.fixed-sidebar {
+		max-width: 200px;
+	}
+}
+
 .navbar-toggler-icon {
 	height: 20px;
 	width: 20px;
@@ -72,13 +64,6 @@
 
 .entry-header {
 	padding-top: 10px;
-}
-
-/* for screens more than 932px */
-@media only screen and (min-width: 932px) {
-	.fixed-sidebar {
-		max-width: 200px;
-	}
 }
 
 .container-fluid {
@@ -163,10 +148,6 @@
 	font-size: 16px;
 }
 
-/*.insertCategory {
-  width: 120px;
-}*/
-
 .categories-heading {
 	font-weight: bold;
 	font-size: 16px;
@@ -245,30 +226,9 @@ footer {
 	padding-top: 10px;
 }
 
-/* shodow effects only for screen width of 1000px or more
-@media (min-width: 1000px) {
-
-	.single-post {
-		border: 12px white solid;
-		margin: 16px;
-		border-radius: 8px;
-		box-shadow: 1px 1px 16px rgba(50, 50, 50, 0.6);
-	}
-
-	.single-post:hover {
-		border: 12px white solid;
-		margin: 16px;
-		border-radius: 8px;
-		box-shadow: 1px 1px 8px rgba(50, 50, 50, 0.2);
-		transition: all 0.5s ease;
-	}
-}
-*/
-
 .bg-black {
 	background: #2d2727;
 }
-
 
 
 

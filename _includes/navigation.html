@@ -31,29 +31,28 @@
 								</div>
 							</div>
 						-->
+            
+
+						<!-- the below line will pass "search word" to search.html -->
+
+						<!--
+						<form class="form-inline" action="{{ site.url }}{{ site.baseurl }}/search" method="get">
+							{% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
 
 
+							<label for="search_box">Search</label>
+							<input data-toggle="dropdown" type="text" name="query" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
 
-							<!-- the below line will pass "search word" to search.html -->
+							<div class="dropdown-menu" id="search-dropdown">
+                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+							</div>
 
-							<!--
-							<form class="form-inline" action="{{ site.url }}{{ site.baseurl }}/search" method="get">
-								{% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
+							<input type="submit" value="search">
 
+						</form>
+						-->
 
-								<label for="search_box">Search</label>
-								<input data-toggle="dropdown" type="text" name="query" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-
-								<div class="dropdown-menu" id="search-dropdown">
-	                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
-								</div>
-
-								<input type="submit" value="search">
-
-							</form>
-							-->
-
-							<!-- end of form -->
+						<!-- end of form -->
 
 
 						</div>
