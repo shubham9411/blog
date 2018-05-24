@@ -2,10 +2,11 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
-<head>
-{% include head.html %}
-</head>
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>{% include head.html %}</head>
 
 <body id="page">
 
@@ -26,16 +27,20 @@
       {% endif %}
       <div class="container-fluid">
       <div class="row">
-        <header class="entry-header">
+        <header class="col-sm-12 col-md-12 col-lg-12 entry-header">
           <h1><center>{% if page.headline %}{{ page.headline }}{% else %}{{ page.title }}</center></h1>{% endif %}
         </header>
+      </div>
 
-        <div class="col-md-2">
+
+      <div class="row">
+
+        <div class="col-sm-12 col-md-3 col-lg-3">
           {% include sidebar.html %}
         </div>
 
-        <div class="col-md-8">
-          <div class="post-content-justify marginal">
+        <div class="col-sm-12 col-md-8 col-lg-8">
+          <div class="post-content-justify">
           	
           	<ul class="post-list">
       				{% for post in page.category_list %} 
@@ -51,12 +56,18 @@
       				{% endfor %}
   		      </ul>
 
+
+
           </div>
         </div><!-- /.entry-content -->
 
-        <div class="col-md-2"></div>
+        <div class="col-md-1 col-lg-1"></div>
+
+
       </div><!-- /row -->
-     </div>
+
+     </div><!-- /container-fluid -->
+
     </article>
   </div><!-- /#main -->
 

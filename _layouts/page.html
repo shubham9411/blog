@@ -8,7 +8,8 @@
 
 <head>{% include head.html %}</head>
 
-<body id="page">{% include navigation.html %} {% include special-effect.html %}
+<body id="page">
+  {% include navigation.html %} {% include special-effect.html %}
 	<div id="main" role="main">
 		<article class="entry">
 			{% if page.image.feature %}
@@ -27,14 +28,15 @@
 					{% endif %}
 					</header>
 				</div>
+
 				<div class="row">
 					<div class="col-sm-12 col-md-3 col-lg-3">{% include sidebar.html %}</div>
+
 					<div class="col-sm-12 col-md-8 col-lg-8 main-content">
 						<div class="post-content-justify">
 							{{ content }}
 						</div>
-					</div>
-					<!-- /.entry-content -->
+					</div><!-- /.entry-content -->
 					<div class="col-md-1 col-lg-1"></div>
 				</div>
 				<!-- /row -->

@@ -3,7 +3,8 @@
 	<nav class="navbar navbar-expand-md navbar-dark bg-black" role="navigation">
 
 			<a class="navbar-brand" href="{{ site.baseurl }}/">
-				<img src="{{ site.baseurl }}/images/logo-white.png" class="img-logo"><sup><div class="blog-label">blog</div></sup>
+				<img src="https://cdn0.elitmus.net/assets/elitmus-only-logo-6efc8a74032179afdb89829a093e05bd05d627dd4354bbd1ff7f4eb5db8a0af8.svg" class="img-logo">
+				<span><div class="blog-label">blog</div></span>
 			</a>
 
 			<!-- the toggle button -->
@@ -66,7 +67,7 @@
 					{% for link in site.links %}
 					<li class="nav-item">
 						{% if link.external %} 
-							<a href="{{ link.url }} nav-link" class="nav-link">
+							<a href="{{ link.url }}" class="nav-link">
 								<i class="{{link.icon}}"></i> {{ link.title }}
 							</a>
 						{% else %} 
