@@ -1,0 +1,35 @@
+<!-- 	this file came from cloud cannon's course
+		link ti git repo: https://github.com/CloudCannon/bakery-store-jekyll-template/tree/lunrjs
+
+		this file displays the results of search query
+		this file is only for testing purposes
+		delete this file after development and testing is finished
+-->
+
+<!doctype html>
+<html lang="en">
+	<head>
+		{% include head.html %}
+		<meta charset="utf-8">
+		<title>{{ page.title }}</title>
+		<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/style.css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700" media="all">
+	</head>
+	<body id="page">
+
+		<div class="content">
+
+			<div class="search">
+				{{ content }}
+			</div>
+
+		</div>
+		<footer>
+			<div class="container">
+				<p class="center-text small"><a>** Testing puropse only **</a></p>
+				<p class="center-text small"><a>** credits: cloudcannon **</a></p>
+			</div>
+		</footer>
+
+	</body>
+</html>

@@ -11,7 +11,8 @@
 .forkit {
 	position: fixed;
 	right: 0;
-	top: 58px;
+	top: 50px;
+	z-index: -1;
 
 	width: 200px;
 	height: 150px;
@@ -83,7 +84,7 @@
 		min-width: 10px;
 		height: 32px;
 		right: 20px;
-		top: 40px;
+		top: 60px;
 		cursor: pointer;
 		z-index: 2;
 		background-color: #EE741D;

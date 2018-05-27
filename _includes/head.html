@@ -5,18 +5,18 @@
 {% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
 
 {% if site.owner.twitter %}<!-- Twitter Cards -->
-    {% include twitter_card.html %}
+  {% include twitter_card.html %}
 {% endif %}
 
 <!-- Open Graph -->
 {% include open_graph.html %}
 
 {% if site.google_verify %}
-    <meta name="google-site-verification" content="{{ site.google_verify }}">
+  <meta name="google-site-verification" content="{{ site.google_verify }}">
 {% endif %}
 
 {% if site.bing_verify %}
-    <meta name="msvalidate.01" content="{{ site.bing_verify }}">
+  <meta name="msvalidate.01" content="{{ site.bing_verify }}">
 {% endif %}
 
 {% capture canonical %}{{ site.canonical_domain }}{{ site.baseurl }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
@@ -66,9 +66,12 @@
 
 <meta http-equiv="cleartype" content="on">
 
-<!-- Latest compiled and minified CSS -->
+<!-- bootstrap 4 -->
 <link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/main.min.css">
+
+<!-- below css file is used for navbar in individual blogposts -->
+<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/main.min.css">
+
 <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
 
 <!-- Optional theme -->
@@ -76,13 +79,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Font Awesome -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
-<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/font-elitmuslogo.css"/>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/font-elitmuslogo.css" />
 
 <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/customize.css">
-
-<!-- <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/demo.css"> -->
-
 <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/assets/css/forkit.css">
-
-
