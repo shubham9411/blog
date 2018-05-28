@@ -4,11 +4,15 @@
     
       <div class="panel-body">
         <div class="container-fluid">
+
           <div class="row">
-            <div class="col-xs-6 col-md-4">
+            <div class="col-sm-12 col-md-4">
               <center>
                 <img src="{{ site.url }}{{ site.baseurl }}/images/{{ post_author.avatar }}" alt="{{ post_author.name }} photo" class="author-photo img-circle img-responsive"/>
-                <span class="author vcard"><span class="fn">{{ post_author.name }}</span></span>
+                
+                <span class="author vcard">
+                  <span class="fn">{{ post_author.name }}</span>
+                </span>
 
                 <div class="nav-icon-size-reduce social-icons">
                   {% if post_author.twitter %}
@@ -49,15 +53,14 @@
               </center>
             </div>
 
-            <!-- Add the extra clearfix for only the required viewport -->
-            <div class="clearfix visible-xs"></div>
-
-            <div class="col-md-8">
+            <div class="col-sm-12 col-md-8">
               {% if post_author.bio %}
                 <span class="author-bio">{{ post_author.bio}}</span>
               {% endif %}
             </div>
+
           </div>
+
         </div>
       </div>
 
