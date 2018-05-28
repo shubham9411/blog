@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="5in" height="2in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 5000 2000" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<style type="text/css">
+			<![CDATA[
+			    @font-face { font-family:"Verdana";}
+			    .fil0 {fill:none}
+			    .fil2 {fill:#006CB5}
+			    .fil1 {fill:#FFFFFF}
+			    .fil3 {fill:#EE741D}
+			    .fnt0 {font-weight:normal;font-size:45em;font-family:'Verdana'}
+			   ]]>
+		</style>
+	</defs>
+	<g id="Layer_x0020_1">
+		<g id="_150518120">
+			<rect class="fil0" width="5000" height="2000" />
+			<g>
+				<text x="2002" y="1225" class="fil1 fnt0">eLitmus</text>
+				<polygon class="fil2" points="1679,1492 1548,1492 1548,483 1217,483 1217,403 1541,403 1679,403 1679,540 " />
+				<polygon class="fil2" points="502,508 633,508 633,1517 964,1517 964,1597 640,1597 502,1597 502,1460 " />
+				<path class="fil3" d="M914 1119c15,27 41,44 71,53 77,24 163,-1 220,-56 21,-20 40,-46 56,-79l275 -82c-36,118 -163,241 -339,312 -245,99 -492,60 -552,-87 -59,-147 91,-347 336,-446 245,-99 492,-60 552,87 8,21 13,43 13,65 -211,77 -421,154 -631,232zm-15 -99c122,-44 242,-88 364,-133 -35,-62 -97,-74 -157,-64 -103,17 -192,90 -207,197z" />
+			</g>
+		</g>
+	</g>
+</svg>

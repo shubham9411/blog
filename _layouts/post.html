@@ -9,9 +9,7 @@
 
 <body id="post">
 
-
   {% include navigation.html %}
-
 
   {% include special-effect.html %}
 
@@ -20,19 +18,24 @@
   <div class="row">
 
 
-    
-    <div class="col-md-2">
-
-    </div>
+    <div class="col-md-2"></div>
       <div class="col-md-8">
         
 
         <div id="main" role="main" class="marginal">
-          <article class="hentry">
-            {% if page.image.feature %}<img src="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>{% if page.image.credit %}<p class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>{% endif %}{% endif %}
-            <div >
-              <header>
+          <article class="entry">
 
+            {% if page.image.feature %}
+              <img src="{{ site.url }}{{ site.baseurl }}/images/{{ page.image.feature }}" class="entry-feature-image" alt="{{ page.title }}" {% if site.logo == null %}style="margin-top:0;"{% endif %}>
+              {% if page.image.credit %}
+                <p class="image-credit">Photo Credit: 
+                  <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a>
+                </p>
+              {% endif %}
+            {% endif %}
+
+            <div>
+              <header>
                 <span class="entry-tags">
                   {% for tag in page.tags %}
                     <a href="{{ site.url }}{{ site.baseurl }}/tags/#{{ tag | cgi_encode }}" title="Pages tagged {{ tag }}">{{ tag }}</a>
@@ -61,17 +64,24 @@
             </div>
            
             <div>
-                <div>
-                  <span class='label label-warning'> <a href="{{ site.baseurl }}/categories/{{ page.category }}/index.html" > {{ page.category }} </a></span>
-                </div>
+              <div>
+                <span class='badge badge-warning'> <a href="{{ site.baseurl }}/categories/{{ page.category }}/index.html" > {{ page.category }} </a></span>
+              </div>
+
               {% if page.tldr %}
                 <div class='pull-left date-show'>
-                  <span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}"><i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</time></span>&nbsp;
+                  <span class="entry-date date published">
+                    <time datetime="{{ page.date | date_to_xmlschema }}">
+                      <i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}
+                    </time>
+                  </span>&nbsp;
 
-                    {% if site.disqus_shortname and page.comments %}
-                        <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
-                    {% endif %}
+                  {% if site.disqus_shortname and page.comments %}
+                      <span class="entry-comments"><i class="icon-comment-alt"></i> <a href="#disqus_thread">Comment</a></span>
+                  {% endif %}
+
                 </div>
+
                 <div class='pull-right date-show'>
                   <span>
                     <a href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">
@@ -79,48 +89,52 @@
                     </a>
                   </span>
                 </div>
-                <br/>
-                <div class="panel panel-default">
-                  <div class="panel-heading ">
-                    <h3 class="panel-title">TL;DR</h3>
-                  </div>
-                  <div class="panel-body">
-                    <aside>{{ page.tldr }}</aside>
-                  </div>
-                </div>
 
-                  
-                {% endif %}
-                <div class="post-content-justify">
-                  {{ content }}
+              <br>
+              <div class="panel panel-default">
+                <div class="panel-heading ">
+                  <h3 class="panel-title">TL;DR</h3>
                 </div>
-                <div class="entry-tags">
-                  {% include social-shares.html %}
+                <div class="panel-body">
+                  <aside>{{ page.tldr }}</aside>
                 </div>
-                <div class="clearfix"><br/></div>
+              </div>
+      
+            {% endif %}
+
+              <div class="post-content-justify">
+                {{ content }}
+              </div>
+              <div class="entry-tags">
+                {% include social-shares.html %}
+              </div>
+              <div class="clearfix"><br/></div>
 
                 {% include author-widget.html %}
                 {% include discourse_comments.html %}
 
                 {% if site.disqus_shortname and page.comments %}
                   <div id="disqus_thread">
-                    {% if page.comments %}{% include disqus_comments.html %}{% endif %}
+                    {% if page.comments %}
+                      {% include disqus_comments.html %}
+                    {% endif %}
                   </div><!-- /#disqus_thread -->
                 {% endif %}
               </div><!-- /.entry-content -->
             </div><!-- /.entry-wrapper -->
 
           </article>
-            <nav class="navbar nav-justified" role="navigation">
-              <ul class="pager">
-                {% if page.previous %}
-                  <li class="previous showElem"><a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr;<span class="showPrevNex"> Previous </span> </a></li>
-                {% endif %}
-                {% if page.next %}
-                  <li class="next showElem"><a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}"> <span class='showPrevNex'> Next </span> &rarr; </a></li>
-                {% endif %}
-              </ul>
-            </nav>
+
+          <nav class="navbar nav-justified" role="navigation">
+            <ul class="nav pager">
+              {% if page.previous %}
+                <li class="previous showElem mr-auto"><a href="{{ site.url }}{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr;<span class="showPrevNex"> Previous </span> </a></li>
+              {% endif %}
+              {% if page.next %}
+                <li class="next showElem ml-auto"><a href="{{ site.url }}{{ site.baseurl }}{{ page.next.url }}" title="{{ page.next.title }}"> <span class='showPrevNex'> Next </span> &rarr; </a></li>
+              {% endif %}
+            </ul>
+          </nav>
         
         </div><!-- /#main -->
 
