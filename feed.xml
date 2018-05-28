@@ -5,30 +5,30 @@
 
 <title type="text">eLitmus Blog</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="/" />
-<updated>2018-05-28T07:48:33+05:30</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000/" />
+<updated>2018-05-28T13:33:26+05:30</updated>
+<id>http://localhost:4000/</id>
 <author>
   <name>eLitmus.com</name>
-  <uri>/</uri>
+  <uri>http://localhost:4000/</uri>
   <email>site-admin@elitmus.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[How Tough is it to Score Well in Board Exams?]]></title>
-  <link rel="alternate" type="text/html" href="/career/how-tough-is-it-to-score-well-in-board-exams/"/>
-  <id>/career/how-tough-is-it-to-score-well-in-board-exams</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/career/how-tough-is-it-to-score-well-in-board-exams/"/>
+  <id>http://localhost:4000/career/how-tough-is-it-to-score-well-in-board-exams</id>
   <updated>2018-02-22 10:49:14 +0530T00:00:00-00:00</updated>
   <published>2018-02-22T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#career" term="career" /><category scheme="/tags/#board%20exams" term="board exams" /><category scheme="/tags/#jobs" term="jobs" /><category scheme="/tags/#the%20other%20side" term="the other side" />
+  <category scheme="http://localhost:4000/tags/#career" term="career" /><category scheme="http://localhost:4000/tags/#board%20exams" term="board exams" /><category scheme="http://localhost:4000/tags/#jobs" term="jobs" /><category scheme="http://localhost:4000/tags/#the%20other%20side" term="the other side" />
   <content type="html">
   
     &lt;p&gt;&lt;em&gt;I completed my entire schooling (Classes I through XII) at one of Kolkata’s favoured catholic schools. In those days, discipline and academic excellence were the primary parameters that mattered and my school checked both these boxes rather well.&lt;/em&gt;
@@ -73,23 +73,23 @@
 &lt;p&gt;Let’s say company X sets a Class XII marks cut-off at 75%. Referring to the 10 boards listed above, company X will end up considering a population far larger than the top quintile from to 5 most generous states, and a population far smaller than the top quintile in the 5 most frugal states. The playing field is not so level anymore…..&lt;/p&gt;
 
   
-  &lt;p&gt;&lt;a href=&quot;/career/how-tough-is-it-to-score-well-in-board-exams/&quot;&gt;How Tough is it to Score Well in Board Exams?&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on February 22, 2018.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/career/how-tough-is-it-to-score-well-in-board-exams/&quot;&gt;How Tough is it to Score Well in Board Exams?&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on February 22, 2018.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[It's the Attitude, Stupid!]]></title>
-  <link rel="alternate" type="text/html" href="/career/its-the-attitude-stupid/"/>
-  <id>/career/its-the-attitude-stupid</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/career/its-the-attitude-stupid/"/>
+  <id>http://localhost:4000/career/its-the-attitude-stupid</id>
   <updated>2017-12-19 12:50:22 +0530T00:00:00-00:00</updated>
   <published>2017-12-19T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#career" term="career" />
+  <category scheme="http://localhost:4000/tags/#career" term="career" />
   <content type="html">
   
     &lt;p&gt;&lt;em&gt;Congratulations on your first job! So you cleared the selection process; cracked some tests maybe, shone through a group discussion possibly, and impressed and charmed your way through the interviews. Well done!&lt;/em&gt;
@@ -131,23 +131,23 @@ Manish was a star in college. He excelled in academics and was popular among stu
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/career/its-the-attitude-stupid/&quot;&gt;It's the Attitude, Stupid!&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on December 19, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/career/its-the-attitude-stupid/&quot;&gt;It's the Attitude, Stupid!&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on December 19, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Fishing in Troubled Waters]]></title>
-  <link rel="alternate" type="text/html" href="/the%20other%20side/fishing-in-troubled-waters/"/>
-  <id>/the%20other%20side/fishing-in-troubled-waters</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/the%20other%20side/fishing-in-troubled-waters/"/>
+  <id>http://localhost:4000/the%20other%20side/fishing-in-troubled-waters</id>
   <updated>2017-12-19 12:32:13 +0530T00:00:00-00:00</updated>
   <published>2017-12-19T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#career" term="career" /><category scheme="/tags/#recruitment" term="recruitment" /><category scheme="/tags/#interview" term="interview" />
+  <category scheme="http://localhost:4000/tags/#career" term="career" /><category scheme="http://localhost:4000/tags/#recruitment" term="recruitment" /><category scheme="http://localhost:4000/tags/#interview" term="interview" />
   <content type="html">
   
     &lt;p&gt;&lt;em&gt;Back in my final year in college, I applied for a job at an FMCG major hiring for Techno-managerial roles. I cleared the eligibility criteria and the group discussion. The short and not-so-sweet interview went something like this:&lt;/em&gt;
@@ -192,23 +192,23 @@ Manish was a star in college. He excelled in academics and was popular among stu
 &lt;p&gt;I find it amusing that many organizations still follow the same two-decade old formulae to hire people. To be sure, it may very well work for certain organizations. However, it is worth taking a dispassionate look at whether your process indeed works like you expect it to. Are you convinced that you are not ending up hiring the “wrong” folks, or worse, missing out on the “right” ones?&lt;/p&gt;
 
   
-  &lt;p&gt;&lt;a href=&quot;/the%20other%20side/fishing-in-troubled-waters/&quot;&gt;Fishing in Troubled Waters&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on December 19, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/the%20other%20side/fishing-in-troubled-waters/&quot;&gt;Fishing in Troubled Waters&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on December 19, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Hiring may be Rocket Science, but its Tenets are Basic]]></title>
-  <link rel="alternate" type="text/html" href="/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic/"/>
-  <id>/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic/"/>
+  <id>http://localhost:4000/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic</id>
   <updated>2017-10-24 10:24:42 +0530T00:00:00-00:00</updated>
   <published>2017-10-24T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#the%20other%20side" term="the other side" />
+  <category scheme="http://localhost:4000/tags/#the%20other%20side" term="the other side" />
   <content type="html">
   
     &lt;p&gt;&lt;em&gt;Hiring is as old as employment itself. We are talking about a time period of a few thousand years – not a fact to be trifled with. The methods, tools and approaches may have changed and evolved with time, but I believe that it’s safe to say that the underlying principles would not have changed much.&lt;/em&gt;
@@ -247,20 +247,20 @@ Do her aspirations align with what you can offer her? And this is not just about
 &lt;p&gt;Would love to hear your views, especially if you disagree or have a contrarian opinion. Keep them coming…&lt;/p&gt;
 
   
-  &lt;p&gt;&lt;a href=&quot;/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic/&quot;&gt;Hiring may be Rocket Science, but its Tenets are Basic&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on October 24, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic/&quot;&gt;Hiring may be Rocket Science, but its Tenets are Basic&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on October 24, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Money, get away, Get a good job with more pay and you're OK?]]></title>
-  <link rel="alternate" type="text/html" href="/career/money-get-away-get-a-good-job-with-more-pay/"/>
-  <id>/career/money-get-away-get-a-good-job-with-more-pay</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/career/money-get-away-get-a-good-job-with-more-pay/"/>
+  <id>http://localhost:4000/career/money-get-away-get-a-good-job-with-more-pay</id>
   <updated>2017-10-23 18:05:37 +0530T00:00:00-00:00</updated>
   <published>2017-10-23T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
   
@@ -287,23 +287,23 @@ Do her aspirations align with what you can offer her? And this is not just about
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/career/money-get-away-get-a-good-job-with-more-pay/&quot;&gt;Money, get away, Get a good job with more pay and you're OK?&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on October 23, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/career/money-get-away-get-a-good-job-with-more-pay/&quot;&gt;Money, get away, Get a good job with more pay and you're OK?&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on October 23, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[To the Goth Kids]]></title>
-  <link rel="alternate" type="text/html" href="/career/to-the-goth-kids/"/>
-  <id>/career/to-the-goth-kids</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/career/to-the-goth-kids/"/>
+  <id>http://localhost:4000/career/to-the-goth-kids</id>
   <updated>2017-07-28 10:38:41 +0530T00:00:00-00:00</updated>
   <published>2017-07-28T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#startups" term="startups" />
+  <category scheme="http://localhost:4000/tags/#startups" term="startups" />
   <content type="html">
   
     &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -341,23 +341,23 @@ Do her aspirations align with what you can offer her? And this is not just about
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/career/to-the-goth-kids/&quot;&gt;To the Goth Kids&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on July 28, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/career/to-the-goth-kids/&quot;&gt;To the Goth Kids&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on July 28, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers]]></title>
-  <link rel="alternate" type="text/html" href="/technology/setting-up-elb-plus-nginx-with-https-offloading/"/>
-  <id>/technology/setting-up-elb-plus-nginx-with-https-offloading</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/setting-up-elb-plus-nginx-with-https-offloading/"/>
+  <id>http://localhost:4000/technology/setting-up-elb-plus-nginx-with-https-offloading</id>
   <updated>2017-03-08 09:47:23 +0530T00:00:00-00:00</updated>
   <published>2017-03-08T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#ELB" term="ELB" /><category scheme="/tags/#NGINX" term="NGINX" /><category scheme="/tags/#https%20offloading" term="https offloading" /><category scheme="/tags/#OAuth" term="OAuth" /><category scheme="/tags/#Rails" term="Rails" />
+  <category scheme="http://localhost:4000/tags/#ELB" term="ELB" /><category scheme="http://localhost:4000/tags/#NGINX" term="NGINX" /><category scheme="http://localhost:4000/tags/#https%20offloading" term="https offloading" /><category scheme="http://localhost:4000/tags/#OAuth" term="OAuth" /><category scheme="http://localhost:4000/tags/#Rails" term="Rails" />
   <content type="html">
   
     &lt;p&gt;“HTTPS everywhere” is not a luxury anymore. It is a necessity. Thankfully, obtaining an SSL certificate has become easier too, with initiatives such as &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;Let’s Encrypt&lt;/a&gt;, &lt;a href=&quot;https://www.geotrust.com/ssl/free-ssl-certificate/&quot;&gt;GeoTrust&lt;/a&gt;, &lt;a href=&quot;https://www.positivessl.com/&quot;&gt;Positive SSL&lt;/a&gt;, &lt;a href=&quot;https://www.startssl.com/&quot;&gt;StartSSL&lt;/a&gt;. Even cloud based services such as &lt;a href=&quot;https://www.cloudflare.com/&quot;&gt;Cloudflare&lt;/a&gt; and &lt;a href=&quot;https://aws.amazon.com/&quot;&gt;Amazon AWS&lt;/a&gt; provide free SSL certificates to their customers.&lt;/p&gt;
@@ -495,23 +495,23 @@ We went ahead with this choice. Using &lt;a href=&quot;https://docs.chef.io/chef
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/setting-up-elb-plus-nginx-with-https-offloading/&quot;&gt;Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on March 08, 2017.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/setting-up-elb-plus-nginx-with-https-offloading/&quot;&gt;Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on March 08, 2017.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Custom Capacity Buffers In Go]]></title>
-  <link rel="alternate" type="text/html" href="/technology/custom-capacity-buffers-in-go/"/>
-  <id>/technology/custom-capacity-buffers-in-go</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/custom-capacity-buffers-in-go/"/>
+  <id>http://localhost:4000/technology/custom-capacity-buffers-in-go</id>
   <updated>2015-03-31 11:58:04 +0530T00:00:00-00:00</updated>
   <published>2015-03-31T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#go" term="go" /><category scheme="/tags/#ruby" term="ruby" /><category scheme="/tags/#buffer" term="buffer" />
+  <category scheme="http://localhost:4000/tags/#go" term="go" /><category scheme="http://localhost:4000/tags/#ruby" term="ruby" /><category scheme="http://localhost:4000/tags/#buffer" term="buffer" />
   <content type="html">
   
     &lt;p&gt;At elitmus we use ruby to create most of our tools and most of our applications  are also written in ruby. Recently I started exploring ways to build our tools especially the backend tools in languages other than ruby which have much lesser memory footprint and better efficiency. One such cases was to create a sandboxed environment for running  untrusted code on our servers. After evaluating multiple languages, I decided to use golang because of it’s excellent library support coupled with the fact the docker(a sandboxed env) was also written in go.&lt;/p&gt;
@@ -591,23 +591,23 @@ The same goes for files as well.&lt;/p&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/custom-capacity-buffers-in-go/&quot;&gt;Custom Capacity Buffers In Go&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on March 31, 2015.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/custom-capacity-buffers-in-go/&quot;&gt;Custom Capacity Buffers In Go&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on March 31, 2015.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Making Airtel 3G dongle work on Mac OS 10.10 Yosemite]]></title>
-  <link rel="alternate" type="text/html" href="/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite/"/>
-  <id>/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite/"/>
+  <id>http://localhost:4000/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite</id>
   <updated>2014-12-03 09:29:33 +0530T00:00:00-00:00</updated>
   <published>2014-12-03T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#3G%20Dongle" term="3G Dongle" /><category scheme="/tags/#Yosemite" term="Yosemite" /><category scheme="/tags/#Airtel" term="Airtel" />
+  <category scheme="http://localhost:4000/tags/#3G%20Dongle" term="3G Dongle" /><category scheme="http://localhost:4000/tags/#Yosemite" term="Yosemite" /><category scheme="http://localhost:4000/tags/#Airtel" term="Airtel" />
   <content type="html">
   
     &lt;p&gt;If you use Airtel 3G Dongle (Mine is Huawei E173) on your Mac, and are having issue using the dongel after upgrading to Yosemite, airtel is of little help. They asked me to downgrade the OS to Mavericks!&lt;/p&gt;
@@ -657,23 +657,23 @@ Insert your Dongel into an USB port. You should see “Mobile Partner” applica
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite/&quot;&gt;Making Airtel 3G dongle work on Mac OS 10.10 Yosemite&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on December 03, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite/&quot;&gt;Making Airtel 3G dongle work on Mac OS 10.10 Yosemite&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on December 03, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[IT Career - Pitfalls to avoid]]></title>
-  <link rel="alternate" type="text/html" href="/career/it-career-pitfalls-to-avoid/"/>
-  <id>/career/it-career-pitfalls-to-avoid</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/career/it-career-pitfalls-to-avoid/"/>
+  <id>http://localhost:4000/career/it-career-pitfalls-to-avoid</id>
   <updated>2014-09-22 17:01:53 +0530T00:00:00-00:00</updated>
   <published>2014-09-22T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#pyramid%20effect" term="pyramid effect" /><category scheme="/tags/#Indian%20IT%20industry" term="Indian IT industry" /><category scheme="/tags/#Freshers" term="Freshers" />
+  <category scheme="http://localhost:4000/tags/#pyramid%20effect" term="pyramid effect" /><category scheme="http://localhost:4000/tags/#Indian%20IT%20industry" term="Indian IT industry" /><category scheme="http://localhost:4000/tags/#Freshers" term="Freshers" />
   <content type="html">
   
     &lt;p&gt;It is very humbling when a youngster walks up to us and says “Thanks for helping me get my first job”. While we are delighted at one end, we are worried at the other.  Why? Because, most of the time a fledgling mind does not see the disaster ahead! &lt;br /&gt;&lt;br /&gt;Yes, we mean disaster – 75% of IT professionals of 2011-2014 batches will be unemployed 20 years from now.  And this is assuming IT industry does well !! Looks unlikely? Read on to know more.&lt;/p&gt;
@@ -705,23 +705,23 @@ We strongly believe a youngster`s ability to adapt and evolve is much higher tha
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/career/it-career-pitfalls-to-avoid/&quot;&gt;IT Career - Pitfalls to avoid&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on September 22, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/career/it-career-pitfalls-to-avoid/&quot;&gt;IT Career - Pitfalls to avoid&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on September 22, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[How we host our blog on GitHub pages and yet serve it from our own Sub-URL]]></title>
-  <link rel="alternate" type="text/html" href="/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url/"/>
-  <id>/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url/"/>
+  <id>http://localhost:4000/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url</id>
   <updated>2014-08-18 12:26:44 +0530T00:00:00-00:00</updated>
   <published>2014-08-18T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#Github" term="Github" /><category scheme="/tags/#nginx" term="nginx" /><category scheme="/tags/#reverse%20proxy" term="reverse proxy" />
+  <category scheme="http://localhost:4000/tags/#Github" term="Github" /><category scheme="http://localhost:4000/tags/#nginx" term="nginx" /><category scheme="http://localhost:4000/tags/#reverse%20proxy" term="reverse proxy" />
   <content type="html">
   
     &lt;p&gt;There are umpteen number of blog posts telling you how to host your static site on GitHub Pages for free. They also tell you how to serve such a site from your own domain name.&lt;/p&gt;
@@ -754,23 +754,23 @@ We strongly believe a youngster`s ability to adapt and evolve is much higher tha
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url/&quot;&gt;How we host our blog on GitHub pages and yet serve it from our own Sub-URL&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on August 18, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url/&quot;&gt;How we host our blog on GitHub pages and yet serve it from our own Sub-URL&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on August 18, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Using Monit to get email alert on unauthorized login]]></title>
-  <link rel="alternate" type="text/html" href="/technology/using-monit-to-get-email-alert-on-unauthorized-login/"/>
-  <id>/technology/using-monit-to-get-email-alert-on-unauthorized-login</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/using-monit-to-get-email-alert-on-unauthorized-login/"/>
+  <id>http://localhost:4000/technology/using-monit-to-get-email-alert-on-unauthorized-login</id>
   <updated>2014-06-04 09:57:11 +0530T00:00:00-00:00</updated>
   <published>2014-06-04T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#ssh" term="ssh" /><category scheme="/tags/#monit" term="monit" /><category scheme="/tags/#alert" term="alert" />
+  <category scheme="http://localhost:4000/tags/#ssh" term="ssh" /><category scheme="http://localhost:4000/tags/#monit" term="monit" /><category scheme="http://localhost:4000/tags/#alert" term="alert" />
   <content type="html">
   
     &lt;p&gt;For a long time, we had our own custom written perl script to alert us whenever someone logged into our production servers from an ip address we do not recognize (not whitelisted). The script looked somewhat like this…&lt;/p&gt;
@@ -857,23 +857,23 @@ SET mail-format &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/using-monit-to-get-email-alert-on-unauthorized-login/&quot;&gt;Using Monit to get email alert on unauthorized login&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on June 04, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/using-monit-to-get-email-alert-on-unauthorized-login/&quot;&gt;Using Monit to get email alert on unauthorized login&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on June 04, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Gotcha's while syntactically translating AES encryption logic from PHP to Ruby]]></title>
-  <link rel="alternate" type="text/html" href="/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby/"/>
-  <id>/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby/"/>
+  <id>http://localhost:4000/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby</id>
   <updated>2014-05-25 20:39:45 +0530T00:00:00-00:00</updated>
   <published>2014-05-25T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#ruby" term="ruby" /><category scheme="/tags/#PHP" term="PHP" /><category scheme="/tags/#AES" term="AES" /><category scheme="/tags/#Cryptography" term="Cryptography" /><category scheme="/tags/#Encryption" term="Encryption" /><category scheme="/tags/#Decryption" term="Decryption" />
+  <category scheme="http://localhost:4000/tags/#ruby" term="ruby" /><category scheme="http://localhost:4000/tags/#PHP" term="PHP" /><category scheme="http://localhost:4000/tags/#AES" term="AES" /><category scheme="http://localhost:4000/tags/#Cryptography" term="Cryptography" /><category scheme="http://localhost:4000/tags/#Encryption" term="Encryption" /><category scheme="http://localhost:4000/tags/#Decryption" term="Decryption" />
   <content type="html">
   
     &lt;p&gt;Our Payment Gateway service provider recently launched a new platform with some nice-to-have features. We wanted those features and so we decided to migrate. Being one of the earliest adopters of the new platform, there was no integration kit available. We had to build it ourselves. Not a problem. Since we are a Ruby On Rails shop, we built our own Ruby integration kit. All went well and we pushed it to production.&lt;/p&gt;
@@ -945,23 +945,23 @@ SET mail-format &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby/&quot;&gt;Gotcha's while syntactically translating AES encryption logic from PHP to Ruby&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on May 25, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby/&quot;&gt;Gotcha's while syntactically translating AES encryption logic from PHP to Ruby&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on May 25, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Setting Up Amazon RDS as a Slave to a self-managed MySQL server]]></title>
-  <link rel="alternate" type="text/html" href="/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server/"/>
-  <id>/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server/"/>
+  <id>http://localhost:4000/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server</id>
   <updated>2014-05-21 20:43:52 +0530T00:00:00-00:00</updated>
   <published>2014-05-21T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#mysql" term="mysql" /><category scheme="/tags/#RDS" term="RDS" /><category scheme="/tags/#AWS" term="AWS" /><category scheme="/tags/#replication" term="replication" />
+  <category scheme="http://localhost:4000/tags/#mysql" term="mysql" /><category scheme="http://localhost:4000/tags/#RDS" term="RDS" /><category scheme="http://localhost:4000/tags/#AWS" term="AWS" /><category scheme="http://localhost:4000/tags/#replication" term="replication" />
   <content type="html">
   
     &lt;p&gt;Last week, we migrated our MySQL database server, which was running on an EC2 instance, to RDS. We hoped the migration process would be smooth.&lt;/p&gt;
@@ -1028,23 +1028,23 @@ CALL mysql.rds_reset_external_master;
 &lt;/code&gt;&lt;/pre&gt;
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server/&quot;&gt;Setting Up Amazon RDS as a Slave to a self-managed MySQL server&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on May 21, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server/&quot;&gt;Setting Up Amazon RDS as a Slave to a self-managed MySQL server&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on May 21, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Beware of creating $HOME/.ssh folder by hand, when SELinux is turned on]]></title>
-  <link rel="alternate" type="text/html" href="/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on/"/>
-  <id>/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on/"/>
+  <id>http://localhost:4000/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on</id>
   <updated>2014-05-23 12:32:45 +0530T00:00:00-00:00</updated>
   <published>2012-07-22T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#SSH" term="SSH" /><category scheme="/tags/#SELinux" term="SELinux" />
+  <category scheme="http://localhost:4000/tags/#SSH" term="SSH" /><category scheme="http://localhost:4000/tags/#SELinux" term="SELinux" />
   <content type="html">
   
     &lt;p&gt;I was experimenting with &lt;code&gt;chef&lt;/code&gt; to manage our Linux boxes. As a standard practice, our application user &lt;code&gt;deployer&lt;/code&gt; is homed in &lt;code&gt;/applications/deployer&lt;/code&gt; rather than the usual &lt;code&gt;/home/deployer&lt;/code&gt;.&lt;/p&gt;
@@ -1089,23 +1089,23 @@ CALL mysql.rds_reset_external_master;
 &lt;p&gt;should log you in without asking for a password!&lt;/p&gt;
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on/&quot;&gt;Beware of creating $HOME/.ssh folder by hand, when SELinux is turned on&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on July 22, 2012.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on/&quot;&gt;Beware of creating $HOME/.ssh folder by hand, when SELinux is turned on&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on July 22, 2012.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Importance of Date field in an email's Header]]></title>
-  <link rel="alternate" type="text/html" href="/technology/importance-of-date-field-in-an-emails-header/"/>
-  <id>/technology/importance-of-date-field-in-an-emails-header</id>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/technology/importance-of-date-field-in-an-emails-header/"/>
+  <id>http://localhost:4000/technology/importance-of-date-field-in-an-emails-header</id>
   <updated>2012-04-04 10:20:00 +0530T00:00:00-00:00</updated>
   <published>2012-04-04T00:00:00+05:30</published>
   
   <author>
     <name>eLitmus.com</name>
-    <uri></uri>
+    <uri>http://localhost:4000</uri>
     <email>site-admin@elitmus.com</email>
   </author>
-  <category scheme="/tags/#email" term="email" /><category scheme="/tags/#header" term="header" /><category scheme="/tags/#spam" term="spam" />
+  <category scheme="http://localhost:4000/tags/#email" term="email" /><category scheme="http://localhost:4000/tags/#header" term="header" /><category scheme="http://localhost:4000/tags/#spam" term="spam" />
   <content type="html">
   
     &lt;p&gt;So far, we paid little attention to email delivery issues. We knew delivering to rediffmail is a pain. So we discouraged our users from using rediffmail. Apart from that we had FCrDNS and SPF configured and working fine. We had also configured &lt;a href=&quot;http://www.dkim.org/&quot;&gt;DKIM&lt;/a&gt;. And then a month ago, we also added &lt;a href=&quot;http://www.dmarc.org/&quot;&gt;DMARC&lt;/a&gt; in monitor mode.&lt;/p&gt;
@@ -1137,7 +1137,7 @@ CALL mysql.rds_reset_external_master;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;/technology/importance-of-date-field-in-an-emails-header/&quot;&gt;Importance of Date field in an email's Header&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on April 04, 2012.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/technology/importance-of-date-field-in-an-emails-header/&quot;&gt;Importance of Date field in an email's Header&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;http://localhost:4000&quot;&gt;eLitmus Blog&lt;/a&gt; on April 04, 2012.&lt;/p&gt;</content>
 </entry>
 
 </feed>
