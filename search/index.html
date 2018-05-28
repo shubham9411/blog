@@ -1,0 +1,1248 @@
+<!-- 	this file came from cloud cannon's course
+		link ti git repo: https://github.com/CloudCannon/bakery-store-jekyll-template/tree/lunrjs
+
+		this file displays the results of search query
+		this file is only for testing purposes
+		delete this file after development and testing is finished
+-->
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+<title>eLitmus Blog</title>
+<meta name="description" content="We learn new things everyday, and we document our learnings here...">
+
+
+
+<!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">    
+<meta name="twitter:title" content="eLitmus Blog">
+<meta name="twitter:description" content="">
+<meta name="twitter:site" content="@elitmus">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="/blog/images/blog_logo_taglinedorange.png"/>
+<meta property="og:type" content="article">
+<meta property="og:title" content="eLitmus Blog">
+<meta property="og:description" content="">
+<meta property="og:url" content="/blog/search/">
+
+<meta property="og:site_name" content="eLitmus Blog">
+
+
+
+
+
+
+
+<link rel="canonical" href="https://www.elitmus.com/blog/search/">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="eLitmus Blog Feed">
+
+
+	<link rel="author" href="https://plus.google.com/+eLitmus?rel=author">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Icons -->
+<!-- apple touch icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="/blog/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/blog/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/blog/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/blog/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/blog/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/blog/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/blog/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/blog/images/apple-touch-icon-152x152.png">
+<!-- Favicons default 16x16 -->
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/blog/favicon.ico">
+
+<!-- Favicons others -->
+<link rel="icon" type="image/png" href="/blog/images/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/blog/images/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/blog/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/blog/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/blog/images/favicon-32x32.png" sizes="32x32">
+
+<!-- Icons for Windows 8 Tiles -->
+<meta name="msapplication-TileColor" content="#ffffff"/>
+<meta name="msapplication-TileImage" content="/blog/images/mstile-144x144.png">
+
+<!-- For all browsers -->
+
+
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:600,300,300italic|The+Girl+Next+Door" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- bootstrap 4 -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/bootstrap.min.css">
+
+<!-- below css file is used for navbar in individual blogposts -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/main.min.css">
+
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+
+<!-- Optional theme -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Font Awesome -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/font-elitmuslogo.css" />
+
+<link rel="stylesheet" href="/blog/assets/css/customize.css">
+<link rel="stylesheet" href="/blog/assets/css/forkit.css">
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="/blog/assets/css/style.css">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700" media="all">
+	</head>
+	<body id="page">
+
+		<div class="content">
+
+			<div class="search">
+				<form action="#" method="get">
+  <label for="search-box">Search</label>
+  <input type="text" id="search-box" name="query">
+  <input type="submit" value="search">
+</form>
+
+<ul id="search-results"></ul>
+
+
+<script>
+
+/*
+  window.store = {
+    
+      "career-how-tough-is-it-to-score-well-in-board-exams": {
+        "title": "How Tough is it to Score Well in Board Exams?",
+        "author": "arijit",
+        "category": "career",
+        "content": "I completed my entire schooling (Classes I through XII) at one of Kolkata’s favoured catholic schools. In those days, discipline and academic excellence were the primary parameters that mattered and my school checked both these boxes rather well.Trouble started brewing once I graduated to Class XI and started thinking about higher education, specifically opportunities at the national level. That’s when I truly realized the impact of the education board. In my case, the impact was limited to a couple of aspects, viz. a) subjects / topics not covered in the Bengal board syllabus, and b) the frugality in awarding marks.Fortunately, some extra tuitions covered up for the former, while the latter did not come into play at all in any of the options I signed up for, or in the higher education option I finally opted for.Times have changed….For a few years, till 2016, 40% weightage was accorded to an applicant’s Class XII board marks in calculating her All India Rank in the JEE (entrance tests for admission to India’s flagship IITs, and a few other engineering schools) exams. However, since 2017, the rules were changed to treat the Class XII marks as a qualifying criterion: a minimum of 75% marks, or a rank in the top 20th percentile in the board.The 75% cut-off may appear inconsequential to folks intimately familiar with the CBSE or ISCE boards, but not all students find it amusing. The JEE implementation committee publishes the 80th percentile cut-off marks for every higher secondary educational board in the country to level the playing field. Finally, we have access to data that clearly shows the disparity in awarding marks across boards in India.According to data for the 2016 Class XII exams, the 5 most liberal boards are (percentages indicate the 80th percentile cut-off score):  Telengana Board of Secondary Education (95%)  Andhra Pradesh Board of Intermediate Education (94%)  Council for the Indian School Certificate Examinations (88.6%)  Banasthali Vidyapeeth, Rajasthan (87.4%)  Tamil Nadu Board of Higher Secondary Education (87.2)While the 4 most frugal boards are:  Tripura Board of Secondary Education (59.8%)  Jharkhand Academic Council (60.6%)  Meghalaya Board of Secondary Education (61.6%)  Odisha Council of Higher Secondary Education (62%)  Bihar Intermediate Education Council (63%)What this essentially means is that a student scoring 95% in the Telengana board exams is academically comparable to a student scoring 60.6% in the Jharkhand board exams, despite a whopping 34.6% gap is scores!The data clearly shows how a single mark-based cut-off or a mark-based weightage criterion can result in gross injustice to students from boards that are frugal in awarding marks! Thankfully, the JEE implementation committee, in its infinite wisdom, has taken steps to normalize this inherent disparity.Time will tell whether the practice of allotting an explicit or implicit weightage to board exam performance will become the norm, not only in JEE but in other national level entrance tests as well. But for now, this is definitely something for parents to consider while looking for a school for their children.But what about employment? It is common practice among potential employers to set mark-based cut-offs for board exams (while hiring entry-level talent), among others. And in almost all cases, the cut-off is a single number applicable across the board (pun intended!).Let’s say company X sets a Class XII marks cut-off at 75%. Referring to the 10 boards listed above, company X will end up considering a population far larger than the top quintile from to 5 most generous states, and a population far smaller than the top quintile in the 5 most frugal states. The playing field is not so level anymore…..",
+        "url": "/career/how-tough-is-it-to-score-well-in-board-exams/"
+      }
+      ,
+    
+      "career-its-the-attitude-stupid": {
+        "title": "It's the Attitude, Stupid!",
+        "author": "arijit",
+        "category": "career",
+        "content": "Congratulations on your first job! So you cleared the selection process; cracked some tests maybe, shone through a group discussion possibly, and impressed and charmed your way through the interviews. Well done!You’ve been assessed and found suitable for the job on offer. No more evaluations, no more assessments. Right?Wrong! Let’s get one thing straight. This is just the beginning of your evaluation. What you’ve achieved (and by no means is it trivial) is to convince your future employer that you have potential. However, from day one in your first job, you will be continuously assessed on what you deliver.For whatever it’s worth, taking the liberty to share a cheat sheet that may help in ensuring that promise does translate to delivery in the first couple of years in your career. And be warned that it’s all in the attitude…Cheat 1Sumadhur was undoubtedly brilliant. Armed with a degree from India’s best engineering school, he was given complex tasks in line with his academic record and promise.However, very soon, his manager realised that he was not able to complete most of his tasks. The manager tried to find probable reasons behind such repeated failures. Soon, he realised that Sumadhur was not open to data, insights or feedback that conflicted with his own assumptions and beliefs.Tell yourself at least once each day: “I do not know anything. I am here to learn and apply.”Cheat 2Abhinav had completed just 6 months in his first job, but had been upset for a while. His friends earned twice as much as him, despite working fewer hours than he did. They seemed to be having a rollicking time! Abhinav started looking around and got a 50% higher offer. He took the offer up with glee. Not only was the pay better, but the work was less demanding and had relaxed deadlines. Life could not be better…Two years down the line, Abhinav started looking for yet another change, and yet another quantum leap in compensation. However, he found, to his dismay, that he was way out of depth and no company was willing to make him an offer.Convince yourself that reward follows performance, and not the other way around.Cheat 3Kanu was very sharp. However, four years of hostel life had turned his biological clock upside down. When he did make it to office during normal working hours, he excelled in his tasks. Unfortunately, on most days, he simply could not.Within six months, he was asked to leave.Change your college habits to the extent required, so as to ensure that you are available (and awake!) when your work and / or team needs you to be.Cheat 4Manish was a star in college. He excelled in academics and was popular among students as well. Out of sheer habit, he continued behaving in a brash manner with his peers in the workplace.He was counselled by his manager, but was unable to mend his ways in time and was asked to leave.Accept the fact that you need to interact with people across age groups and cultures. You are not expected to like or respect one and all (after all, respect is earned!). However, you are expected to treat one and all with respect.",
+        "url": "/career/its-the-attitude-stupid/"
+      }
+      ,
+    
+      "the-20other-20side-fishing-in-troubled-waters": {
+        "title": "Fishing in Troubled Waters",
+        "author": "arijit",
+        "category": "the other side",
+        "content": "Back in my final year in college, I applied for a job at an FMCG major hiring for Techno-managerial roles. I cleared the eligibility criteria and the group discussion. The short and not-so-sweet interview went something like this:Q: Did you apply to any core companies?A: Yes, I applied to X and Y.Q: What happened?A: I did not clear the written test.Q: What were the tests about?A: They were technical tests.Q: Why do you think you did not clear?A: Majority of questions were from courses taught in my second year. Since I had not brushed up on concepts, I could not answer many questions.Q: We expect our hires to know their domain. We cannot train them. It’s clear that you do not know your domain. Thank you for your time.A: (Thinking)… wow what just happened???I was asked the same set questions in a subsequent interview and, needless to say, I did not repeat all my answers (though I did not lie). The irony of it all is that, not only was I made an offer, I accepted the offer, spent 8 years in that organization and did fairly well in a core technical role!Since I moved over to the other side, I have kept revisiting to my own experience in that FMCG interview. My key takeaways are:      Aptitude or natural ability matters orders more than knowledge in a particular domain, especially in entry level roles.        In today’s dynamic landscape, it is almost guaranteed that specific skills will become obsolete with time. Therefore, the relevance of employees will persist only if they have the ability to learn new skills. Once again, natural ability and mindset will come to the fore.        There was no Google in those days. Nor had anyone imagined Facebook, LinkedIn or Twitter. Today, any half-serious candidate can dig up a bunch of information on a company’s recruitment process, right down to the kind of questions asked in tests and interviews, in no time whatsoever. Generic questions will lead to rehearsed “correct” answers, which have no correlation with the actual aptitude, mindset, skill or aspirations of the candidate.  I find it amusing that many organizations still follow the same two-decade old formulae to hire people. To be sure, it may very well work for certain organizations. However, it is worth taking a dispassionate look at whether your process indeed works like you expect it to. Are you convinced that you are not ending up hiring the “wrong” folks, or worse, missing out on the “right” ones?",
+        "url": "/the%20other%20side/fishing-in-troubled-waters/"
+      }
+      ,
+    
+      "the-20other-20side-hiring-may-be-rocket-science-but-its-tenets-are-basic": {
+        "title": "Hiring may be Rocket Science, but its Tenets are Basic",
+        "author": "arijit",
+        "category": "the other side",
+        "content": "Hiring is as old as employment itself. We are talking about a time period of a few thousand years – not a fact to be trifled with. The methods, tools and approaches may have changed and evolved with time, but I believe that it’s safe to say that the underlying principles would not have changed much.Recall instances where you were evaluating a potential candidate - and it does not matter whether you were looking for someone to help out at home, or someone to drive your vehicle, or someone to join your team at work. Consciously or subconsciously you would be ticking checkboxes against these basic principles… Not convinced? Okay, allow me to lay them out for you – I’ll stick my neck out on this one.Tenet 1Notwithstanding his ability with the bat, fitness levels and mental strength, would MS Dhoni have been successful as an opener in Test Cricket? Most likely not!What are you assessing?Does she have an aptitude for this job? In other words, does she have a natural ability to perform this job?Tenet 2An ex-colleague of mine, a product of India’s best t-school, was undoubtedly brilliant. However, he consistently failed to meet his goals. Reason: either lost interest in the last mile, or buckled under deadline pressures. Sounds familiar?What are you assessing?Does she have the right mindset? How often have we seen – and heart wrenchingly so – that aptitude alone cannot and does not guarantee success on the job?Tenet 3Ever wondered why a majority of software developers are engineers?What are you assessing?Does she have the necessary skills? Skills could be knowledge, experience or even academic qualification? Even if you have a top class training facility at your disposal, your fresh hires will need a minimum set of pre-existing skills that are critical to succeed.Tenet 4A high performing and reliable colleague decided to put in his papers because he wanted to migrate to the US.What are you assessing?Do her aspirations align with what you can offer her? And this is not just about compensation and benefits. But more importantly, a match between career aspirations and available growth paths in your organization.Would love to hear your views, especially if you disagree or have a contrarian opinion. Keep them coming…",
+        "url": "/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic/"
+      }
+      ,
+    
+      "career-money-get-away-get-a-good-job-with-more-pay": {
+        "title": "Money, get away, Get a good job with more pay and you're OK?",
+        "author": "arijit",
+        "category": "career",
+        "content": "Many commentators, most of them far wiser than me, have coined brilliant terms to refer to the generation gap that exists in the Indian demographic today. Since the workplace is but a small subset of the overall demographic, this generation gap is equally alive and kicking there as well.In my humble view, the workforce in any organization can be divided into two generations:Those who completed schooling before the turn of the millennium, andThose who did so in the present centuryI’d like to see the former as the RKM (Roti Kapda Makaan) generation, whereas the latter is more of the YOLO/FOMO (You Only Live Once/Fear Of Missing Out) kind. I neither desire, nor possess the ability, to perform a cost-benefit analysis of either approach towards personal finance. However, running the risk of generalization, this is probably how each generation judges the other:RKM (judging YOLO/FOMO): Where are your savings? How can you blow up your entire salary within the first fortnight? Let me show you how to manage your finances.YOLO+FOMO (judging RKM): Papa don’t preach! Get a life!Irrespective of whether money is funny or not for you or whether you desire to write a suicide note on a hundred-dollar bill, you cannot escape the thrill (or chill) of earning your first few pay-checks! And this is arguably one of the primary transformations you’ll experience as you transition from being a student to a professional in your chosen place of work. But as Uncle Ben advised Peter Parker (aka Spiderman), with great power comes great responsibility…What’s fantastic is, that the power is yours to wield and whether you want to do so responsibly or not, is entirely your choice!",
+        "url": "/career/money-get-away-get-a-good-job-with-more-pay/"
+      }
+      ,
+    
+      "career-to-the-goth-kids": {
+        "title": "To the Goth Kids",
+        "author": "cariappa",
+        "category": "career",
+        "content": "It seems like only recently, startups would hire folks to do just about everything, all at once, and then somehow, we’ve arrived at a ‘Product Manager of Paytm Experience’. How tunnel vision syndrome is eroding the startup spirit.Recently, a startup valued at around half a billion dollars laid off 10 of its Product Managers, leaving them with another 30. Just last year, the same startup hired Product guys at 20–30% premium from the market at average CTCs well over ₹20L. Even more intriguing, some of these guys were techie turned MBAs with less than four years’ experience. Having always been on the sales side of things, where one had to justify a minimum of 4x one’s salary to the company, I was fascinated by this lot. What did they do that was worth that much money?One product guy I spoke to said he managed Paytm experience; which meant he had to ensure there were no drop-offs when the user chose to pay through Paytm. He also said he was mandated to prioritise payment through Paytm. And there were similar folks for each of the other alternate payment processes. “But, is Paytm the most competitive payment solution?”, I asked. He didn’t care, really. All that mattered was ‘mukesh23’ got through paying on the platform without, gods forbid, choosing to click on the refresh button. Even better if he came through one of the exclusive Paytm promotions that he had brokered with his counterpart from the other side.Evidently, the metric for success — # completed transactions, is not entirely off-base. A good product guy could save the company millions, potentially. But, on closer observation it seems as though his chutzpah might also cost the company millions, if not more. In the above case, there are several problems with how the roles are structured. What if Paytm wasn’t the best payment option on the platform? What if (plain conjecture, here) it were costlier, for instance? What if these users exited the native platform at rates higher than average?Let’s leave those seemingly troubling questions aside for a moment. What does one do to improve a third party payment experience? Mainly, vary size and placement of the button, apparently. Turns out, there isn’t much you can do. But, that doesn’t mean you can’t do nothing. So, if you notice a needless “improvement” in your experience, know that some Product Manager’s review is forthcoming. Then, is it a surprise, really, that when things take a turn for the worse, these lot are first in the line of fire? I was surprised, though, to understand that a lot of them were entirely at peace with the transitional nature of their employment. 30% elsewhere, then.This is not restricted to Product folks alone, although it does seem like in recent years it has become a “get rich scheme” of sorts for some techies with an acute propensity to bullshit their way through things. I see Marketing Managers who can’t / won’t write a line of copy or tweak keywords on their website. I see Designers who can’t / won’t code simple HTML or work on user personas and flow maps. I see Engineers who can’t / won’t test their code or learn how to write coherent software requirement specifications. This is manifestly due to the over-specialisation of roles and warped organisation structures in these startups. Ergo, the bleeding disinterest.It wasn’t always like this. It used to be that startups hired people to do just about everything, all at once.Fresh out of college, I was hired as a ‘Management Trainee’, which I came to realise was code for will do whatever the hell it takes to move the needle. In the first year alone I did Sales, Product, Operations, and Marketing. I wasn’t alone; it seemed like everybody did everything. I remember our VP-Technology managing client delivery for a new initiative, and doing a damn good job at that. I remember our Operations Manager writing bizarre VBA Macros for Excel that saved hours of effort. And it seemed everybody everywhere else, too, were running an arm and a leg short of the work that was on their plates. It was synonymous with startups.It made tremendous business sense, too. First, it was easier to find (and afford) people at the median levels of overlapping skill sets than at the top 1% of their specialisations. Second, people always had a macro view of the company’s goals and everybody, more or less, aligned their personal work accordingly. Third, it had unexpected, yet, massive pay-offs for our chosen specialisations: techies wrote better code because they understood business and sales guys were more effective because they knew the real implications of that code. It wasn’t easy, but those years probably had the greatest impact in my life. It schooled my thoughts and perspectives.When people ask me what changed over the years, I give them the following analogy: a startup, back in the day, was like a goth band. It attracted the misfits, the weirdos, and those of us who just happened to stumble into the mosh pit. There was a ton of work to do and very little real money to be made. You belonged to somewhat of a cult and expected unreasonable things of yourself and your brethren. What we lacked in resources we made up for with ingenuity and perseverance. Over the years, however, the goth band got a makeover. We couldn’t have been more thrilled at that time. It seemed like the World was finally giving us our due. We didn’t have to explain to mothers, uncles and landlords, what we did for a living. We could finally afford EMIs.But, gradually, the goth kids turned cool. The makeup, now, seemed superficial and the cult constantly disowned its own — for how much wisdom can be gained from tweaking button sizes over years? The law of diminishing marginal returns applied: increasing number of new members to the cult caused the marginal product of others to be smaller than the marginal product of the previous members at this point. And that’s how we got ‘Product Manager of Paytm Experience’.But, what of the goth kids? They do lurk around. You won’t find them in conferences or hackathons or by the vending machines mooching off’ the free stuff. They’re likely in an intimate corner, head immersed in the laptop, being productive and maybe checking on Twitter once a while. If you’re ever in the position of hiring for your startup, my suggestion is for you to find and hire the goth kid. He’ll remind you why you started up in the first place. And also, he won’t ask you about your company’s pet policy.  This article was originally published  on Medium. We are republishing it here with the permission of the author",
+        "url": "/career/to-the-goth-kids/"
+      }
+      ,
+    
+      "technology-setting-up-elb-plus-nginx-with-https-offloading": {
+        "title": "Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers",
+        "author": "sivapraveen,akash",
+        "category": "technology",
+        "content": "“HTTPS everywhere” is not a luxury anymore. It is a necessity. Thankfully, obtaining an SSL certificate has become easier too, with initiatives such as Let’s Encrypt, GeoTrust, Positive SSL, StartSSL. Even cloud based services such as Cloudflare and Amazon AWS provide free SSL certificates to their customers.####Here is setting some context to help the reader appreciate the discussion:We host our rails applications on Amazon AWS. We generally use three different environments - development, staging and production. Development environment is generally local to a developer while staging and production are hosted on the cloud. There is a minor difference in the way we configure our staging and production environments. Our staging environment typically contains a single machine instance hosting our application. This single instance is exposed to internet directly (has a public IP). On the other hand, our production environment typically contains a cluster of instances for the sake of horizontal scaling. These instances typically do not have a public IP and hence not exposed to internet directly. We put this cluster behind an internet-facing Elastic Load Balancer (ELB).We use chef-solo to manage our cloud infrastructure as well as to deploy code to various environments.#####The Problem Statement:For the sake of this discussion, we shall limit ourselves to configuring SSL certificates obtained from the two free providers, namely Let’s Encrypt and Amazon AWS.Using Let’s Encrypt in a clustered setup is tricky, since you need to make one of the instances stateful, in the sense, one instance needs to be given the responsibility of obtaining and renewing SSL certificate from Let’s Encrypt. All other instances need to copy this certificate every time its renewed. This requirement unnecessarily complicates the setup and also takes away some amount of flexibility. Also, Let’s Encrypt does not issue wildcard certificates and the validity of a certificate is just 90 daysThe certificates provisioned from the other provider, Amazon AWS, can only be installed on an ELB. Hence is best suited for our clustered setup, namely production. An added advantage is that Amazon can issue wildcard certificates. We could always add an ELB to our staging environment (even though we will never have more than one instance), but that costs extra money for no reason.This leaves us with these options      Environment    Best Option        Staging    Let's Encrypt        Production    Amazon AWS  We went ahead with this choice. Using chef to manage our setup came handy.We first configured our Staging environment and everything worked as expected.However, the same application, in production environment, started throwing CSRF detected Error whenever an OAuth2 callback happened. This was really strange. Our application integrated with two different OAuth providers, and the problem was consistent with both these providers.#####What’s the issue?The only difference between our Staging and Production setups was the ELB.In production, we offloaded HTTPS at the ELB. Plain HTTP request would hit the NGINX web server, which in turn would reverse-proxy it to unicorn and rails.CSRF detected was clearly an error emitting from the rails application. Not from NGINX, and not from the ELB.A closer look would reveal that the rails application had no way to know if the callback was made on a http:// URL or a https:// URL, because it sees only HTTP (due to offloading).  Was this the reason rails was unhappy?OAuth2, by design, does not accept plain HTTP callbacks (unless it is to localhost).####How do we move forward?#####PoC to prove the theoryJust to confirm what we think is the cause, we enabled HTTPS on NGINX (like we did in our staging environment). This was in addition to HTTPS on the Load balancer. We reconfigured the Load Balancer to NOT offload HTTPS but forward the request as-is to NGINX.What do we have now? The CSRF detected errors are gone. Application behaves just like it should.This confirmed our theory.But the question now is, how do we achieve our desired configuration of offloading HTTPS at the ELB ? Is it just not possible ?The SolutionWe have been using X-Forwarded-For header while reverse proxying to unicorn so that our rails application knows the client IP address (rather than the IP address of the Load Balancer). We need this for logging and tracking.Could there be something on similar lines to tell the rails application that the request was not on HTTP but on HTTPS?Sure there is. We had to set a header in our reverse proxy configuration:X-Forwarded-Proto  to  httpsFor NGINX, we do it like this:  proxy_set_header X-Forwarded-Proto https;Voila, Rails is happy and things are back to normal!Details:Csrf detected!Rails bothers about SSL only at two places,   At environment config, force_ssl.  At external included Gem like Omniauth. In Rails environment config.  config.force_ssl = trueThis does the trick, but doesn’t seem like a good idea to enable this option in Rails because, we offload https at NGINX. For Rails, request came in http, so it does a permanent redirect to https, which ends in a infinite loop.Our stack trace gave a clue that error might be inside omniauth gem.    actionpack-4.2.7.1/lib/abstract_controller/base.rb:132 → process    actionview-4.2.7.1/lib/action_view/rendering.rb:30 → process    actionpack-4.2.7.1/lib/action_controller/metal.rb:196 → dispatch    actionpack-4.2.7.1/lib/action_controller/metal/rack_delegation.rb:13 → dispatch    actionpack-4.2.7.1/lib/action_controller/metal.rb:237 → block in action    actionpack-4.2.7.1/lib/action_dispatch/routing/route_set.rb:74 → dispatch    actionpack-4.2.7.1/lib/action_dispatch/routing/route_set.rb:43 → serve    actionpack-4.2.7.1/lib/action_dispatch/journey/router.rb:43 → block in serve    actionpack-4.2.7.1/lib/action_dispatch/journey/router.rb:30 → each    actionpack-4.2.7.1/lib/action_dispatch/journey/router.rb:30 → serve    actionpack-4.2.7.1/lib/action_dispatch/routing/route_set.rb:817 → call    omniauth-1.3.1/lib/omniauth/strategy.rb:186 → call!    omniauth-1.3.1/lib/omniauth/strategy.rb:164 → callAs we dug inside the Gem and found out that Omniauth looks at these headerslib/omniauth/strategy.rb#L493-L499def ssl?  request.env[&#39;HTTPS&#39;] == &#39;on&#39; ||  request.env[&#39;HTTP_X_FORWARDED_SSL&#39;] == &#39;on&#39; ||  request.env[&#39;HTTP_X_FORWARDED_SCHEME&#39;] == &#39;https&#39; ||  (request.env[&#39;HTTP_X_FORWARDED_PROTO&#39;] &amp;&amp; request.env[&#39;HTTP_X_FORWARDED_PROTO&#39;].split(&#39;,&#39;)[0] == &#39;https&#39;) ||  request.env[&#39;rack.url_scheme&#39;] == &#39;https&#39;endThis is where we found that setting up X_FORWARDED_PROTO to https should fix our problems.Initially, this X_FORWARDED_PROTO was set to $scheme. Which will be http for production as https is offloaded at ELB.Now, by setting X_FORWARDED_PROTO to https, we are making sure that redirects are happening on https.",
+        "url": "/technology/setting-up-elb-plus-nginx-with-https-offloading/"
+      }
+      ,
+    
+      "technology-custom-capacity-buffers-in-go": {
+        "title": "Custom Capacity Buffers In Go",
+        "author": "surendranath",
+        "category": "technology",
+        "content": "At elitmus we use ruby to create most of our tools and most of our applications  are also written in ruby. Recently I started exploring ways to build our tools especially the backend tools in languages other than ruby which have much lesser memory footprint and better efficiency. One such cases was to create a sandboxed environment for running  untrusted code on our servers. After evaluating multiple languages, I decided to use golang because of it’s excellent library support coupled with the fact the docker(a sandboxed env) was also written in go.One of the many challenges we faced while creating our sandbox was  redirection of the standard output of untrusted code, as this simple code below will fill up the disk if redirected to file or use all system resources if redirected to a buffer.1 while(true) printf(“I am the green monster”);So the problem is,how to limit the size of a file or buffer?, I  started with   buffers  as they are more easy to implement.  I assumed that the Write method of the Buffer struct which writes to the buffer, will panic with ErrTooLarge error if buffer size is above it’s capacity, which i hoped to catch using recover builtin function.This is the code snippet below. 1    defer func() { 2       if r := recover(); r != nil { 3          fmt.Println(&quot;Should catch if anyone panics&quot;) 4       } 5    }() 6   a := bytes.NewBuffer(make([]byte, 0, 2)) 7   for { 8     _,err := a.Write([]byte(&quot;create boom&quot;)) 9     if err != nil {10       fmt.Println(err.Error())11        return12     }13 14   }On running this code, my system was frozen and crashed a little later. This is not what i expected, On further investigation by looking to source code and reading the bytes package documentation again, i found out that Write method in the bytes package is growing the capacity of the  buffer if the buffer capacity is not enough, which in turn is increasing the amount of memory and resources used by the system.After some googling and with good help from the go community(thanks to dave cheney), i decided  to create wrapper around the buffer struct and implement my own io.Writer interface by implementing Write method for the wrapper which writes to the buffer.My custom wrapper’s will take capacity as parameter when initializing and the Write method will do the required action if there is a buffer overflow, instead of increasing the capacity like the Write method from bytes package. This is done by monitoring the size of the buffer before writing to the buffer.This is code snippet of my custom wrapper. 1 type MyBuffer struct { 2     cap   int 3     mybuf *bytes.Buffer 4 } 5  6 func (b *MyBuffer) Write(p []byte) (n int, err error) { 7     if len(p)+b.mybuf.Len() &gt; b.cap { 8         fmt.Printf(b.mybuf.String()) 9         panic(&quot;Buffer Overflow&quot;)10     } else {11         b.mybuf.Write(p)12     }13     return len(p), nil14 }15 16 func NewBuffer(buf []byte, cap int) *MyBuffer {17     return &amp;MyBuffer{mybuf: bytes.NewBuffer(buf), cap: cap}18 }19 20 func main() {21 22     defer func() {23         if r := recover(); r != nil {24             fmt.Println(&quot;recover in yes&quot;)25         }26     }()27 28     a := NewBuffer(make([]byte, 0, 100), 200)29     for {30         _, err := a.Write([]byte(&quot;Check for Buffer Overflow&quot;))31         if err != nil {32             fmt.Println(err.Error())33             return34         }35     }36 }On running this code, it worked as expected, hopefully will be deployed in production.The same goes for files as well.Note: useful links, on docker,on golang bytes package",
+        "url": "/technology/custom-capacity-buffers-in-go/"
+      }
+      ,
+    
+      "technology-making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite": {
+        "title": "Making Airtel 3G dongle work on Mac OS 10.10 Yosemite",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "If you use Airtel 3G Dongle (Mine is Huawei E173) on your Mac, and are having issue using the dongel after upgrading to Yosemite, airtel is of little help. They asked me to downgrade the OS to Mavericks!The reason why the dialer software provided by airtel does not work is, that they internally use Apple USB Modem. According to this FAQ on apple support site, your Operating system should be running in 32 bit mode for the modem to work. Yosemite however, is 64 bit.Anyway, I could find multiple ways to overcome the problem. Here I am writing about the most simple one###Step 1: Click on this link to download the new compitable driver from Huawei website Mac-V200R003B015D11SP00C983(for Mac10.10).rar###Step 2: Open the archive, you will find two files1. Mobile Partner install user guide.docx2. Mobile Partner.zipThe word document has detailed instructions with screenshots, on how to install.###Step 3: Open the zip file Mobile Partner.zip, you will find Mobile Partner.app. Double click on this file to install the app###Step 4: Once installed, start the app and go to Tools -&gt; Options###Step 5: In the Options window, choose “Profile Management” from the left side menu###Step 6: Click on “New” button to create a new profile. Give it a name, such as “airtel 3g”. Also, make sure the “Access Number” is set to *99#. Click “Save”, then “Ok”.###Step 7: Insert your Dongel into an USB port. You should see “Mobile Partner” application starting automatically. Choose the profile you created in Step 6 (“airtel 3g”) and “Connect”.That’s it.",
+        "url": "/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite/"
+      }
+      ,
+    
+      "career-it-career-pitfalls-to-avoid": {
+        "title": "IT Career - Pitfalls to avoid",
+        "author": "aseem",
+        "category": "career",
+        "content": "It is very humbling when a youngster walks up to us and says “Thanks for helping me get my first job”. While we are delighted at one end, we are worried at the other.  Why? Because, most of the time a fledgling mind does not see the disaster ahead! Yes, we mean disaster – 75% of IT professionals of 2011-2014 batches will be unemployed 20 years from now.  And this is assuming IT industry does well !! Looks unlikely? Read on to know more.Indian IT industry has employed around 7,50,000 professionals from the four batches (2011, 2012, 2013, 2014). An estimated 1,50,000 of these will leave the Indian IT industry to pursue higher studies and never come back to work for the same industry. That leaves us with 6,00,000 professionals who will be in the industry for long. The question is: How long? Being highly paid with around 20 years of experience, in the year 2030, companies would want them to take larger responsibilities and oversee at least 100 professionals under them. Summing it up, these 6 lakh professionals should have 6 crore professionals below them. Assuming IT industry grows at 10% per annum for 20 years (caution - it may already be slowing down), the whole industry will be just 1.2 crore strong. That means at most 1.2 lakh senior professionals will be needed. What would happen to the rest 4.8 lakh professionals? They would, of course, be unemployed.Difficult to digest? In 1995, there were approximately 11,000 software professionals across all levels. Nearly 50% of them are now citizens of another country or earned enough money from the exponentially growing market (nascent market then) growing market to retire, appropriately called VIP (vested in peace). Another at most 15,500 professionals of the same era migrated into IT industry from other industries (like SAP consultants, Supply Chain, Financial professionals). So that is a conservative 21,000 senior professionals in the whole of Indian IT industry. Many of these who lose a job today struggle to find another suitable profile (20 Yrs of experience) and this is when growth rates in this period have been over 25%. You can see it happening for the current 40+ year old professionals!!Now you have a lingering doubt – could there be something wrong in the projections? Yes !! But it is unfortunately on the negative side. What if the industry grows slower than 10% (may be another bad patch of no growth for 2-4 years). What if automation makes many more jobs redundant (now in IT itself, think about it!)? Last but not the least, another country taking away jobs from India (like China did in manufacturing)?A tell-a-tale from not very long ago is the textile mills of Bombay. They were teeming with activity and nothing could go wrong for them in 1970s and early 1980s. It could only get better as population was growing and people’s ability to spend was increasing. These very mills today are malls!! It can be argued to be a ‘crowding out’ phenomenon, surely not applicable to sunrise IT industry. Or maybe it is visible only in hindsight !!!What are we doing at eLitmus to help the cause?      We are pushing companies not to lower the entry barriers. We have found that immediately after a slow down year, quality and quantity of candidates improve. Quantity ok, but how quality? You call it competition, you call it lowered demand or call it buyers market. So if companies can adopt the quality principals in this period, why not in growth phase as well. It will help students also.We strongly believe a youngster`s ability to adapt and evolve is much higher than an older person. So push them today rather than tomorrow. If you remember your grandparents had the fitness and ability to walk kilometres at their old age (not spoilt by automobiles when they were a child)        Educating students that the easy path out, though rosy for short term, will destroy them. We want them to go that extra mile. That explains our rigorous question paper which tests fundamentals and concepts. We want them to earn their job rather than get it. In the process their ability goes up. Few students who wrote pH test in the initial years of eLitmus have founded their own start-ups.        Ensuring start-ups and companies with great work environment do not struggle for lack of talent. Most of these engagements are loss making. We survive thanks to the fact that most of our colleagues at eLitmus are passionate about what they do and work at a fraction of their market salary!!  We are committed to “making India competitive” and we hope we have challenged the young reader of this blog to go the extra mile. As Steve Jobs once quoted the Whole Earth catalogue “Stay hungry, Stay foolish!”",
+        "url": "/career/it-career-pitfalls-to-avoid/"
+      }
+      ,
+    
+      "technology-how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url": {
+        "title": "How we host our blog on GitHub pages and yet serve it from our own Sub-URL",
+        "author": "mohitnegi",
+        "category": "technology",
+        "content": "There are umpteen number of blog posts telling you how to host your static site on GitHub Pages for free. They also tell you how to serve such a site from your own domain name.As you may have guessed, this blog is also hosted on GH Pages. Don’t believe me? try visiting this URL https://shireeshj.github.io/blog/It is easy to map a github.io url such as this, to a subdomain. For example, it is easy to map the url to https://blog.elitmus.com/blog/.  All you need to do is check-in a file named CNAME into the root folder of your git repo that contains your static site.What if you want your static site to be served from domain apex? That is easy too.  GitHub pages help explains this in a simple manner.However, If your domain apex is already taken, say by your other website, you have a problem.  To host your static site on a domain apex (or a sub-url of domain apex) the domain apex should be available exclusively for use by github pages.We had to overcome this very problem, since our business website is already hosted on elitmus.com (and www.elitmus.com).  Given that we are not in great love with subdomains. We had to find a workaround. And here is what we did:Since we use nginx to server our business website, all we had to do was to write a simple traffic-cop rule. What this rule did was, to parse the request url to see if it starts with /blog/. If yes, then the request is reverse proxied to GitHub Pages. If no, then it is served from local disk.The relevant lines from the config file are here\tlocation /blog/ {\t    proxy_pass       http://shireeshj.github.io/;\t    proxy_redirect off;\t    proxy_set_header Host &lt;shireeshj.github.io&gt;;\t    proxy_set_header X-Host &lt;shireeshj.github.io&gt;;;\t    proxy_set_header X-Real-IP $remote_addr;\t    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\t  }This is how we get free hosting for our blog, yet serve it from our official URL. If GitHub pages ever stops us from reverse proxying, we shall simply spin our own webserver to run this static site and reverse proxy to that web server.",
+        "url": "/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url/"
+      }
+      ,
+    
+      "technology-using-monit-to-get-email-alert-on-unauthorized-login": {
+        "title": "Using Monit to get email alert on unauthorized login",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "For a long time, we had our own custom written perl script to alert us whenever someone logged into our production servers from an ip address we do not recognize (not whitelisted). The script looked somewhat like this…#!/usr/bin/perl# script file: alert_on_login.pl#my $login_str = &quot;Accepted publickey&quot;;my $whitelist_ip = &quot;122.123.123.111&quot;;sub sendEmail{        my ($to, $from, $subject, $message) = @_;        my $sendmail = &#39;/usr/lib/sendmail&#39;;        open(MAIL, &quot;|$sendmail -oi -t&quot;);        print MAIL &quot;From: $from\\n&quot;;        print MAIL &quot;To: $to\\n&quot;;        print MAIL &quot;Subject: $subject\\n\\n&quot;;        print MAIL &quot;$message\\n&quot;;        close(MAIL);}while (&lt;&gt;) {        if (grep(/$login_str/, $_) &amp;&amp; !grep(/$whitelist_ip/, $_)) {                print $_;                chomp $_;                @arr = split(&#39; &#39;, $_);                sendEmail(&#39;recepient1@elitmus.com, recepient2@elitmus.com&#39;,                          &#39;monit@elitmus.com&#39;,                          &#39;Server login from &#39; . $arr[10],                          $_);        }}All we needed to do was to run this script in the background as a daemon, and it would send us an email alert whenever someone logged in successfully. As root user start the script like this:  # (perl alert_on_login.pl /var/log/auth.log &amp;)Ever since we started using monit for the usual purpose (monitoring processes), we have also entrusted monit to do the job of the above perl script. Monit makes this super simple…Monit is a popular opensource process monitoring tool. It is used mostly for monitoring health of any linux process and take necessary action if any of the set parameters are breached. Monit can restart a process if the process failed for some reason. Monit can also notify you of incidents and actions taken.See this to learn more about monit’s alert capabilities.Monit’s global configuration file is usually /etc/monit/monitrc. Here is what monit needs to be told about how to send email alerts:...# This is our SMTP server settings. The complete syntax is# SET MAILSERVER &lt;hostname [PORT] [USERNAME] [PASSWORD] [using SSLAUTO|SSLV2|SSLV3|TLSV11|TLSV12] [CERTMD5 checksum]&gt;, ...#          [with TIMEOUT X SECONDS]#          [using HOSTNAME hostname]## But for our purpose, localhost is good enoughSET mailserver localhost# This is the email template for alert messagesSET mail-format {  from: monit@elitmus.com  subject: $SERVICE $EVENT at $DATE  message: Monit $ACTION $SERVICE at $DATE on $HOST: $DESCRIPTION.           Yours sincerely,           monit}# Alerts can be triggered for various reasons. Successful ssh login is just one of those reasons.# Since this is a global configuration, we can tell monit to not send alerts for certain events#  We also specify the email address of the recepient who will receive the alertsset alert recepient1@elitmus.com NOT ON { action, instance, pid, ppid, nonexist }...And then we add this config file ssh_logins.conf specific to sshd related stuff:check file ssh_logins with path /var/log/auth.log  ignore match &quot;/etc/monit/whitelist_ips.regex&quot;  if match &quot;Accepted publickey&quot; then alertNotice how we tell monit to ignore logins from known ip addresses. We can now store all whitelist ip addresses in a separate file /etc/monit/whitelist_ips.regex, one address per line.Note: We have disabled password based login and hence do not monitor for passworded logins. If you use passworded login, you should change \"Accepted publickey\" to \"Accepted password\"Happy monitoring!",
+        "url": "/technology/using-monit-to-get-email-alert-on-unauthorized-login/"
+      }
+      ,
+    
+      "technology-gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby": {
+        "title": "Gotcha's while syntactically translating AES encryption logic from PHP to Ruby",
+        "author": "surendranath",
+        "category": "technology",
+        "content": "Our Payment Gateway service provider recently launched a new platform with some nice-to-have features. We wanted those features and so we decided to migrate. Being one of the earliest adopters of the new platform, there was no integration kit available. We had to build it ourselves. Not a problem. Since we are a Ruby On Rails shop, we built our own Ruby integration kit. All went well and we pushed it to production.A month or two later, we got an email from our gateway provider seeking our help with writing the encryption and decryption logic for the Ruby integration kit they were developing. We were a little surprised, because we noticed they had already published integration kits for PHP, Python, JAVA etc. How difficult can it be to translate that to Ruby?Turns out, syntactic transalation of code from one programming language to another does not always work. A slightly more deeper knowledge helps. We could almost guess where they were getting stuck.Before we get to the story, some backgroung on the encryption algo will add clarity.For secure communication between our server and the gateway, the prescribed cipher was AES, specifically symmetric-key block cipher with a 128 bit secret key in CBC mode. Since OpenSSL already implements this algo and is avaliable on almost all platforms, most programming languages just bundle a wrapper for OpenSSL.So if its the same OpenSSL that the wrappers call, why couldn’t the gateway service provider translate their own PHP code to Ruby?Here is why:AES works by breaking the plain text (the text to be encrypted) into blocks of 128 bits (or 16 bytes). In CBC mode, each block is XORed with the key to get cipher text of that block. The cipher text of the previous block is used for encrypting the next block… so on and so forth, until all the blocks are encrypted.Note that the length of the cipher text will be exactly same as that of the plain text.The problem occures with the last block. If the length of the plain text is not a multiple of 128. the last block will be shorter than 128 bits. Since the algo can work only on blocks of 128 bits, It is a common practice to pad the last block so that it becomes equal to 128 bits in lenght. This padding is subsequently discarded after decryption.Note: The actual algo is more complicated than this. We have deliberately left out details that are not relevent for this post.This is the encryption method in the PHP integration kit published by the gateway service provider 1 function encrypt($plainText,$key) 2 { 3   $secretKey = hextobin(md5($key)); 4   $initVector = &quot;...&quot;; 5   $openMode = mcrypt_module_open(MCRYPT_RIJNDAEL_128, &#39;&#39;,&#39;cbc&#39;, &#39;&#39;); 6   $blockSize = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, &#39;cbc&#39;); 7  8   $plainPad = pkcs5_pad($plainText, $blockSize);  //  &lt;---- Padding 9 10   if (mcrypt_generic_init($openMode, $secretKey, $initVector) != -1) 11   {12     $encryptedText = mcrypt_generic($openMode, $plainPad);13     mcrypt_generic_deinit($openMode);      14   } 15   return bin2hex($encryptedText);16 }17 18 // Padding method19 function pkcs5_pad ($plainText, $blockSize)20 {21   // padding logic here22 }And here is the same implemented in Ruby1 def self.encrypt(plain_text, key)2     secret_key     = Digest::MD5.digest(key)3     cipher         = OpenSSL::Cipher::AES.new(128, :CBC)4     cipher.encrypt5     cipher.key     = secret_key6     cipher.iv      = INIT_VECTOR7     encrypted_text = cipher.update(plain_text) + cipher.final8     return (encrypted_text.unpack(&quot;H*&quot;)).first9 endNotice any difference?It turns out that, unlike in Python, PHP and few other languages, Ruby wrapper for OpenSSL automatically takes care of padding (default behaviour). This is clearly mentioned in the documentation. For some reason, techies at our gateway service provider overlooked this and hit a dead-end.By the they, they were gracious enough to acknowledge our contribution in their Ruby Integration Kit (accessible only to their subscribers)But We have open sourced our code here ‘cca_crypto’. We have plans of make this into a complete package - with view generators etc., and publish this as a rubygem. We shall gladly accept any pull request!",
+        "url": "/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby/"
+      }
+      ,
+    
+      "technology-setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server": {
+        "title": "Setting Up Amazon RDS as a Slave to a self-managed MySQL server",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "Last week, we migrated our MySQL database server, which was running on an EC2 instance, to RDS. We hoped the migration process would be smooth.As always, migrating a large database has its challenges. Business folks expect the minimum possible downtime.The plan was simple.  Launch an RDS instance  Load a full dump into it  Configure it to act as a slave of the self-managed server (current master)  On the D-day, pull the website down and promote the RDS instance to take over as the new masterWe soon discovered that RDS comes with curtailed root permissions. There are several commands that are disallowed. Some of these include “CHANGE MASTER TO….”What do we do now?One option was to carry out the migration in one go, while the website was offline. This meant the downtime would have been several hours, instead of minutes. Obviously, not an acceptable option at all.Some R&amp;D was all it took to discover how to proceed with the original approach.RDS comes with a bunch of stored procedures, which help you configure it as a slave. There is almost a one-to-one mapping of these stored procedures with the commands that are disallowed.MySQL CommandCorrosponding Stored ProcCHANGE MASTER TOmysql.rds_set_external_masterSTART SLAVEmysql.rds_start_replicationSTOP SLAVEmysql.rds_stop_replicationRESET MASTERmysql.rds_reset_external_master So, Using these stored procedures, you can now configure your RDS instance as a slave to your self-managed MySQL serverAfter loading a full dump to RDS, Call the stored procedure mysql.rds_set_external_master like thisCALL mysql.rds_set_external_master ('servername', port, 'user', 'password', 'binlog-file', binlog-offset, 0);ThenCALL mysql.rds_start_replication;This will make RDS a slave of your self managed mysql server. You can run “SHOW SLAVE STATUS” to see its working.When it is time to promote RDS to master. You call these stored proceduresCALL mysql.rds_stop_replication;CALL mysql.rds_reset_external_master;That’s it. Now point your applications to the RDS instance and take your site live.Note:For your RDS to work as a slave, it needs permissions to connect to port 3306 of your current master. Make sure you open this port for the RDS instance.You can run the following command to find out the ip address of your rds instanceping -c rdsname.cpesx66wwe7y.ap-southeast-1.rds.amazonaws.com",
+        "url": "/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server/"
+      }
+      ,
+    
+      "technology-beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on": {
+        "title": "Beware of creating $HOME/.ssh folder by hand, when SELinux is turned on",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "I was experimenting with chef to manage our Linux boxes. As a standard practice, our application user deployer is homed in /applications/deployer rather than the usual /home/deployer.To enable password less login, I appended my public key to ~/.ssh/authorized_keys ssh-copy-id -i ~/.ssh/id_rsa deployer@remote.serverThe first time I run this command, I will be prompted for a password to install my key. After this, I can run the below command to login without a password:ssh -i ~/.ssh/id_rsa deployer@remote.serverHowever, that did not work as expected.For some reason, sshd was unable to read the authorized_keys file. I checked all the usual things.. all looked fine. Everything seem to work just fine when SELinux was running in permissive mode on the remote server, but not when it was in enforcing mode.Discovered that if .ssh folder was created by hand (or even the folder containing .ssh folder), we need to do few additional things.Step 1:Open this file /etc/selinux/targeted/contexts/files/file_contexts.homedirs and append the following line to the bottom /applications/deployer/[^/]*/\\.ssh(/.*)?     system_u:object_r:ssh_home_t:s0Note: remember to adjust the path as per your needs.Step 2: run the following commandrestorecon -R -v /applications/deployer/.sshAgain, remember to adjust the path as per your needs.Now you are all set! ssh -i ~/.ssh/id_rsa deployer@remote.servershould log you in without asking for a password!",
+        "url": "/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on/"
+      }
+      ,
+    
+      "technology-importance-of-date-field-in-an-emails-header": {
+        "title": "Importance of Date field in an email's Header",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "So far, we paid little attention to email delivery issues. We knew delivering to rediffmail is a pain. So we discouraged our users from using rediffmail. Apart from that we had FCrDNS and SPF configured and working fine. We had also configured DKIM. And then a month ago, we also added DMARC in monitor mode.We were happy! Until…Recently, we started getting loads of phishing emails from what appeared to originate from our own domain name [not our servers].It told us two things.  eLitmus.com was growing in popularity  We cannot ignore email delivery issue any longerWe ran our email through Spam Assassin checks and were surprised to see that we got a score of 6. Anything above 5 is BAD. It’s a straight spam! But we knew we were not spamming. These were transactional emails triggered by our website on certain events, such as New registration, or Forgot Password.It was almost by accident, we noticed that the timezone in the Date header of the email was appearing as +0580. Indian Standard Time (IST) is 5 hours and 30 minutes ahead of UTC. So this value should have been +0530, not +0580. Apparently, that is good enough reason for Spam Assassin to treat our mails as spam.Tracing backwards, we discovered a bug in our application code and fixed it. It was a single line fix.With this change, Spam Assassin was happy to give us a score of zero.That is just one part of one header. There are ten others which have to be configured correctly.Here is an article with good insights in to how gmail calculates sender reputation. Its a little dated, but still relevent. Sender reputation in a large webmail service (PDF)By the way, here is a nice and free JSon API to check your email’s reputation.",
+        "url": "/technology/importance-of-date-field-in-an-emails-header/"
+      }
+      
+    
+  };
+*/
+  window.store = {
+    
+      "career-how-tough-is-it-to-score-well-in-board-exams": {
+        "title": "How Tough is it to Score Well in Board Exams?",
+        "author": "arijit",
+        "category": "career",
+        "content": "<p><em>I completed my entire schooling (Classes I through XII) at one of Kolkata’s favoured catholic schools. In those days, discipline and academic excellence were the primary parameters that mattered and my school checked both these boxes rather well.</em>
+<!--more--></p>
+
+<p>Trouble started brewing once I graduated to Class XI and started thinking about higher education, specifically opportunities at the national level. That’s when I truly realized the impact of the education board. In my case, the impact was limited to a couple of aspects, viz. a) subjects / topics not covered in the Bengal board syllabus, and b) the frugality in awarding marks.</p>
+
+<p>Fortunately, some extra tuitions covered up for the former, while the latter did not come into play at all in any of the options I signed up for, or in the higher education option I finally opted for.</p>
+
+<p>Times have changed….</p>
+
+<p>For a few years, till 2016, 40% weightage was accorded to an applicant’s Class XII board marks in calculating her All India Rank in the JEE (entrance tests for admission to India’s flagship IITs, and a few other engineering schools) exams. However, since 2017, the rules were changed to treat the Class XII marks as a qualifying criterion: a minimum of 75% marks, or a rank in the top 20th percentile in the board.</p>
+
+<p>The 75% cut-off may appear inconsequential to folks intimately familiar with the CBSE or ISCE boards, but not all students find it amusing. The JEE implementation committee publishes the 80th percentile cut-off marks for every higher secondary educational board in the country to level the playing field. Finally, we have access to data that clearly shows the disparity in awarding marks across boards in India.</p>
+
+<p>According to data for the 2016 Class XII exams, the 5 most liberal boards are (percentages indicate the 80th percentile cut-off score):</p>
+<ol>
+  <li>Telengana Board of Secondary Education (95%)</li>
+  <li>Andhra Pradesh Board of Intermediate Education (94%)</li>
+  <li>Council for the Indian School Certificate Examinations (88.6%)</li>
+  <li>Banasthali Vidyapeeth, Rajasthan (87.4%)</li>
+  <li>Tamil Nadu Board of Higher Secondary Education (87.2)</li>
+</ol>
+
+<p>While the 4 most frugal boards are:</p>
+<ol>
+  <li>Tripura Board of Secondary Education (59.8%)</li>
+  <li>Jharkhand Academic Council (60.6%)</li>
+  <li>Meghalaya Board of Secondary Education (61.6%)</li>
+  <li>Odisha Council of Higher Secondary Education (62%)</li>
+  <li>Bihar Intermediate Education Council (63%)</li>
+</ol>
+
+<p>What this essentially means is that a student scoring 95% in the Telengana board exams is academically comparable to a student scoring 60.6% in the Jharkhand board exams, despite a whopping 34.6% gap is scores!</p>
+
+<p>The data clearly shows how a single mark-based cut-off or a mark-based weightage criterion can result in gross injustice to students from boards that are frugal in awarding marks! Thankfully, the JEE implementation committee, in its infinite wisdom, has taken steps to normalize this inherent disparity.</p>
+
+<p>Time will tell whether the practice of allotting an explicit or implicit weightage to board exam performance will become the norm, not only in JEE but in other national level entrance tests as well. But for now, this is definitely something for parents to consider while looking for a school for their children.</p>
+
+<p>But what about employment? It is common practice among potential employers to set mark-based cut-offs for board exams (while hiring entry-level talent), among others. And in almost all cases, the cut-off is a single number applicable across the board (pun intended!).</p>
+
+<p>Let’s say company X sets a Class XII marks cut-off at 75%. Referring to the 10 boards listed above, company X will end up considering a population far larger than the top quintile from to 5 most generous states, and a population far smaller than the top quintile in the 5 most frugal states. The playing field is not so level anymore…..</p>
+",
+        "url": "/career/how-tough-is-it-to-score-well-in-board-exams/"
+      }
+      ,
+    
+      "career-its-the-attitude-stupid": {
+        "title": "It's the Attitude, Stupid!",
+        "author": "arijit",
+        "category": "career",
+        "content": "<p><em>Congratulations on your first job! So you cleared the selection process; cracked some tests maybe, shone through a group discussion possibly, and impressed and charmed your way through the interviews. Well done!</em>
+<!--more--></p>
+
+<p>You’ve been assessed and found suitable for the job on offer. No more evaluations, no more assessments. Right?</p>
+
+<p>Wrong! Let’s get one thing straight. This is just the beginning of your evaluation. What you’ve achieved (and by no means is it trivial) is to convince your future employer that you have potential. However, from day one in your first job, you will be continuously assessed on what you deliver.</p>
+
+<p>For whatever it’s worth, taking the liberty to share a cheat sheet that may help in ensuring that promise does translate to delivery in the first couple of years in your career. And be warned that it’s all in the attitude…</p>
+
+<p><u>Cheat 1</u><br />
+Sumadhur was undoubtedly brilliant. Armed with a degree from India’s best engineering school, he was given complex tasks in line with his academic record and promise.</p>
+
+<p>However, very soon, his manager realised that he was not able to complete most of his tasks. The manager tried to find probable reasons behind such repeated failures. Soon, he realised that Sumadhur was not open to data, insights or feedback that conflicted with his own assumptions and beliefs.</p>
+
+<p>Tell yourself at least once each day: “I do not know anything. I am here to learn and apply.”</p>
+
+<p><u>Cheat 2</u><br />
+Abhinav had completed just 6 months in his first job, but had been upset for a while. His friends earned twice as much as him, despite working fewer hours than he did. They seemed to be having a rollicking time! Abhinav started looking around and got a 50% higher offer. He took the offer up with glee. Not only was the pay better, but the work was less demanding and had relaxed deadlines. Life could not be better…</p>
+
+<p>Two years down the line, Abhinav started looking for yet another change, and yet another quantum leap in compensation. However, he found, to his dismay, that he was way out of depth and no company was willing to make him an offer.</p>
+
+<p>Convince yourself that reward follows performance, and not the other way around.</p>
+
+<p><u>Cheat 3</u><br />
+Kanu was very sharp. However, four years of hostel life had turned his biological clock upside down. When he did make it to office during normal working hours, he excelled in his tasks. Unfortunately, on most days, he simply could not.</p>
+
+<p>Within six months, he was asked to leave.</p>
+
+<p>Change your college habits to the extent required, so as to ensure that you are available (and awake!) when your work and / or team needs you to be.</p>
+
+<p><u>Cheat 4</u><br />
+Manish was a star in college. He excelled in academics and was popular among students as well. Out of sheer habit, he continued behaving in a brash manner with his peers in the workplace.</p>
+
+<p>He was counselled by his manager, but was unable to mend his ways in time and was asked to leave.</p>
+
+<p>Accept the fact that you need to interact with people across age groups and cultures. You are not expected to like or respect one and all (after all, respect is earned!). However, you are expected to treat one and all with respect.</p>
+
+",
+        "url": "/career/its-the-attitude-stupid/"
+      }
+      ,
+    
+      "the-20other-20side-fishing-in-troubled-waters": {
+        "title": "Fishing in Troubled Waters",
+        "author": "arijit",
+        "category": "the other side",
+        "content": "<p><em>Back in my final year in college, I applied for a job at an FMCG major hiring for Techno-managerial roles. I cleared the eligibility criteria and the group discussion. The short and not-so-sweet interview went something like this:</em>
+<!--more--></p>
+
+<p>Q: Did you apply to any core companies?</p>
+
+<p>A: Yes, I applied to X and Y.</p>
+
+<p>Q: What happened?</p>
+
+<p>A: I did not clear the written test.</p>
+
+<p>Q: What were the tests about?</p>
+
+<p>A: They were technical tests.</p>
+
+<p>Q: Why do you think you did not clear?</p>
+
+<p>A: Majority of questions were from courses taught in my second year. Since I had not brushed up on concepts, I could not answer many questions.</p>
+
+<p>Q: We expect our hires to know their domain. We cannot train them. It’s clear that you do not know your domain. Thank you for your time.</p>
+
+<p>A: (Thinking)… wow what just happened???</p>
+
+<p>I was asked the same set questions in a subsequent interview and, needless to say, I did not repeat all my answers (though I did not lie). The irony of it all is that, not only was I made an offer, I accepted the offer, spent 8 years in that organization and did fairly well in a core technical role!</p>
+
+<p>Since I moved over to the other side, I have kept revisiting to my own experience in that FMCG interview. My key takeaways are:</p>
+
+<ol>
+  <li>
+    <p>Aptitude or natural ability matters orders more than knowledge in a particular domain, especially in entry level roles.</p>
+  </li>
+  <li>
+    <p>In today’s dynamic landscape, it is almost guaranteed that specific skills will become obsolete with time. Therefore, the relevance of employees will persist only if they have the ability to learn new skills. Once again, natural ability and mindset will come to the fore.</p>
+  </li>
+  <li>
+    <p>There was no Google in those days. Nor had anyone imagined Facebook, LinkedIn or Twitter. Today, any half-serious candidate can dig up a bunch of information on a company’s recruitment process, right down to the kind of questions asked in tests and interviews, in no time whatsoever. Generic questions will lead to rehearsed “correct” answers, which have no correlation with the actual aptitude, mindset, skill or aspirations of the candidate.</p>
+  </li>
+</ol>
+
+<p>I find it amusing that many organizations still follow the same two-decade old formulae to hire people. To be sure, it may very well work for certain organizations. However, it is worth taking a dispassionate look at whether your process indeed works like you expect it to. Are you convinced that you are not ending up hiring the “wrong” folks, or worse, missing out on the “right” ones?</p>
+",
+        "url": "/the%20other%20side/fishing-in-troubled-waters/"
+      }
+      ,
+    
+      "the-20other-20side-hiring-may-be-rocket-science-but-its-tenets-are-basic": {
+        "title": "Hiring may be Rocket Science, but its Tenets are Basic",
+        "author": "arijit",
+        "category": "the other side",
+        "content": "<p><em>Hiring is as old as employment itself. We are talking about a time period of a few thousand years – not a fact to be trifled with. The methods, tools and approaches may have changed and evolved with time, but I believe that it’s safe to say that the underlying principles would not have changed much.</em>
+<!--more--></p>
+
+<p>Recall instances where you were evaluating a potential candidate - and it does not matter whether you were looking for someone to help out at home, or someone to drive your vehicle, or someone to join your team at work. Consciously or subconsciously you would be ticking checkboxes against these basic principles… Not convinced? Okay, allow me to lay them out for you – I’ll stick my neck out on this one.</p>
+
+<p><strong>Tenet 1</strong></p>
+
+<p>Notwithstanding his ability with the bat, fitness levels and mental strength, would MS Dhoni have been successful as an opener in Test Cricket? Most likely not!</p>
+
+<p><u>What are you assessing?</u><br />
+Does she have an aptitude for this job? In other words, does she have a natural ability to perform this job?</p>
+
+<p><strong>Tenet 2</strong></p>
+
+<p>An ex-colleague of mine, a product of India’s best t-school, was undoubtedly brilliant. However, he consistently failed to meet his goals. Reason: either lost interest in the last mile, or buckled under deadline pressures. Sounds familiar?</p>
+
+<p><u>What are you assessing?</u><br />
+Does she have the right mindset? How often have we seen – and heart wrenchingly so – that aptitude alone cannot and does not guarantee success on the job?</p>
+
+<p><strong>Tenet 3</strong></p>
+
+<p>Ever wondered why a majority of software developers are engineers?</p>
+
+<p><u>What are you assessing?</u><br />
+Does she have the necessary skills? Skills could be knowledge, experience or even academic qualification? Even if you have a top class training facility at your disposal, your fresh hires will need a minimum set of pre-existing skills that are critical to succeed.</p>
+
+<p><strong>Tenet 4</strong></p>
+
+<p>A high performing and reliable colleague decided to put in his papers because he wanted to migrate to the US.</p>
+
+<p><u>What are you assessing?</u><br />
+Do her aspirations align with what you can offer her? And this is not just about compensation and benefits. But more importantly, a match between career aspirations and available growth paths in your organization.</p>
+
+<p>Would love to hear your views, especially if you disagree or have a contrarian opinion. Keep them coming…</p>
+",
+        "url": "/the%20other%20side/hiring-may-be-rocket-science-but-its-tenets-are-basic/"
+      }
+      ,
+    
+      "career-money-get-away-get-a-good-job-with-more-pay": {
+        "title": "Money, get away, Get a good job with more pay and you're OK?",
+        "author": "arijit",
+        "category": "career",
+        "content": "<p><em>Many commentators, most of them far wiser than me, have coined brilliant terms to refer to the generation gap that exists in the Indian demographic today. Since the workplace is but a small subset of the overall demographic, this generation gap is equally alive and kicking there as well.</em>
+<!--more--></p>
+
+<p>In my humble view, the workforce in any organization can be divided into two generations:</p>
+<ol>
+<li>Those who completed schooling before the turn of the millennium, and</li>
+<li>Those who did so in the present century</li>
+</ol>
+
+<p>I’d like to see the former as the RKM (Roti Kapda Makaan) generation, whereas the latter is more of the YOLO/FOMO (You Only Live Once/Fear Of Missing Out) kind. I neither desire, nor possess the ability, to perform a cost-benefit analysis of either approach towards personal finance. However, running the risk of generalization, this is probably how each generation judges the other:</p>
+
+<p>RKM (judging YOLO/FOMO): Where are your savings? How can you blow up your entire salary within the first fortnight? Let me show you how to manage your finances.</p>
+
+<p>YOLO+FOMO (judging RKM): Papa don’t preach! Get a life!</p>
+
+<p>Irrespective of whether money is funny or not for you or whether you desire to write a suicide note on a hundred-dollar bill, you cannot escape the thrill (or chill) of earning your first few pay-checks! And this is arguably one of the primary transformations you’ll experience as you transition from being a student to a professional in your chosen place of work. But as Uncle Ben advised Peter Parker (aka Spiderman), with great power comes great responsibility…</p>
+
+<p>What’s fantastic is, that the power is yours to wield and whether you want to do so responsibly or not, is entirely your choice!</p>
+
+",
+        "url": "/career/money-get-away-get-a-good-job-with-more-pay/"
+      }
+      ,
+    
+      "career-to-the-goth-kids": {
+        "title": "To the Goth Kids",
+        "author": "cariappa",
+        "category": "career",
+        "content": "<p><br /></p>
+
+<p><em>It seems like only recently, startups would hire folks to do just about everything, all at once, and then somehow, we’ve arrived at a ‘Product Manager of Paytm Experience’. How tunnel vision syndrome is eroding the startup spirit.</em>
+<!--more--></p>
+
+<p>Recently, a startup valued at around half a billion dollars laid off 10 of its Product Managers, leaving them with another 30. Just last year, the same startup hired Product guys at 20–30% premium from the market at average CTCs well over ₹20L. Even more intriguing, some of these guys were techie turned MBAs with less than four years’ experience. Having always been on the sales side of things, where one had to justify a minimum of 4x one’s salary to the company, I was fascinated by this lot. <strong>What did they do that was worth that much money?</strong></p>
+
+<p>One product guy I spoke to said he managed Paytm experience; which meant he had to ensure there were no drop-offs when the user chose to pay through Paytm. He also said he was mandated to prioritise payment through Paytm. And there were similar folks for each of the other alternate payment processes. “But, is Paytm the most competitive payment solution?”, I asked. He didn’t care, really. <strong>All that mattered was ‘mukesh23’ got through paying on the platform </strong>without, gods forbid, choosing to click on the refresh button. Even better if he came through one of the exclusive Paytm promotions that he had brokered with his counterpart from the other side.</p>
+
+<p>Evidently, the metric for success — # completed transactions, is not entirely off-base. A good product guy could save the company millions, potentially. But, on closer observation it seems as though<strong> his chutzpah might also cost the company millions</strong>, if not more. In the above case, there are several problems with how the roles are structured. What if Paytm wasn’t the best payment option on the platform? What if (plain conjecture, here) it were costlier, for instance? What if these users exited the native platform at rates higher than average?</p>
+
+<p>Let’s leave those seemingly troubling questions aside for a moment. What does one do to improve a third party payment experience? <strong>Mainly, vary size and placement of the button,</strong> apparently. Turns out, there isn’t much you can do. But, that doesn’t mean you can’t do nothing. So, if you notice a needless “improvement” in your experience, know that some Product Manager’s review is forthcoming. Then, is it a surprise, really, that when things take a turn for the worse, these lot are first in the line of fire? I was surprised, though, to understand that a lot of them were entirely at peace with the transitional nature of their employment. 30% elsewhere, then.</p>
+
+<p>This is not restricted to Product folks alone, although it does seem like in recent years it has become a “get rich scheme” of sorts for some techies with an <strong>acute propensity to bullshit </strong>their way through things. I see Marketing Managers who can’t / won’t write a line of copy or tweak keywords on their website. I see Designers who can’t / won’t code simple HTML or work on user personas and flow maps. I see Engineers who can’t / won’t test their code or learn how to write coherent software requirement specifications. This is manifestly due to the over-specialisation of roles and warped organisation structures in these startups. Ergo, the bleeding disinterest.</p>
+
+<p>It wasn’t always like this. It used to be that <strong>startups hired people to do just about everything, all at once.</strong></p>
+
+<p>Fresh out of college, I was hired as a ‘Management Trainee’, which I came to realise was code for <em>will do </em><strong><em>whatever the hell it takes to move the needle. </em></strong>In the first year alone I did Sales, Product, Operations, and Marketing. I wasn’t alone; it seemed like everybody did everything. I remember our VP-Technology managing client delivery for a new initiative, and doing a damn good job at that. I remember our Operations Manager writing bizarre VBA Macros for Excel that saved hours of effort. And it seemed everybody everywhere else, too, were running an arm and a leg short of the work that was on their plates. It was synonymous with startups.</p>
+
+<p>It made tremendous business sense, too. <strong>First</strong>, it was easier to find (and afford) people at the median levels of overlapping skill sets than at the top 1% of their specialisations. <strong>Second,</strong> people always had a macro view of the company’s goals and everybody, more or less, aligned their personal work accordingly. <strong>Third, </strong>it had unexpected, yet, massive pay-offs for our chosen specialisations: techies wrote better code because they understood business and sales guys were more effective because they knew the real implications of that code. It wasn’t easy, but those years probably had <strong>the greatest impact in my life.</strong> It schooled my thoughts and perspectives.</p>
+
+<p>When people ask me what changed over the years, I give them the following analogy: a startup, back in the day, was <strong>like a goth band. </strong>It attracted the misfits, the weirdos, and those of us who just happened to stumble into the mosh pit. There was a ton of work to do and very little real money to be made. You belonged to somewhat of a cult and expected unreasonable things of yourself and your brethren. What we lacked in resources we made up for with ingenuity and perseverance. Over the years, however, the goth band got a makeover. We couldn’t have been more thrilled at that time. It seemed like the World was finally giving us our due. We didn’t have to explain to mothers, uncles and landlords, what we did for a living. <strong>We could finally afford EMIs.</strong></p>
+
+<p>But, gradually, <strong>the goth kids turned cool.</strong> The makeup, now, seemed superficial and the cult constantly disowned its own — for how much wisdom can be gained from tweaking button sizes over years? The law of diminishing marginal returns applied: increasing number of new members to the cult caused the marginal product of others to be smaller than the marginal product of the previous members at this point. And that’s how we got <em>‘Product Manager of Paytm Experience’.</em></p>
+
+<p>But, what of the goth kids? They do lurk around. You won’t find them in conferences or hackathons or by the vending machines mooching off’ the free stuff. They’re likely in an intimate corner, head immersed in the laptop, being productive and maybe checking on Twitter once a while. If you’re ever in the position of hiring for your startup, my suggestion is for you to find and hire the goth kid. He’ll remind you why you started up in the first place. And also, he won’t ask you about your company’s pet policy.</p>
+
+<blockquote>
+
+  <p>This article was originally published  on <a href="https://medium.com/@carygottheblues/to-the-goth-kids-632d8ae50df2">Medium</a>. We are republishing it here with the permission of the author</p>
+
+</blockquote>
+
+",
+        "url": "/career/to-the-goth-kids/"
+      }
+      ,
+    
+      "technology-setting-up-elb-plus-nginx-with-https-offloading": {
+        "title": "Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers",
+        "author": "sivapraveen,akash",
+        "category": "technology",
+        "content": "<p>“HTTPS everywhere” is not a luxury anymore. It is a necessity. Thankfully, obtaining an SSL certificate has become easier too, with initiatives such as <a href="https://letsencrypt.org/">Let’s Encrypt</a>, <a href="https://www.geotrust.com/ssl/free-ssl-certificate/">GeoTrust</a>, <a href="https://www.positivessl.com/">Positive SSL</a>, <a href="https://www.startssl.com/">StartSSL</a>. Even cloud based services such as <a href="https://www.cloudflare.com/">Cloudflare</a> and <a href="https://aws.amazon.com/">Amazon AWS</a> provide free SSL certificates to their customers.</p>
+
+<p>####<strong>Here is setting some context to help the reader appreciate the discussion</strong>:
+We host our rails applications on <a href="https://aws.amazon.com/">Amazon AWS</a>. We generally use three different environments - development, staging and production. Development environment is generally local to a developer while staging and production are hosted on the cloud. There is a minor difference in the way we configure our staging and production environments. Our staging environment typically contains a single machine instance hosting our application. This single instance is exposed to internet directly (has a public IP). On the other hand, our production environment typically contains a cluster of instances for the sake of horizontal scaling. These instances typically do not have a public IP and hence not exposed to internet directly. We put this cluster behind an internet-facing <a href="https://aws.amazon.com/elasticloadbalancing/">Elastic Load Balancer (ELB)</a>.</p>
+
+<p>We use <a href="https://docs.chef.io/chef_solo.html">chef-solo</a> to manage our cloud infrastructure as well as to deploy code to various environments.</p>
+
+<p>#####<strong>The Problem Statement:</strong>
+For the sake of this discussion, we shall limit ourselves to configuring SSL certificates obtained from the two free providers, namely <a href="https://letsencrypt.org/">Let’s Encrypt</a> and <a href="https://aws.amazon.com/">Amazon AWS</a>.</p>
+
+<p>Using <a href="https://letsencrypt.org/">Let’s Encrypt</a> in a clustered setup is tricky, since you need to make one of the instances stateful, in the sense, one instance needs to be given the responsibility of obtaining and renewing SSL certificate from <a href="https://letsencrypt.org/">Let’s Encrypt</a>. All other instances need to copy this certificate every time its renewed. This requirement unnecessarily complicates the setup and also takes away some amount of flexibility. Also, <a href="https://letsencrypt.org/">Let’s Encrypt</a> does not issue wildcard certificates and the validity of a certificate is just 90 days</p>
+
+<p>The certificates provisioned from the other provider, <a href="https://aws.amazon.com/">Amazon AWS</a>, can only be installed on an <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>. Hence is best suited for our clustered setup, namely production. An added advantage is that Amazon can issue wildcard certificates. We could always add an <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a> to our staging environment (even though we will never have more than one instance), but that costs extra money for no reason.</p>
+
+<p>This leaves us with these options</p>
+
+<table class="custom_table">
+  <tr>
+    <th class="custom-t">Environment</th>
+    <th class="custom-t">Best Option</th>
+  </tr>
+  <tr>
+    <td class="custom-t">Staging</td>
+    <td class="custom-t">Let's Encrypt</td>
+  </tr>
+  <tr>
+    <td class="custom-t">Production</td>
+    <td class="custom-t">Amazon AWS</td>
+  </tr>
+</table>
+<p><br />
+We went ahead with this choice. Using <a href="https://docs.chef.io/chef_solo.html">chef</a> to manage our setup came handy.</p>
+
+<p>We first configured our Staging environment and everything worked as expected.</p>
+
+<p>However, the same application, in production environment, started throwing <code>CSRF detected</code> Error whenever an <a href="https://oauth.net/2/">OAuth2</a> callback happened. This was really strange. Our application integrated with two different OAuth providers, and the problem was consistent with both these providers.</p>
+
+<p>#####<strong>What’s the issue?</strong></p>
+
+<p>The only difference between our Staging and Production setups was the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>.</p>
+
+<p>In production, we offloaded HTTPS at the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>. Plain HTTP request would hit the <a href="https://www.nginx.com/resources/wiki/">NGINX</a> web server, which in turn would reverse-proxy it to unicorn and rails.</p>
+
+<p><code>CSRF detected</code> was clearly an error emitting from the rails application. Not from <a href="https://www.nginx.com/resources/wiki/">NGINX</a>, and not from the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>.</p>
+
+<p>A closer look would reveal that the rails application had no way to know if the callback was made on a http:// URL or a https:// URL, because it sees only HTTP (due to offloading).  Was this the reason rails was unhappy?</p>
+
+<p><a href="https://oauth.net/2/">OAuth2</a>, by design, does not accept plain HTTP callbacks (unless it is to localhost).</p>
+
+<p>####<strong>How do we move forward?</strong></p>
+
+<p>#####<strong>PoC to prove the theory</strong></p>
+
+<p>Just to confirm what we think is the cause, we <b>enabled HTTPS</b> on <a href="https://www.nginx.com/resources/wiki/">NGINX</a> (like we did in our staging environment). This was in addition to HTTPS on the Load balancer. We reconfigured the Load Balancer to NOT offload HTTPS but forward the request as-is to <a href="https://www.nginx.com/resources/wiki/">NGINX</a>.</p>
+
+<p>What do we have now? The <code>CSRF detected</code> errors are gone. Application behaves just like it should.</p>
+
+<p>This confirmed our theory.</p>
+
+<p>But the question now is, how do we achieve our desired configuration of offloading HTTPS at the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a> ? Is it just not possible ?</p>
+
+<p><strong>The Solution</strong></p>
+
+<p>We have been using <b>X-Forwarded-For</b> header while reverse proxying to unicorn so that our rails application knows the client IP address (rather than the IP address of the Load Balancer). We need this for logging and tracking.</p>
+
+<p>Could there be something on similar lines to tell the rails application that the request was not on HTTP but on HTTPS?</p>
+
+<p>Sure there is. We had to set a header in our reverse proxy configuration:</p>
+
+<pre><code>X-Forwarded-Proto  to  https
+</code></pre>
+
+<p>For <a href="https://www.nginx.com/resources/wiki/">NGINX</a>, we do it like this:</p>
+
+<figure class="highlight"><pre><code class="language-nginx" data-lang="nginx"><span></span>  <span class="k">proxy_set_header</span> <span class="s">X-Forwarded-Proto</span> <span class="s">https</span><span class="p">;</span></code></pre></figure>
+
+<p>Voila, Rails is happy and things are back to normal!</p>
+
+<p><strong><u>Details:</u></strong></p>
+
+<p><strong>Csrf detected!</strong></p>
+
+<p>Rails bothers about SSL only at two places, 
+<br /></p>
+<ol>
+  <li>At environment config, force_ssl.
+<br /></li>
+  <li>At external included Gem like <a href="https://github.com/omniauth/omniauth">Omniauth</a>. 
+<br /></li>
+</ol>
+
+<p>In <strong><em>Rails environment config</em></strong>.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span>  <span class="n">config</span><span class="o">.</span><span class="n">force_ssl</span> <span class="o">=</span> <span class="kp">true</span></code></pre></figure>
+
+<p>This does the trick, but doesn’t seem like a good idea to enable this option in Rails because, we offload https at <a href="https://www.nginx.com/resources/wiki/">NGINX</a>. For Rails, request came in http, so it does a permanent redirect to https, which ends in a infinite loop.</p>
+
+<p>Our stack trace gave a clue that error might be inside <q><strong><em>omniauth</em></strong></q> gem.</p>
+
+<div class="back-trace-div">
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/abstract_controller/<b>base.rb</b>:132 → process</span><br />
+    <span class="back-trace-row"><b>actionview-4.2.7.1</b>/lib/action_view/<b>rendering.rb</b>:30 → process</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_controller/<b>metal.rb</b>:196 → dispatch</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_controller/metal/<b>rack_delegation.rb</b>:13 → dispatch</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_controller/<b>metal.rb</b>:237 → block in action</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/routing/<b>route_set.rb</b>:74 → dispatch</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/routing/<b>route_set.rb</b>:43 → serve</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/journey/<b>router.rb</b>:43 → block in serve</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/journey/<b>router.rb</b>:30 → each</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/journey/<b>router.rb</b>:30 → serve</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/routing/<b>route_set.rb</b>:817 → call</span><br />
+    <span class="back-trace-row"><b>omniauth-1.3.1/lib</b>/omniauth/<b>strategy.rb</b>:186 → call!</span><br />
+    <span class="back-trace-row"><b>omniauth-1.3.1/lib</b>/omniauth/<b>strategy.rb</b>:164 → call</span><br />
+</div>
+
+<p>As we dug inside the Gem and found out that <a href="https://github.com/omniauth/omniauth">Omniauth</a> looks at these headers</p>
+
+<p><a href="https://github.com/intridea/omniauth/blob/ed1f9a8994e6b660e2eed3f85bb87c81229480fa/lib/omniauth/strategy.rb#L493-L499" target="_blank">lib/omniauth/strategy.rb#L493-L499</a></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">def</span> <span class="nf">ssl?</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTPS&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;on&#39;</span> <span class="o">||</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_SSL&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;on&#39;</span> <span class="o">||</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_SCHEME&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;https&#39;</span> <span class="o">||</span>
+  <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_PROTO&#39;</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_PROTO&#39;</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;https&#39;</span><span class="p">)</span> <span class="o">||</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;rack.url_scheme&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;https&#39;</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This is where we found that setting up <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto">X_FORWARDED_PROTO</a> to https should fix our problems.</p>
+
+<p>Initially, this <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto">X_FORWARDED_PROTO</a> was set to $scheme. Which will be http for production as https is offloaded at ELB.</p>
+
+<p>Now, by setting <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto">X_FORWARDED_PROTO</a> to https, we are making sure that redirects are happening on https.</p>
+
+",
+        "url": "/technology/setting-up-elb-plus-nginx-with-https-offloading/"
+      }
+      ,
+    
+      "technology-custom-capacity-buffers-in-go": {
+        "title": "Custom Capacity Buffers In Go",
+        "author": "surendranath",
+        "category": "technology",
+        "content": "<p>At elitmus we use ruby to create most of our tools and most of our applications  are also written in ruby. Recently I started exploring ways to build our tools especially the backend tools in languages other than ruby which have much lesser memory footprint and better efficiency. One such cases was to create a sandboxed environment for running  untrusted code on our servers. After evaluating multiple languages, I decided to use golang because of it’s excellent library support coupled with the fact the docker(a sandboxed env) was also written in go.</p>
+
+<p>One of the many challenges we faced while creating our sandbox was  redirection of the standard output of untrusted code, as this simple code below will fill up the disk if redirected to file or use all system resources if redirected to a buffer.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span></span><span class="lineno">1 </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">I</span> <span class="n">am</span> <span class="n">the</span> <span class="n">green</span> <span class="n">monster</span><span class="err">”</span><span class="p">);</span></code></pre></figure>
+
+<p>So the problem is,how to limit the size of a file or buffer?, I  started with   buffers  as they are more easy to implement.  I assumed that the <code>Write</code> method of the <code>Buffer</code> struct which writes to the buffer, will panic with <code>ErrTooLarge</code> error if buffer size is above it’s capacity, which i hoped to catch using <code>recover</code> builtin function.</p>
+
+<p>This is the code snippet below.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span></span><span class="lineno"> 1 </span>   <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 2 </span>      <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="lineno"> 3 </span>         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Should catch if anyone panics&quot;</span><span class="p">)</span>
+<span class="lineno"> 4 </span>      <span class="p">}</span>
+<span class="lineno"> 5 </span>   <span class="p">}()</span>
+<span class="lineno"> 6 </span>  <span class="nx">a</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBuffer</span><span class="p">(</span><span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="lineno"> 7 </span>  <span class="k">for</span> <span class="p">{</span>
+<span class="lineno"> 8 </span>    <span class="nx">_</span><span class="p">,</span><span class="nx">err</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;create boom&quot;</span><span class="p">))</span>
+<span class="lineno"> 9 </span>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="lineno">10 </span>      <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+<span class="lineno">11 </span>       <span class="k">return</span>
+<span class="lineno">12 </span>    <span class="p">}</span>
+<span class="lineno">13 </span>
+<span class="lineno">14 </span>  <span class="p">}</span></code></pre></figure>
+
+<p>On running this code, my system was frozen and crashed a little later. This is not what i expected, On further investigation by looking to <a href="http://golang.org/src/bytes/buffer.go?s=4155:4206#L115">source code</a> and reading the <code>bytes</code> package documentation again, i found out that <code>Write</code> method in the <code>bytes</code> package is growing the capacity of the  buffer if the buffer capacity is not enough, which in turn is increasing the amount of memory and resources used by the system.</p>
+
+<p>After some googling and with good help from the go community(thanks to <a href="https://github.com/davecheney">dave cheney</a>), i decided  to create wrapper around the buffer struct and implement my own <code>io.Writer</code> interface by implementing Write method for the wrapper which writes to the buffer.</p>
+
+<p>My custom wrapper’s will take capacity as parameter when initializing and the <code>Write</code> method will do the required action if there is a buffer overflow, instead of increasing the capacity like the <code>Write</code> method from <code>bytes</code> package. This is done by monitoring the size of the buffer before writing to the buffer.</p>
+
+<p>This is code snippet of my custom wrapper.</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span></span><span class="lineno"> 1 </span><span class="kd">type</span> <span class="nx">MyBuffer</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="lineno"> 2 </span>    <span class="nx">cap</span>   <span class="kt">int</span>
+<span class="lineno"> 3 </span>    <span class="nx">mybuf</span> <span class="o">*</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">Buffer</span>
+<span class="lineno"> 4 </span><span class="p">}</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span><span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">MyBuffer</span><span class="p">)</span> <span class="nx">Write</span><span class="p">(</span><span class="nx">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7 </span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span><span class="o">+</span><span class="nx">b</span><span class="p">.</span><span class="nx">mybuf</span><span class="p">.</span><span class="nx">Len</span><span class="p">()</span> <span class="p">&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">cap</span> <span class="p">{</span>
+<span class="lineno"> 8 </span>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">mybuf</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span>
+<span class="lineno"> 9 </span>        <span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Buffer Overflow&quot;</span><span class="p">)</span>
+<span class="lineno">10 </span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">11 </span>        <span class="nx">b</span><span class="p">.</span><span class="nx">mybuf</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+<span class="lineno">12 </span>    <span class="p">}</span>
+<span class="lineno">13 </span>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">p</span><span class="p">),</span> <span class="kc">nil</span>
+<span class="lineno">14 </span><span class="p">}</span>
+<span class="lineno">15 </span>
+<span class="lineno">16 </span><span class="kd">func</span> <span class="nx">NewBuffer</span><span class="p">(</span><span class="nx">buf</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="nx">cap</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">MyBuffer</span> <span class="p">{</span>
+<span class="lineno">17 </span>    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">MyBuffer</span><span class="p">{</span><span class="nx">mybuf</span><span class="p">:</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBuffer</span><span class="p">(</span><span class="nx">buf</span><span class="p">),</span> <span class="nx">cap</span><span class="p">:</span> <span class="nx">cap</span><span class="p">}</span>
+<span class="lineno">18 </span><span class="p">}</span>
+<span class="lineno">19 </span>
+<span class="lineno">20 </span><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">21 </span>
+<span class="lineno">22 </span>    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">23 </span>        <span class="k">if</span> <span class="nx">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">r</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="lineno">24 </span>            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;recover in yes&quot;</span><span class="p">)</span>
+<span class="lineno">25 </span>        <span class="p">}</span>
+<span class="lineno">26 </span>    <span class="p">}()</span>
+<span class="lineno">27 </span>
+<span class="lineno">28 </span>    <span class="nx">a</span> <span class="o">:=</span> <span class="nx">NewBuffer</span><span class="p">(</span><span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">200</span><span class="p">)</span>
+<span class="lineno">29 </span>    <span class="k">for</span> <span class="p">{</span>
+<span class="lineno">30 </span>        <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;Check for Buffer Overflow&quot;</span><span class="p">))</span>
+<span class="lineno">31 </span>        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="lineno">32 </span>            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+<span class="lineno">33 </span>            <span class="k">return</span>
+<span class="lineno">34 </span>        <span class="p">}</span>
+<span class="lineno">35 </span>    <span class="p">}</span>
+<span class="lineno">36 </span><span class="p">}</span></code></pre></figure>
+
+<p>On running this code, it worked as expected, hopefully will be deployed in production.
+The same goes for files as well.</p>
+
+<p><strong>Note:</strong> useful links, <a href="https://www.docker.com/">on docker</a>,<a href="http://golang.org/pkg/bytes/">on golang bytes package</a></p>
+
+",
+        "url": "/technology/custom-capacity-buffers-in-go/"
+      }
+      ,
+    
+      "technology-making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite": {
+        "title": "Making Airtel 3G dongle work on Mac OS 10.10 Yosemite",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "<p>If you use Airtel 3G Dongle (Mine is Huawei E173) on your Mac, and are having issue using the dongel after upgrading to Yosemite, airtel is of little help. They asked me to downgrade the OS to Mavericks!</p>
+
+<p>The reason why the dialer software provided by airtel does not work is, that they internally use Apple USB Modem. According to <a href="http://support.apple.com/en-in/HT201833">this FAQ on apple support site</a>, your Operating system should be running in <code>32 bit mode</code> for the modem to work. Yosemite however, is <code>64 bit</code>.</p>
+
+<p>Anyway, I could find multiple ways to overcome the problem. Here I am writing about the most simple one</p>
+
+<p>###Step 1: 
+Click on this link to download the new compitable driver from Huawei website <a href="http://consumer.huawei.com/en/support/downloads/detail/index.htm?id=31322"><code>Mac-V200R003B015D11SP00C983(for Mac10.10).rar</code></a></p>
+
+<p><img src="/blog/images/airtel3g-yosemite/1-huawei-website.png" alt="Huawei Website Screenshot" /></p>
+
+<p>###Step 2: 
+Open the archive, you will find two files</p>
+
+<pre><code>1. Mobile Partner install user guide.docx
+2. Mobile Partner.zip
+</code></pre>
+
+<p>The word document has detailed instructions with screenshots, on how to install.</p>
+
+<p>###Step 3: 
+Open the zip file <code>Mobile Partner.zip</code>, you will find <code>Mobile Partner.app</code>. Double click on this file to install the app</p>
+
+<p>###Step 4: 
+Once installed, start the app and go to Tools -&gt; Options</p>
+
+<p><img src="/blog/images/airtel3g-yosemite/2-options-menu.png" alt="Tools -&gt; Options Menu" /></p>
+
+<p>###Step 5: 
+In the Options window, choose “Profile Management” from the left side menu</p>
+
+<p><img src="/blog/images/airtel3g-yosemite/3-options-profile-management.png" alt="Profile Management" /></p>
+
+<p>###Step 6: 
+Click on “New” button to create a new profile. Give it a name, such as “airtel 3g”. Also, make sure the “Access Number” is set to <code>*99#</code>. Click “Save”, then “Ok”.</p>
+
+<p><img src="/blog/images/airtel3g-yosemite/4-new-profile-and-access-number.png" alt="Configuring a new profile" /></p>
+
+<p>###Step 7: 
+Insert your Dongel into an USB port. You should see “Mobile Partner” application starting automatically. Choose the profile you created in Step 6 (“airtel 3g”) and “Connect”.</p>
+
+<p><img src="/blog/images/airtel3g-yosemite/5-dialer-screen.png" alt="The Dialer Screen" /></p>
+
+<p>That’s it.</p>
+
+",
+        "url": "/technology/making-airtel-3g-dongle-work-on-mac-os-10-dot-10-yosemite/"
+      }
+      ,
+    
+      "career-it-career-pitfalls-to-avoid": {
+        "title": "IT Career - Pitfalls to avoid",
+        "author": "aseem",
+        "category": "career",
+        "content": "<p>It is very humbling when a youngster walks up to us and says “Thanks for helping me get my first job”. While we are delighted at one end, we are worried at the other.  Why? Because, most of the time a fledgling mind does not see the disaster ahead! <br /><br />Yes, we mean disaster – 75% of IT professionals of 2011-2014 batches will be unemployed 20 years from now.  And this is assuming IT industry does well !! Looks unlikely? Read on to know more.</p>
+
+<p>Indian IT industry has employed around 7,50,000 professionals from the four batches (2011, 2012, 2013, 2014). An estimated 1,50,000 of these will leave the Indian IT industry to pursue higher studies and never come back to work for the same industry. That leaves us with 6,00,000 professionals who will be in the industry for long. The question is: How long? Being highly paid with around 20 years of experience, in the year 2030, companies would want them to take larger responsibilities and oversee at least 100 professionals under them. Summing it up, these 6 lakh professionals should have 6 crore professionals below them. Assuming IT industry grows at 10% per annum for 20 years (caution - it may already be slowing down), the whole industry will be just 1.2 crore strong. That means at most 1.2 lakh senior professionals will be needed. What would happen to the rest 4.8 lakh professionals? They would, of course, be unemployed.</p>
+
+<p>Difficult to digest? In 1995, there were approximately 11,000 software professionals across all levels. Nearly 50% of them are now citizens of another country or earned enough money from the exponentially growing market (nascent market then) growing market to retire, appropriately called VIP (vested in peace). Another at most 15,500 professionals of the same era migrated into IT industry from other industries (like SAP consultants, Supply Chain, Financial professionals). So that is a conservative 21,000 senior professionals in the whole of Indian IT industry. Many of these who lose a job today struggle to find another suitable profile (20 Yrs of experience) and this is when growth rates in this period have been over 25%. You can see it happening for the current 40+ year old professionals!!</p>
+
+<p>Now you have a lingering doubt – could there be something wrong in the projections? Yes !! But it is unfortunately on the negative side. What if the industry grows slower than 10% (may be another bad patch of no growth for 2-4 years). What if automation makes many more jobs redundant (now in IT itself, think about it!)? Last but not the least, another country taking away jobs from India (like China did in manufacturing)?</p>
+
+<p>A tell-a-tale from not very long ago is the textile mills of Bombay. They were teeming with activity and nothing could go wrong for them in 1970s and early 1980s. It could only get better as population was growing and people’s ability to spend was increasing. These very mills today are malls!! It can be argued to be a ‘crowding out’ phenomenon, surely not applicable to sunrise IT industry. Or maybe it is visible only in hindsight !!!</p>
+
+<h4 id="what-are-we-doing-at-elitmus-to-help-the-cause"><strong>What are we doing at eLitmus to help the cause?</strong></h4>
+
+<ol>
+  <li>
+    <p>We are pushing companies not to lower the entry barriers. We have found that immediately after a slow down year, quality and quantity of candidates improve. Quantity ok, but how quality? You call it competition, you call it lowered demand or call it buyers market. So if companies can adopt the quality principals in this period, why not in growth phase as well. It will help students also.
+We strongly believe a youngster`s ability to adapt and evolve is much higher than an older person. So push them today rather than tomorrow. If you remember your grandparents had the fitness and ability to walk kilometres at their old age (not spoilt by automobiles when they were a child)</p>
+  </li>
+  <li>
+    <p>Educating students that the easy path out, though rosy for short term, will destroy them. We want them to go that extra mile. That explains our rigorous question paper which tests fundamentals and concepts. We want them to earn their job rather than get it. In the process their ability goes up. Few students who wrote pH test in the initial years of eLitmus have founded their own start-ups.</p>
+  </li>
+  <li>
+    <p>Ensuring start-ups and companies with great work environment do not struggle for lack of talent. Most of these engagements are loss making. We survive thanks to the fact that most of our colleagues at eLitmus are passionate about what they do and work at a fraction of their market salary!!</p>
+  </li>
+</ol>
+
+<p>We are committed to “making India competitive” and we hope we have challenged the young reader of this blog to go the extra mile. As Steve Jobs once quoted the Whole Earth catalogue “Stay hungry, Stay foolish!”</p>
+
+",
+        "url": "/career/it-career-pitfalls-to-avoid/"
+      }
+      ,
+    
+      "technology-how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url": {
+        "title": "How we host our blog on GitHub pages and yet serve it from our own Sub-URL",
+        "author": "mohitnegi",
+        "category": "technology",
+        "content": "<p>There are umpteen number of blog posts telling you how to host your static site on GitHub Pages for free. They also tell you how to serve such a site from your own domain name.</p>
+
+<p>As you may have guessed, this blog is also hosted on GH Pages. Don’t believe me? try visiting this URL <code>https://shireeshj.github.io/blog/</code></p>
+
+<p>It is easy to map a <code>github.io</code> url such as this, to a subdomain. For example, it is easy to map the url to <code>https://blog.elitmus.com/blog/</code>.  All you need to do is check-in a file named CNAME into the root folder of your git repo that contains your static site.</p>
+
+<p>What if you want your static site to be served from domain apex? That is easy too.  <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages">GitHub pages help</a> explains this in a simple manner.</p>
+
+<p>However, If your domain apex is already taken, say by your other website, you have a problem.  To host your static site on a domain apex (or a sub-url of domain apex) the domain apex should be available exclusively for use by github pages.</p>
+
+<p>We had to overcome this very problem, since our business website is already hosted on <code>elitmus.com</code> (and <code>www.elitmus.com</code>).  Given that we are not in great love with subdomains. We had to find a workaround. And here is what we did:</p>
+
+<p>Since we use nginx to server our business website, all we had to do was to write a simple traffic-cop rule. What this rule did was, to parse the request url to see if it starts with <code>/blog/</code>. If yes, then the request is reverse proxied to GitHub Pages. If no, then it is served from local disk.</p>
+
+<p>The relevant lines from the config file are here</p>
+
+<pre><code>	location /blog/ {
+	    proxy_pass       http://shireeshj.github.io/;
+	    proxy_redirect off;
+	    proxy_set_header Host &lt;shireeshj.github.io&gt;;
+	    proxy_set_header X-Host &lt;shireeshj.github.io&gt;;;
+	    proxy_set_header X-Real-IP $remote_addr;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	  }
+</code></pre>
+
+<p>This is how we get free hosting for our blog, yet serve it from our official URL. If GitHub pages ever stops us from reverse proxying, we shall simply spin our own webserver to run this static site and reverse proxy to that web server.</p>
+
+",
+        "url": "/technology/how-we-host-our-blog-on-github-pages-and-yet-serve-it-from-our-own-sub-url/"
+      }
+      ,
+    
+      "technology-using-monit-to-get-email-alert-on-unauthorized-login": {
+        "title": "Using Monit to get email alert on unauthorized login",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "<p>For a long time, we had our own custom written perl script to alert us whenever someone logged into our production servers from an ip address we do not recognize (not whitelisted). The script looked somewhat like this…</p>
+
+<figure class="highlight"><pre><code class="language-perl" data-lang="perl"><span></span><span class="ch">#!/usr/bin/perl</span>
+<span class="c1"># script file: alert_on_login.pl</span>
+<span class="c1">#</span>
+<span class="k">my</span> <span class="nv">$login_str</span> <span class="o">=</span> <span class="s">&quot;Accepted publickey&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$whitelist_ip</span> <span class="o">=</span> <span class="s">&quot;122.123.123.111&quot;</span><span class="p">;</span>
+
+<span class="k">sub</span> <span class="nf">sendEmail</span>
+<span class="p">{</span>
+        <span class="k">my</span> <span class="p">(</span><span class="nv">$to</span><span class="p">,</span> <span class="nv">$from</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$message</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+        <span class="k">my</span> <span class="nv">$sendmail</span> <span class="o">=</span> <span class="s">&#39;/usr/lib/sendmail&#39;</span><span class="p">;</span>
+        <span class="nb">open</span><span class="p">(</span><span class="n">MAIL</span><span class="p">,</span> <span class="s">&quot;|$sendmail -oi -t&quot;</span><span class="p">);</span>
+        <span class="k">print</span> <span class="n">MAIL</span> <span class="s">&quot;From: $from\n&quot;</span><span class="p">;</span>
+        <span class="k">print</span> <span class="n">MAIL</span> <span class="s">&quot;To: $to\n&quot;</span><span class="p">;</span>
+        <span class="k">print</span> <span class="n">MAIL</span> <span class="s">&quot;Subject: $subject\n\n&quot;</span><span class="p">;</span>
+        <span class="k">print</span> <span class="n">MAIL</span> <span class="s">&quot;$message\n&quot;</span><span class="p">;</span>
+        <span class="nb">close</span><span class="p">(</span><span class="n">MAIL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="o">&lt;&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">grep</span><span class="p">(</span><span class="sr">/$login_str/</span><span class="p">,</span> <span class="nv">$_</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">grep</span><span class="p">(</span><span class="sr">/$whitelist_ip/</span><span class="p">,</span> <span class="nv">$_</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">print</span> <span class="nv">$_</span><span class="p">;</span>
+                <span class="nb">chomp</span> <span class="nv">$_</span><span class="p">;</span>
+                <span class="nv">@arr</span> <span class="o">=</span> <span class="nb">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="nv">$_</span><span class="p">);</span>
+                <span class="n">sendEmail</span><span class="p">(</span><span class="s">&#39;recepient1@elitmus.com, recepient2@elitmus.com&#39;</span><span class="p">,</span>
+                          <span class="s">&#39;monit@elitmus.com&#39;</span><span class="p">,</span>
+                          <span class="s">&#39;Server login from &#39;</span> <span class="o">.</span> <span class="nv">$arr</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span>
+                          <span class="nv">$_</span><span class="p">);</span>
+        <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>All we needed to do was to run this script in the background as a daemon, and it would send us an email alert whenever someone logged in successfully. As root user start the script like this:</p>
+
+<pre><code>  # (perl alert_on_login.pl /var/log/auth.log &amp;)
+</code></pre>
+
+<p>Ever since we started using <a href="https://mmonit.com/monit/">monit</a> for the usual purpose (monitoring processes), we have also entrusted <a href="https://mmonit.com/monit/">monit</a> to do the job of the above perl script. <a href="https://mmonit.com/monit/">Monit</a> makes this super simple…</p>
+
+<p><a href="https://mmonit.com/monit/">Monit</a> is a popular opensource process monitoring tool. It is used mostly for monitoring health of any linux process and take necessary action if any of the set parameters are breached. Monit can restart a process if the process failed for some reason. Monit can also notify you of incidents and actions taken.</p>
+
+<p><a href="https://mmonit.com/monit/documentation/monit.html#alert_messages">See this</a> to learn more about <a href="https://mmonit.com/monit/">monit’s</a> alert capabilities.</p>
+
+<p><a href="https://mmonit.com/monit/">Monit’s</a> global configuration file is usually /etc/monit/monitrc. Here is what <a href="https://mmonit.com/monit/">monit</a> needs to be told about how to send email alerts:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>...
+<span class="c1"># This is our SMTP server settings. The complete syntax is</span>
+<span class="c1"># SET MAILSERVER &lt;hostname [PORT] [USERNAME] [PASSWORD] [using SSLAUTO|SSLV2|SSLV3|TLSV11|TLSV12] [CERTMD5 checksum]&gt;, ...</span>
+<span class="c1">#          [with TIMEOUT X SECONDS]</span>
+<span class="c1">#          [using HOSTNAME hostname]</span>
+<span class="c1">#</span>
+<span class="c1"># But for our purpose, localhost is good enough</span>
+SET mailserver localhost
+
+<span class="c1"># This is the email template for alert messages</span>
+SET mail-format <span class="o">{</span>
+  from: monit@elitmus.com
+  subject: <span class="nv">$SERVICE</span> <span class="nv">$EVENT</span> at <span class="nv">$DATE</span>
+  message: Monit <span class="nv">$ACTION</span> <span class="nv">$SERVICE</span> at <span class="nv">$DATE</span> on <span class="nv">$HOST</span>: <span class="nv">$DESCRIPTION</span>.
+           Yours sincerely,
+           monit
+<span class="o">}</span>
+
+<span class="c1"># Alerts can be triggered for various reasons. Successful ssh login is just one of those reasons.</span>
+<span class="c1"># Since this is a global configuration, we can tell monit to not send alerts for certain events</span>
+<span class="c1">#  We also specify the email address of the recepient who will receive the alerts</span>
+
+<span class="nb">set</span> alert recepient1@elitmus.com NOT ON <span class="o">{</span> action, instance, pid, ppid, nonexist <span class="o">}</span>
+...</code></pre></figure>
+
+<p>And then we add this config file <code>ssh_logins.conf</code> specific to sshd related stuff:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>check file ssh_logins with path /var/log/auth.log
+  ignore match <span class="s2">&quot;/etc/monit/whitelist_ips.regex&quot;</span>
+  <span class="k">if</span> match <span class="s2">&quot;Accepted publickey&quot;</span> <span class="k">then</span> alert</code></pre></figure>
+
+<p>Notice how we tell <a href="https://mmonit.com/monit/">monit</a> to ignore logins from known ip addresses. We can now store all whitelist ip addresses in a separate file <code>/etc/monit/whitelist_ips.regex</code>, one address per line.</p>
+
+<p><strong>Note:</strong> We have disabled password based login and hence do not monitor for passworded logins. If you use passworded login, you should change <code>"Accepted publickey"</code> to <code>"Accepted password"</code></p>
+
+<p>Happy monitoring!</p>
+
+",
+        "url": "/technology/using-monit-to-get-email-alert-on-unauthorized-login/"
+      }
+      ,
+    
+      "technology-gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby": {
+        "title": "Gotcha's while syntactically translating AES encryption logic from PHP to Ruby",
+        "author": "surendranath",
+        "category": "technology",
+        "content": "<p>Our Payment Gateway service provider recently launched a new platform with some nice-to-have features. We wanted those features and so we decided to migrate. Being one of the earliest adopters of the new platform, there was no integration kit available. We had to build it ourselves. Not a problem. Since we are a Ruby On Rails shop, we built our own Ruby integration kit. All went well and we pushed it to production.</p>
+
+<p>A month or two later, we got an email from our gateway provider seeking our help with writing the <code>encryption</code> and <code>decryption</code> logic for the Ruby integration kit they were developing. We were a little surprised, because we noticed they had already published integration kits for PHP, Python, JAVA etc. How difficult can it be to translate that to Ruby?</p>
+
+<p>Turns out, syntactic transalation of code from one programming language to another does not always work. A slightly more deeper knowledge helps. We could almost guess where they were getting stuck.</p>
+
+<p>Before we get to the story, some backgroung on the encryption algo will add clarity.</p>
+
+<p>For secure communication between our server and the gateway, the prescribed cipher was AES, specifically symmetric-key block cipher with a 128 bit secret key in CBC mode. Since OpenSSL already implements this algo and is avaliable on almost all platforms, most programming languages just bundle a wrapper for OpenSSL.</p>
+
+<p>So if its the same OpenSSL that the wrappers call, why couldn’t the gateway service provider translate their own PHP code to Ruby?</p>
+
+<h3 id="here-is-why">Here is why:</h3>
+
+<p>AES works by breaking the plain text (the text to be encrypted) into blocks of 128 bits (or 16 bytes). In CBC mode, each block is XORed with the key to get cipher text of that block. The cipher text of the previous block is used for encrypting the next block… so on and so forth, until all the blocks are encrypted.</p>
+
+<p>Note that the length of the cipher text will be exactly same as that of the plain text.</p>
+
+<p>The problem occures with the last block. If the length of the plain text is not a multiple of 128. the last block will be shorter than 128 bits. Since the algo can work only on blocks of 128 bits, It is a common practice to pad the last block so that it becomes equal to 128 bits in lenght. This padding is subsequently discarded after decryption.</p>
+
+<p><strong>Note:</strong> The actual algo is more complicated than this. We have deliberately left out details that are not relevent for this post.</p>
+
+<p>This is the encryption method in the PHP integration kit published by the gateway service provider</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span></span><span class="lineno"> 1 </span><span class="x">function encrypt($plainText,$key)</span>
+<span class="lineno"> 2 </span><span class="x">{</span>
+<span class="lineno"> 3 </span><span class="x">  $secretKey = hextobin(md5($key));</span>
+<span class="lineno"> 4 </span><span class="x">  $initVector = &quot;...&quot;;</span>
+<span class="lineno"> 5 </span><span class="x">  $openMode = mcrypt_module_open(MCRYPT_RIJNDAEL_128, &#39;&#39;,&#39;cbc&#39;, &#39;&#39;);</span>
+<span class="lineno"> 6 </span><span class="x">  $blockSize = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, &#39;cbc&#39;);</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span><span class="x">  $plainPad = pkcs5_pad($plainText, $blockSize);  //  &lt;---- Padding</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span><span class="x">  if (mcrypt_generic_init($openMode, $secretKey, $initVector) != -1) </span>
+<span class="lineno">11 </span><span class="x">  {</span>
+<span class="lineno">12 </span><span class="x">    $encryptedText = mcrypt_generic($openMode, $plainPad);</span>
+<span class="lineno">13 </span><span class="x">    mcrypt_generic_deinit($openMode);      </span>
+<span class="lineno">14 </span><span class="x">  } </span>
+<span class="lineno">15 </span><span class="x">  return bin2hex($encryptedText);</span>
+<span class="lineno">16 </span><span class="x">}</span>
+<span class="lineno">17 </span>
+<span class="lineno">18 </span><span class="x">// Padding method</span>
+<span class="lineno">19 </span><span class="x">function pkcs5_pad ($plainText, $blockSize)</span>
+<span class="lineno">20 </span><span class="x">{</span>
+<span class="lineno">21 </span><span class="x">  // padding logic here</span>
+<span class="lineno">22 </span><span class="x">}</span></code></pre></figure>
+
+<p>And here is the same implemented in Ruby</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="lineno">1 </span><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">encrypt</span><span class="p">(</span><span class="n">plain_text</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="lineno">2 </span>    <span class="n">secret_key</span>     <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="o">.</span><span class="n">digest</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="lineno">3 </span>    <span class="n">cipher</span>         <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="o">::</span><span class="no">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="ss">:CBC</span><span class="p">)</span>
+<span class="lineno">4 </span>    <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span>
+<span class="lineno">5 </span>    <span class="n">cipher</span><span class="o">.</span><span class="n">key</span>     <span class="o">=</span> <span class="n">secret_key</span>
+<span class="lineno">6 </span>    <span class="n">cipher</span><span class="o">.</span><span class="n">iv</span>      <span class="o">=</span> <span class="no">INIT_VECTOR</span>
+<span class="lineno">7 </span>    <span class="n">encrypted_text</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">plain_text</span><span class="p">)</span> <span class="o">+</span> <span class="n">cipher</span><span class="o">.</span><span class="n">final</span>
+<span class="lineno">8 </span>    <span class="k">return</span> <span class="p">(</span><span class="n">encrypted_text</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;H*&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">first</span>
+<span class="lineno">9 </span><span class="k">end</span></code></pre></figure>
+
+<p>Notice any difference?</p>
+
+<p>It turns out that, unlike in Python, PHP and few other languages, Ruby wrapper for OpenSSL automatically takes care of padding (default behaviour). This is clearly mentioned in the <a href="http://ruby-doc.org/stdlib-2.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html#method-i-final">documentation</a>. For some reason, techies at our gateway service provider overlooked this and hit a dead-end.</p>
+
+<p>By the they, they were gracious enough to acknowledge our contribution in their Ruby Integration Kit (accessible only to their subscribers)</p>
+
+<p>But We have open sourced our code here ‘<a href="https://github.com/elitmus/cca_crypto">cca_crypto</a>’. We have plans of make this into a complete package - with view generators etc., and publish this as a rubygem. We shall gladly accept any pull request!</p>
+
+",
+        "url": "/technology/gotchas-while-syntactically-translating-aes-encryption-logic-from-php-to-ruby/"
+      }
+      ,
+    
+      "technology-setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server": {
+        "title": "Setting Up Amazon RDS as a Slave to a self-managed MySQL server",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "<p>Last week, we migrated our MySQL database server, which was running on an EC2 instance, to RDS. We hoped the migration process would be smooth.</p>
+
+<p>As always, migrating a large database has its challenges. Business folks expect the minimum possible downtime.</p>
+
+<p>The plan was simple.</p>
+
+<ol>
+  <li>Launch an RDS instance</li>
+  <li>Load a full dump into it</li>
+  <li>Configure it to act as a slave of the self-managed server (current master)</li>
+  <li>On the D-day, pull the website down and promote the RDS instance to take over as the new master</li>
+</ol>
+
+<p>We soon discovered that RDS comes with curtailed root permissions. There are several commands that are disallowed. Some of these include “CHANGE MASTER TO….”</p>
+
+<p>What do we do now?</p>
+
+<p>One option was to carry out the migration in one go, while the website was offline. This meant the downtime would have been several hours, instead of minutes. Obviously, not an acceptable option at all.</p>
+
+<p>Some R&amp;D was all it took to discover how to proceed with the original approach.</p>
+
+<p>RDS comes with a bunch of stored procedures, which help you configure it as a slave. There is almost a one-to-one mapping of these stored procedures with the commands that are disallowed.</p>
+
+<table class="table table-bordered table-condensed table-hover">
+<tr><th>MySQL Command</th><th>Corrosponding Stored Proc</th></tr>
+<tr><td>CHANGE MASTER TO</td><td>mysql.rds_set_external_master</td></tr>
+<tr><td>START SLAVE</td><td>mysql.rds_start_replication</td></tr>
+<tr><td>STOP SLAVE</td><td>mysql.rds_stop_replication</td></tr>
+<tr><td>RESET MASTER</td><td>mysql.rds_reset_external_master </td></tr>
+</table>
+
+<p>So, Using these stored procedures, you can now configure your RDS instance as a slave to your self-managed MySQL server</p>
+
+<p>After loading a full dump to RDS, Call the stored procedure <code>mysql.rds_set_external_master</code> like this</p>
+
+<pre><code>CALL mysql.rds_set_external_master ('servername', port, 'user', 'password', 'binlog-file', binlog-offset, 0);
+</code></pre>
+
+<p>Then</p>
+
+<pre><code>CALL mysql.rds_start_replication;
+</code></pre>
+
+<p>This will make RDS a slave of your self managed mysql server. You can run “SHOW SLAVE STATUS” to see its working.</p>
+
+<p>When it is time to promote RDS to master. You call these stored procedures</p>
+
+<pre><code>CALL mysql.rds_stop_replication;
+
+CALL mysql.rds_reset_external_master;
+</code></pre>
+
+<p>That’s it. Now point your applications to the RDS instance and take your site live.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>For your RDS to work as a slave, it needs permissions to connect to port 3306 of your current master. Make sure you open this port for the RDS instance.</p>
+
+<p>You can run the following command to find out the ip address of your rds instance</p>
+
+<pre><code>ping -c rdsname.cpesx66wwe7y.ap-southeast-1.rds.amazonaws.com
+</code></pre>
+",
+        "url": "/technology/setting-up-amazon-rds-as-a-slave-to-a-self-managed-mysql-server/"
+      }
+      ,
+    
+      "technology-beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on": {
+        "title": "Beware of creating $HOME/.ssh folder by hand, when SELinux is turned on",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "<p>I was experimenting with <code>chef</code> to manage our Linux boxes. As a standard practice, our application user <code>deployer</code> is homed in <code>/applications/deployer</code> rather than the usual <code>/home/deployer</code>.</p>
+
+<p>To enable password less login, I appended my public key to <code>~/.ssh/authorized_keys</code></p>
+
+<pre><code> ssh-copy-id -i ~/.ssh/id_rsa deployer@remote.server
+</code></pre>
+
+<p>The first time I run this command, I will be prompted for a password to install my key. After this, I can run the below command to login without a password:</p>
+
+<pre><code>ssh -i ~/.ssh/id_rsa deployer@remote.server
+</code></pre>
+
+<p>However, that did not work as expected.</p>
+
+<p>For some reason, <code>sshd</code> was unable to read the <code>authorized_keys</code> file. I checked all the usual things.. all looked fine. Everything seem to work just fine when <code>SELinux</code> was running in <code>permissive</code> mode on the remote server, but not when it was in <code>enforcing</code> mode.</p>
+
+<p>Discovered that if <code>.ssh</code> folder was created by hand (or even the folder containing <code>.ssh</code> folder), we need to do few additional things.</p>
+
+<p><strong>Step 1:</strong></p>
+
+<p>Open this file /etc/selinux/targeted/contexts/files/file_contexts.homedirs and append the following line to the bottom</p>
+
+<pre><code> /applications/deployer/[^/]*/\.ssh(/.*)?     system_u:object_r:ssh_home_t:s0
+</code></pre>
+
+<p>Note: remember to adjust the path as per your needs.</p>
+
+<p><strong>Step 2:</strong> run the following command</p>
+
+<pre><code>restorecon -R -v /applications/deployer/.ssh
+</code></pre>
+
+<p>Again, remember to adjust the path as per your needs.</p>
+
+<p>Now you are all set!</p>
+
+<pre><code> ssh -i ~/.ssh/id_rsa deployer@remote.server
+</code></pre>
+
+<p>should log you in without asking for a password!</p>
+",
+        "url": "/technology/beware-of-creating-ssh-folder-by-hand-when-selinux-is-turned-on/"
+      }
+      ,
+    
+      "technology-importance-of-date-field-in-an-emails-header": {
+        "title": "Importance of Date field in an email's Header",
+        "author": "shireeshj",
+        "category": "technology",
+        "content": "<p>So far, we paid little attention to email delivery issues. We knew delivering to rediffmail is a pain. So we discouraged our users from using rediffmail. Apart from that we had FCrDNS and SPF configured and working fine. We had also configured <a href="http://www.dkim.org/">DKIM</a>. And then a month ago, we also added <a href="http://www.dmarc.org/">DMARC</a> in monitor mode.</p>
+
+<p>We were happy! Until…</p>
+
+<p>Recently, we started getting loads of phishing emails from what appeared to originate from our own domain name [not our servers].</p>
+
+<p>It told us two things.</p>
+
+<ol>
+  <li><a href="http://www.elitmus.com">eLitmus.com</a> was growing in popularity</li>
+  <li>We cannot ignore email delivery issue any longer</li>
+</ol>
+
+<p>We ran our email through <a href="http://wiki.apache.org/spamassassin/SpamAssassin">Spam Assassin</a> checks and were surprised to see that we got a score of 6. Anything above 5 is BAD. It’s a straight spam! But we knew we were not spamming. These were transactional emails triggered by our website on certain events, such as <em>New registration, or Forgot Password</em>.</p>
+
+<p>It was almost by accident, we noticed that the timezone in the Date header of the email was appearing as +0580. Indian Standard Time (IST) is 5 hours and 30 minutes ahead of UTC. So this value should have been +0530, not +0580. Apparently, that is good enough reason for Spam Assassin to treat our mails as spam.</p>
+
+<p>Tracing backwards, we discovered a bug in our application code and fixed it. It was a single line fix.</p>
+
+<p>With this change, <a href="http://wiki.apache.org/spamassassin/SpamAssassin">Spam Assassin</a> was happy to give us a score of zero.</p>
+
+<p>That is just one part of one header. There are ten others which have to be configured correctly.</p>
+
+<p>Here is an article with good insights in to how gmail calculates sender reputation. Its a little dated, but still relevent. <a href="http://www.google.com/url?sa=t&amp;rct=j&amp;q=what%20is%20email%20reputation%3F%20how%20to%20calculate%20email%20reputation%3F%20how%20to%20calculate%20sender%20reputation%3F&amp;source=web&amp;cd=2&amp;ved=0CCgQFjAB&amp;url=http%3A%2F%2Fwww.ceas.cc%2F2006%2F19.pdf&amp;ei=Pmp9T76THsnYrQewg7TsDA&amp;usg=AFQjCNEb_tYLRePQlW_RfMJZTkSiWdpy4A&amp;cad=rja">Sender reputation in a large webmail service (PDF)</a></p>
+
+<p>By the way, here is a nice and free JSon API to check your <a href="http://spamcheck.postmarkapp.com/">email’s reputation</a>.</p>
+
+",
+        "url": "/technology/importance-of-date-field-in-an-emails-header/"
+      }
+      
+    
+  };
+
+
+</script>
+
+<script src="/blog/assets/js/lunr.min.js"></script>
+<script src="/blog/assets/js/search.js"></script>
+
+			</div>
+
+		</div>
+		<footer>
+			<div class="container">
+				<p class="center-text small"><a>** Testing puropse only **</a></p>
+				<p class="center-text small"><a>** credits: cloudcannon **</a></p>
+			</div>
+		</footer>
+
+	</body>
+</html>

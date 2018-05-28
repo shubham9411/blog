@@ -1,0 +1,687 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers &#8211; eLitmus Blog</title>
+<meta name="description" content="We learn new things everyday, and we document our learnings here...">
+
+<meta name="keywords" content="ELB, NGINX, https offloading, OAuth, Rails">
+
+<!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">    
+<meta name="twitter:title" content="Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers">
+<meta name="twitter:description" content=" If you use OAuth2 with your Rails application and your application sits behind a load balancer (where you offload HTTPS), then you may start seeing <b>'CSRF detected'</b> errors thrown by Rails.">
+<meta name="twitter:site" content="@elitmus">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="/blog/images/blog_logo_taglinedorange.png"/>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers">
+<meta property="og:description" content="If you use OAuth2 with your Rails application and your application sits behind a load balancer (where you offload HTTPS), then you may start seeing <b>'CSRF detected'</b> errors thrown by Rails.">
+<meta property="og:url" content="/blog/technology/setting-up-elb-plus-nginx-with-https-offloading/">
+
+<meta property="og:site_name" content="eLitmus Blog">
+
+
+
+
+
+
+
+<link rel="canonical" href="https://www.elitmus.com/blog/technology/setting-up-elb-plus-nginx-with-https-offloading/">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="eLitmus Blog Feed">
+
+
+	<link rel="author" href="https://plus.google.com/+eLitmus?rel=author">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Icons -->
+<!-- apple touch icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="/blog/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/blog/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/blog/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/blog/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/blog/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/blog/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/blog/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/blog/images/apple-touch-icon-152x152.png">
+<!-- Favicons default 16x16 -->
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/blog/favicon.ico">
+
+<!-- Favicons others -->
+<link rel="icon" type="image/png" href="/blog/images/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/blog/images/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/blog/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/blog/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/blog/images/favicon-32x32.png" sizes="32x32">
+
+<!-- Icons for Windows 8 Tiles -->
+<meta name="msapplication-TileColor" content="#ffffff"/>
+<meta name="msapplication-TileImage" content="/blog/images/mstile-144x144.png">
+
+<!-- For all browsers -->
+
+
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:600,300,300italic|The+Girl+Next+Door" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- bootstrap 4 -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/bootstrap.min.css">
+
+<!-- below css file is used for navbar in individual blogposts -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/main.min.css">
+
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+
+<!-- Optional theme -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Font Awesome -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/font-elitmuslogo.css" />
+
+<link rel="stylesheet" href="/blog/assets/css/customize.css">
+<link rel="stylesheet" href="/blog/assets/css/forkit.css">
+</head>
+
+<body id="post">
+
+  <header class="headroom">
+
+	<nav class="navbar navbar-expand-md navbar-dark bg-black fixed-top" role="navigation">
+
+			<a class="navbar-brand" href="/blog/">
+				<img src="https://cdn0.elitmus.net/assets/elitmus-only-logo-6efc8a74032179afdb89829a093e05bd05d627dd4354bbd1ff7f4eb5db8a0af8.svg" class="img-logo">
+				<span><div class="blog-label">blog</div></span>
+			</a>
+
+			<!-- the toggle button -->
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="navbar-toggler-icon"></span>
+				<span class="sr-only">Toggle navigation</span><!-- only for screen readers -->
+			</button>
+
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav mr-auto">
+
+					<!-- first item = dropdown search -->
+					<li class="nav-item">
+						<div class="dropdown search-box-margin">
+
+						<!--
+							<div class="form-inline">
+								 
+
+								<input data-toggle="dropdown" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+
+								<div class="dropdown-menu" id="search-dropdown">
+	                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+								</div>
+							</div>
+						-->
+            
+
+						<!-- the below line will pass "search word" to search.html -->
+
+						<!--
+						<form class="form-inline" action="/blog/search" method="get">
+							 
+
+
+							<label for="search_box">Search</label>
+							<input data-toggle="dropdown" type="text" name="query" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+							<div class="dropdown-menu" id="search-dropdown">
+                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+							</div>
+
+							<input type="submit" value="search">
+
+						</form>
+						-->
+
+						<!-- end of form -->
+
+
+						</div>
+					</li>
+				</ul>
+
+				
+
+				<!-- every link on the right side -->
+				<ul class="nav navbar-nav navbar-right nav-icon-size-reduce">
+					
+					<li class="nav-item">
+						 
+							<a href="/blog/" class="nav-link">
+								<i class="fa fa-home"></i> Home
+							</a>
+						
+					</li>
+					
+					<li class="nav-item">
+						 
+							<a href="/blog/posts/" class="nav-link">
+								<i class="fa fa-file-text-o"></i> Posts
+							</a>
+						
+					</li>
+					
+					<li class="nav-item">
+						 
+							<a href="//www.elitmus.com/" class="nav-link">
+								<i class="el el-elitmuslogo"></i> eLitmus
+							</a>
+						
+					</li>
+					
+
+					<!-- feed is the last link -->
+					<li class="nav-item">
+						<a href="/blog/feed.xml" class="nav-link" title="Atom/RSS feed">
+							<i class="fa fa-rss"></i> Feed
+						</a>
+					</li>
+				</ul>
+
+
+
+			</div> <!-- /.navbar-collapse -->
+
+		<!-- -------- -->
+	</nav><!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+</header>
+<!-- 
+
+  <div class="search-wrapper">
+    <div class="search-form">
+      <input type="text" class="search-field" placeholder="Search...">
+      <i class="icon-remove-sign icon-2x"></i>
+      <ul class="search-results post-list"></ul> -->
+<!-- /.search-results -->
+<!-- </div> -->
+<!-- /.search-form -->
+<!-- </div> -->
+<!-- ./search-wrapper -->
+<!--  -->
+
+  
+
+  <div class="container-fluid">
+
+  <div class="row">
+
+
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+        
+
+        <div id="main" role="main" class="marginal">
+          <article class="entry">
+
+            
+
+            <div>
+              <header>
+                <span class="entry-tags">
+                  
+                    <a href="/blog/tags/#ELB" title="Pages tagged ELB">ELB</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#NGINX" title="Pages tagged NGINX">NGINX</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#https offloading" title="Pages tagged https offloading">https offloading</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#OAuth" title="Pages tagged OAuth">OAuth</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#Rails" title="Pages tagged Rails">Rails</a>
+                    
+                  
+
+                  <div class=' social-sharing pull-right'>        
+  
+    <span class="social-share-facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.elitmus.com/blog/technology/setting-up-elb-plus-nginx-with-https-offloading/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square fa-lg"></i> Like</a>
+    </span>&nbsp;&nbsp;
+    <span class="social-share-twitter">
+       <a href="https://twitter.com/share?hashtags=technology&text=Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers&via=elitmus" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square  fa-lg"></i></i> Tweet</a>
+    </span>&nbsp;&nbsp;
+     
+</div>
+
+                </span>
+              
+                
+                  <h1 class="no-padding">Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers</h1>
+                
+              </header>
+            </div>
+           
+            <div>
+              <div>
+                <span class='badge badge-warning'> <a href="/blog/categories/technology/index.html" > technology </a></span>
+              </div>
+
+              
+                <div class='pull-left date-show'>
+                  <span class="entry-date date published">
+                    <time datetime="2017-03-08T00:00:00+05:30">
+                      <i class="fa fa-calendar"></i> March 08, 2017
+                    </time>
+                  </span>&nbsp;
+
+                  
+
+                </div>
+
+                <div class='pull-right date-show'>
+                  <span>
+                    <a href="/blog/technology/setting-up-elb-plus-nginx-with-https-offloading/" rel="bookmark" title="Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers">
+                      <i class="fa fa-link"></i> Permalink
+                    </a>
+                  </span>
+                </div>
+
+              <br>
+              <div class="panel panel-default">
+                <div class="panel-heading ">
+                  <h3 class="panel-title">TL;DR</h3>
+                </div>
+                <div class="panel-body">
+                  <aside>If you use OAuth2 with your Rails application and your application sits behind a load balancer (where you offload HTTPS), then you may start seeing <b>'CSRF detected'</b> errors thrown by Rails.</aside>
+                </div>
+              </div>
+      
+            
+
+              <div class="post-content-justify">
+                <p>“HTTPS everywhere” is not a luxury anymore. It is a necessity. Thankfully, obtaining an SSL certificate has become easier too, with initiatives such as <a href="https://letsencrypt.org/">Let’s Encrypt</a>, <a href="https://www.geotrust.com/ssl/free-ssl-certificate/">GeoTrust</a>, <a href="https://www.positivessl.com/">Positive SSL</a>, <a href="https://www.startssl.com/">StartSSL</a>. Even cloud based services such as <a href="https://www.cloudflare.com/">Cloudflare</a> and <a href="https://aws.amazon.com/">Amazon AWS</a> provide free SSL certificates to their customers.</p>
+
+<p>####<strong>Here is setting some context to help the reader appreciate the discussion</strong>:
+We host our rails applications on <a href="https://aws.amazon.com/">Amazon AWS</a>. We generally use three different environments - development, staging and production. Development environment is generally local to a developer while staging and production are hosted on the cloud. There is a minor difference in the way we configure our staging and production environments. Our staging environment typically contains a single machine instance hosting our application. This single instance is exposed to internet directly (has a public IP). On the other hand, our production environment typically contains a cluster of instances for the sake of horizontal scaling. These instances typically do not have a public IP and hence not exposed to internet directly. We put this cluster behind an internet-facing <a href="https://aws.amazon.com/elasticloadbalancing/">Elastic Load Balancer (ELB)</a>.</p>
+
+<p>We use <a href="https://docs.chef.io/chef_solo.html">chef-solo</a> to manage our cloud infrastructure as well as to deploy code to various environments.</p>
+
+<p>#####<strong>The Problem Statement:</strong>
+For the sake of this discussion, we shall limit ourselves to configuring SSL certificates obtained from the two free providers, namely <a href="https://letsencrypt.org/">Let’s Encrypt</a> and <a href="https://aws.amazon.com/">Amazon AWS</a>.</p>
+
+<p>Using <a href="https://letsencrypt.org/">Let’s Encrypt</a> in a clustered setup is tricky, since you need to make one of the instances stateful, in the sense, one instance needs to be given the responsibility of obtaining and renewing SSL certificate from <a href="https://letsencrypt.org/">Let’s Encrypt</a>. All other instances need to copy this certificate every time its renewed. This requirement unnecessarily complicates the setup and also takes away some amount of flexibility. Also, <a href="https://letsencrypt.org/">Let’s Encrypt</a> does not issue wildcard certificates and the validity of a certificate is just 90 days</p>
+
+<p>The certificates provisioned from the other provider, <a href="https://aws.amazon.com/">Amazon AWS</a>, can only be installed on an <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>. Hence is best suited for our clustered setup, namely production. An added advantage is that Amazon can issue wildcard certificates. We could always add an <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a> to our staging environment (even though we will never have more than one instance), but that costs extra money for no reason.</p>
+
+<p>This leaves us with these options</p>
+
+<table class="custom_table">
+  <tr>
+    <th class="custom-t">Environment</th>
+    <th class="custom-t">Best Option</th>
+  </tr>
+  <tr>
+    <td class="custom-t">Staging</td>
+    <td class="custom-t">Let's Encrypt</td>
+  </tr>
+  <tr>
+    <td class="custom-t">Production</td>
+    <td class="custom-t">Amazon AWS</td>
+  </tr>
+</table>
+<p><br />
+We went ahead with this choice. Using <a href="https://docs.chef.io/chef_solo.html">chef</a> to manage our setup came handy.</p>
+
+<p>We first configured our Staging environment and everything worked as expected.</p>
+
+<p>However, the same application, in production environment, started throwing <code>CSRF detected</code> Error whenever an <a href="https://oauth.net/2/">OAuth2</a> callback happened. This was really strange. Our application integrated with two different OAuth providers, and the problem was consistent with both these providers.</p>
+
+<p>#####<strong>What’s the issue?</strong></p>
+
+<p>The only difference between our Staging and Production setups was the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>.</p>
+
+<p>In production, we offloaded HTTPS at the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>. Plain HTTP request would hit the <a href="https://www.nginx.com/resources/wiki/">NGINX</a> web server, which in turn would reverse-proxy it to unicorn and rails.</p>
+
+<p><code>CSRF detected</code> was clearly an error emitting from the rails application. Not from <a href="https://www.nginx.com/resources/wiki/">NGINX</a>, and not from the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a>.</p>
+
+<p>A closer look would reveal that the rails application had no way to know if the callback was made on a http:// URL or a https:// URL, because it sees only HTTP (due to offloading).  Was this the reason rails was unhappy?</p>
+
+<p><a href="https://oauth.net/2/">OAuth2</a>, by design, does not accept plain HTTP callbacks (unless it is to localhost).</p>
+
+<p>####<strong>How do we move forward?</strong></p>
+
+<p>#####<strong>PoC to prove the theory</strong></p>
+
+<p>Just to confirm what we think is the cause, we <b>enabled HTTPS</b> on <a href="https://www.nginx.com/resources/wiki/">NGINX</a> (like we did in our staging environment). This was in addition to HTTPS on the Load balancer. We reconfigured the Load Balancer to NOT offload HTTPS but forward the request as-is to <a href="https://www.nginx.com/resources/wiki/">NGINX</a>.</p>
+
+<p>What do we have now? The <code>CSRF detected</code> errors are gone. Application behaves just like it should.</p>
+
+<p>This confirmed our theory.</p>
+
+<p>But the question now is, how do we achieve our desired configuration of offloading HTTPS at the <a href="https://aws.amazon.com/elasticloadbalancing/">ELB</a> ? Is it just not possible ?</p>
+
+<p><strong>The Solution</strong></p>
+
+<p>We have been using <b>X-Forwarded-For</b> header while reverse proxying to unicorn so that our rails application knows the client IP address (rather than the IP address of the Load Balancer). We need this for logging and tracking.</p>
+
+<p>Could there be something on similar lines to tell the rails application that the request was not on HTTP but on HTTPS?</p>
+
+<p>Sure there is. We had to set a header in our reverse proxy configuration:</p>
+
+<pre><code>X-Forwarded-Proto  to  https
+</code></pre>
+
+<p>For <a href="https://www.nginx.com/resources/wiki/">NGINX</a>, we do it like this:</p>
+
+<figure class="highlight"><pre><code class="language-nginx" data-lang="nginx"><span></span>  <span class="k">proxy_set_header</span> <span class="s">X-Forwarded-Proto</span> <span class="s">https</span><span class="p">;</span></code></pre></figure>
+
+<p>Voila, Rails is happy and things are back to normal!</p>
+
+<p><strong><u>Details:</u></strong></p>
+
+<p><strong>Csrf detected!</strong></p>
+
+<p>Rails bothers about SSL only at two places, 
+<br /></p>
+<ol>
+  <li>At environment config, force_ssl.
+<br /></li>
+  <li>At external included Gem like <a href="https://github.com/omniauth/omniauth">Omniauth</a>. 
+<br /></li>
+</ol>
+
+<p>In <strong><em>Rails environment config</em></strong>.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span>  <span class="n">config</span><span class="o">.</span><span class="n">force_ssl</span> <span class="o">=</span> <span class="kp">true</span></code></pre></figure>
+
+<p>This does the trick, but doesn’t seem like a good idea to enable this option in Rails because, we offload https at <a href="https://www.nginx.com/resources/wiki/">NGINX</a>. For Rails, request came in http, so it does a permanent redirect to https, which ends in a infinite loop.</p>
+
+<p>Our stack trace gave a clue that error might be inside <q><strong><em>omniauth</em></strong></q> gem.</p>
+
+<div class="back-trace-div">
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/abstract_controller/<b>base.rb</b>:132 → process</span><br />
+    <span class="back-trace-row"><b>actionview-4.2.7.1</b>/lib/action_view/<b>rendering.rb</b>:30 → process</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_controller/<b>metal.rb</b>:196 → dispatch</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_controller/metal/<b>rack_delegation.rb</b>:13 → dispatch</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_controller/<b>metal.rb</b>:237 → block in action</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/routing/<b>route_set.rb</b>:74 → dispatch</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/routing/<b>route_set.rb</b>:43 → serve</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/journey/<b>router.rb</b>:43 → block in serve</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/journey/<b>router.rb</b>:30 → each</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/journey/<b>router.rb</b>:30 → serve</span><br />
+    <span class="back-trace-row"><b>actionpack-4.2.7.1</b>/lib/action_dispatch/routing/<b>route_set.rb</b>:817 → call</span><br />
+    <span class="back-trace-row"><b>omniauth-1.3.1/lib</b>/omniauth/<b>strategy.rb</b>:186 → call!</span><br />
+    <span class="back-trace-row"><b>omniauth-1.3.1/lib</b>/omniauth/<b>strategy.rb</b>:164 → call</span><br />
+</div>
+
+<p>As we dug inside the Gem and found out that <a href="https://github.com/omniauth/omniauth">Omniauth</a> looks at these headers</p>
+
+<p><a href="https://github.com/intridea/omniauth/blob/ed1f9a8994e6b660e2eed3f85bb87c81229480fa/lib/omniauth/strategy.rb#L493-L499" target="_blank">lib/omniauth/strategy.rb#L493-L499</a></p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">def</span> <span class="nf">ssl?</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTPS&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;on&#39;</span> <span class="o">||</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_SSL&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;on&#39;</span> <span class="o">||</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_SCHEME&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;https&#39;</span> <span class="o">||</span>
+  <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_PROTO&#39;</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;HTTP_X_FORWARDED_PROTO&#39;</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;https&#39;</span><span class="p">)</span> <span class="o">||</span>
+  <span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s1">&#39;rack.url_scheme&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;https&#39;</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This is where we found that setting up <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto">X_FORWARDED_PROTO</a> to https should fix our problems.</p>
+
+<p>Initially, this <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto">X_FORWARDED_PROTO</a> was set to $scheme. Which will be http for production as https is offloaded at ELB.</p>
+
+<p>Now, by setting <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto">X_FORWARDED_PROTO</a> to https, we are making sure that redirects are happening on https.</p>
+
+
+              </div>
+              <div class="entry-tags">
+                <div class=' social-sharing pull-right'>        
+  
+    <span class="social-share-facebook">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.elitmus.com/blog/technology/setting-up-elb-plus-nginx-with-https-offloading/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square fa-lg"></i> Like</a>
+    </span>&nbsp;&nbsp;
+    <span class="social-share-twitter">
+       <a href="https://twitter.com/share?hashtags=technology&text=Setting up OAuth2 callbacks in Rails with HTTPS offloading on load balancers&via=elitmus" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square  fa-lg"></i></i> Tweet</a>
+    </span>&nbsp;&nbsp;
+     
+</div>
+              </div>
+              <div class="clearfix"><br/></div>
+
+                <div class="panel panel-default">
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      <div class="panel-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <center>
+                <img src="/blog/images/sivapraveen.jpg" alt="Siva Praveen R photo" class="author-photo img-circle img-responsive"/>
+                <span class="author vcard"><span class="fn">Siva Praveen R</span></span>
+
+                <div class="nav-icon-size-reduce social-icons">
+                  
+                    <a href="http://twitter.com/SivaPraveenR"  title="Siva Praveen R on Twitter"  target="_blank"><i class="fa fa-twitter "></i></a>
+                  
+                  
+                  
+                  
+
+                  
+                    <a href="http://linkedin.com/in/siva-praveen-b9656725" title="Siva Praveen R on LinkedIn" target="_blank"><i class="fa fa-linkedin "></i></a>
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                     
+                </div><!-- /.social-icons -->
+              </center>
+            </div>
+
+            <!-- Add the extra clearfix for only the required viewport -->
+            <div class="clearfix visible-xs"></div>
+
+            <div class="col-md-8">
+              
+                <span class="author-bio">Siva Praveen is a member of technology team at eLitmus. He is team player and is passionate about computers,technology,Web development (Loves Ruby and any framework that is built on Ruby) and Badminton.</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+  
+
+  
+    
+      <div class="panel-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-6 col-md-4">
+              <center>
+                <img src="/blog/images/akash.jpg" alt="Akash Srivastava photo" class="author-photo img-circle img-responsive"/>
+                <span class="author vcard"><span class="fn">Akash Srivastava</span></span>
+
+                <div class="nav-icon-size-reduce social-icons">
+                  
+                    <a href="http://twitter.com/akkee19"  title="Akash Srivastava on Twitter"  target="_blank"><i class="fa fa-twitter "></i></a>
+                  
+                  
+                  
+                  
+
+                  
+                    <a href="http://linkedin.com/in/akash-srivastava-640aa826" title="Akash Srivastava on LinkedIn" target="_blank"><i class="fa fa-linkedin "></i></a>
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+                    <a href="http://github.com/akkee" title="Akash Srivastava on Github" target="_blank"><i class="fa fa-github "></i></a>
+                  
+
+                     
+                </div><!-- /.social-icons -->
+              </center>
+            </div>
+
+            <!-- Add the extra clearfix for only the required viewport -->
+            <div class="clearfix visible-xs"></div>
+
+            <div class="col-md-8">
+              
+                <span class="author-bio">Akash Srivastava is a member of Technology at eLitmus. He is passionate about anything remotely related to movies when sane, and resorts to competitive coding and writing blogs when sleepless.</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+  
+
+  
+
+  
+
+  
+
+</div>
+                <div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://adda.elitmus.com/',
+                     discourseEmbedUrl: 'https://www.elitmus.com/blog/technology/setting-up-elb-plus-nginx-with-https-offloading/'
+                   };
+
+  (function() {
+    var d = document.createElement('script'); 
+    d.type = 'text/javascript'; 
+    d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+
+                
+              </div><!-- /.entry-content -->
+            </div><!-- /.entry-wrapper -->
+
+          </article>
+
+          <nav class="navbar nav-justified" role="navigation">
+            <ul class="nav pager">
+              
+                <li class="previous showElem mr-auto"><a href="/blog/technology/custom-capacity-buffers-in-go/" title="Custom Capacity Buffers In Go">&larr;<span class="showPrevNex"> Previous </span> </a></li>
+              
+              
+                <li class="next showElem ml-auto"><a href="/blog/career/to-the-goth-kids/" title="To the Goth Kids"> <span class='showPrevNex'> Next </span> &rarr; </a></li>
+              
+            </ul>
+          </nav>
+        
+        </div><!-- /#main -->
+
+      <!--/col-md-2 -->
+      <div class="col-md-2">
+
+      </div>
+
+    </div><!-- /row -->
+    </div>
+    <div class="footer-color">
+      <footer role="contentinfo">
+        <center>
+            <span class='footer-text'>
+    &copy;  2005-<script> document.write(new Date().getFullYear()) </script>, eLitmus.com. | <a href="/terms_of_use/">Terms of Use</a> &middot; <a href="/privacy_policy/">Privacy Policy</a>
+
+  </span>
+        </center>
+      </footer>
+    </div><!-- /.footer-wrapper -->
+    
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-707704-1', 'elitmus.com');
+	  ga('send', 'pageview');
+	</script>
+
+
+
+<!-- Load Modernizr -->
+<script src="/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- adding jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- end of jquery -->
+
+<script src="/blog/assets/js/scripts.min.js"></script>
+<script src="/blog/assets/js/lunr.min.js"></script>
+<script src="/blog/assets/js/plugins/headroom.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="/blog/assets/js/vendor/forkit.js"></script>
+  
+
+  </body>
+</html>
