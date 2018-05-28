@@ -40,10 +40,10 @@ Here is an article with good insights in to how gmail calculates sender reputati
 
 By the way, here is a nice and free JSon API to check your [email’s reputation][5].
 
-[1]: http://www.elitmus.com
-[2]: http://www.yahoo.com
-[3]: http://www.google.com/url?sa=t&rct=j&q=what%20is%20email%20reputation%3F%20how%20to%20calculate%20email%20reputation%3F%20how%20to%20calculate%20sender%20reputation%3F&source=web&cd=2&ved=0CCgQFjAB&url=http%3A%2F%2Fwww.ceas.cc%2F2006%2F19.pdf&ei=Pmp9T76THsnYrQewg7TsDA&usg=AFQjCNEb_tYLRePQlW_RfMJZTkSiWdpy4A&cad=rja
-[4]: http://wiki.apache.org/spamassassin/SpamAssassin
-[5]: http://spamcheck.postmarkapp.com/
-[6]: http://www.dkim.org/
-[7]: http://www.dmarc.org/
+[1]: https://www.elitmus.com
+[2]: https://www.yahoo.com
+[3]: https://www.google.com/url?sa=t&rct=j&q=what%20is%20email%20reputation%3F%20how%20to%20calculate%20email%20reputation%3F%20how%20to%20calculate%20sender%20reputation%3F&source=web&cd=2&ved=0CCgQFjAB&url=http%3A%2F%2Fwww.ceas.cc%2F2006%2F19.pdf&ei=Pmp9T76THsnYrQewg7TsDA&usg=AFQjCNEb_tYLRePQlW_RfMJZTkSiWdpy4A&cad=rja
+[4]: https://wiki.apache.org/spamassassin/SpamAssassin
+[5]: https://spamcheck.postmarkapp.com/
+[6]: https://www.dkim.org/
+[7]: https://www.dmarc.org/

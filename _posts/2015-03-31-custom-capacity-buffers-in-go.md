@@ -102,6 +102,6 @@ The same goes for files as well.
 **Note:** useful links, [on docker][3],[on golang bytes package][4]
 
 [1]: https://github.com/davecheney
-[2]: http://golang.org/src/bytes/buffer.go?s=4155:4206#L115
+[2]: https://golang.org/src/bytes/buffer.go?s=4155:4206#L115
 [3]: https://www.docker.com/
-[4]: http://golang.org/pkg/bytes/
+[4]: https://golang.org/pkg/bytes/
