@@ -3,7 +3,7 @@ layout: post
 title: "Hiring may be Rocket Science, but its Tenets are Basic"
 tldr: 
 modified: 2017-10-24 10:24:42 +0530
-category: the other side
+category: the-other-side
 tags: [the other side]
 author: arijit
 image:

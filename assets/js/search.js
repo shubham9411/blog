@@ -78,8 +78,8 @@
 
     var idx = lunr(function () {
       this.field('id');
-      //this.field('category', { boost: 8 });
-      //this.field('title', { boost: 4 });
+      this.field('category', { boost: 8 });
+      this.field('title', { boost: 4 });
       this.field('content');
 
       //below line is not working

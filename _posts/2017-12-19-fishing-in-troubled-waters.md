@@ -3,7 +3,7 @@ layout: post
 title: "Fishing in Troubled Waters"
 tldr: 
 modified: 2017-12-19 12:32:13 +0530
-category: the other side
+category: the-other-side
 tags: [career, recruitment, interview]
 author: arijit
 image:
