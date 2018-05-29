@@ -69,5 +69,5 @@ That's it.
 
 
 
-[1]: http://consumer.huawei.com/en/support/downloads/detail/index.htm?id=31322
-[2]: http://support.apple.com/en-in/HT201833
+[1]: https://consumer.huawei.com/en/support/downloads/detail/index.htm?id=31322
+[2]: https://support.apple.com/en-in/HT201833

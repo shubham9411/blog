@@ -86,7 +86,7 @@ By the they, they were gracious enough to acknowledge our contribution in their 
 But We have open sourced our code here '[cca_crypto][2]'. We have plans of make this into a complete package - with view generators etc., and publish this as a rubygem. We shall gladly accept any pull request!
 
 
-[1]: http://ruby-doc.org/stdlib-2.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html#method-i-final
+[1]: https://ruby-doc.org/stdlib-2.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html#method-i-final
 [2]: https://github.com/elitmus/cca_crypto
 
 

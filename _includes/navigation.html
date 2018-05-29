@@ -1,97 +1,97 @@
 <header class="headroom">
 
-	<nav class="navbar navbar-expand-md navbar-dark bg-black fixed-top" role="navigation">
+  <nav class="navbar navbar-expand-md navbar-dark bg-black fixed-top" role="navigation">
 
-			<a class="navbar-brand" href="{{ site.baseurl }}/">
-				<img src="https://cdn0.elitmus.net/assets/elitmus-only-logo-6efc8a74032179afdb89829a093e05bd05d627dd4354bbd1ff7f4eb5db8a0af8.svg" class="img-logo">
-				<span><div class="blog-label">blog</div></span>
-			</a>
+      <a class="navbar-brand" href="{{ site.baseurl }}/">
+        <img src="https://cdn0.elitmus.net/assets/elitmus-only-logo-6efc8a74032179afdb89829a093e05bd05d627dd4354bbd1ff7f4eb5db8a0af8.svg" class="img-logo">
+        <span><div class="blog-label">blog</div></span>
+      </a>
 
-			<!-- the toggle button -->
-			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="navbar-toggler-icon"></span>
-				<span class="sr-only">Toggle navigation</span><!-- only for screen readers -->
-			</button>
+      <!-- the toggle button -->
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+        <span class="sr-only">Toggle navigation</span><!-- only for screen readers -->
+      </button>
 
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav mr-auto">
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
 
-					<!-- first item = dropdown search -->
-					<li class="nav-item">
-						<div class="dropdown search-box-margin">
+          <!-- first item = dropdown search -->
+          <li class="nav-item">
+            <div class="dropdown search-box-margin">
 
-						<!--
-							<div class="form-inline">
-								{% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
-
-								<input data-toggle="dropdown" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-
-
-								<div class="dropdown-menu" id="search-dropdown">
-	                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
-								</div>
-							</div>
-						-->
             
+              <div class="form-inline">
+                {% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
 
-						<!-- the below line will pass "search word" to search.html -->
-
-						<!--
-						<form class="form-inline" action="{{ site.url }}{{ site.baseurl }}/search" method="get">
-							{% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
+                <input data-toggle="dropdown" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
 
 
-							<label for="search_box">Search</label>
-							<input data-toggle="dropdown" type="text" name="query" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown-menu" id="search-dropdown">
+                  <a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+                </div>
 
-							<div class="dropdown-menu" id="search-dropdown">
-                  				<a role='presentation' class='dropdown-item search-results'> Type more.... </a>
-							</div>
-
-							<input type="submit" value="search">
-
-						</form>
-						-->
-
-						<!-- end of form -->
-
-
-						</div>
-					</li>
-				</ul>
-
-				
-
-				<!-- every link on the right side -->
-				<ul class="nav navbar-nav navbar-right nav-icon-size-reduce">
-					{% for link in site.links %}
-					<li class="nav-item">
-						{% if link.external %} 
-							<a href="{{ link.url }}" class="nav-link">
-								<i class="{{link.icon}}"></i> {{ link.title }}
-							</a>
-						{% else %} 
-							<a href="{{ site.url }}{{ site.baseurl }}{{ link.url }}" class="nav-link">
-								<i class="{{link.icon}}"></i> {{ link.title }}
-							</a>
-						{% endif %}
-					</li>
-					{% endfor %}
-
-					<!-- feed is the last link -->
-					<li class="nav-item">
-						<a href="{{ site.url }}{{ site.baseurl }}/feed.xml" class="nav-link" title="Atom/RSS feed">
-							<i class="fa fa-rss"></i> Feed
-						</a>
-					</li>
-				</ul>
+              </div>
 
 
 
-			</div> <!-- /.navbar-collapse -->
+            <!-- the below line will pass "search word" to search.html -->
 
-		<!-- -------- -->
-	</nav>{% include browser-upgrade.html %}
+            <!--
+            <form class="form-inline" action="{{ site.url }}{{ site.baseurl }}/search" method="get">
+              {% capture category_count %} {{ site.categories | size }}* {% endcapture %} {% assign count = category_count | plus: 0 %}
+
+
+              <label for="search_box">Search</label>
+              <input data-toggle="dropdown" type="text" name="query" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+              <div class="dropdown-menu" id="search-dropdown">
+                  <a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+              </div>
+
+              <input type="submit" value="search">
+
+            </form>
+            -->
+
+            <!-- end of form -->
+
+
+            </div>
+          </li>
+        </ul>
+
+        
+
+        <!-- every link on the right side -->
+        <ul class="nav navbar-nav navbar-right nav-icon-size-reduce">
+          {% for link in site.links %}
+          <li class="nav-item">
+            {% if link.external %} 
+              <a href="{{ link.url }}" class="nav-link">
+                <i class="{{link.icon}}"></i> {{ link.title }}
+              </a>
+            {% else %} 
+              <a href="{{ site.url }}{{ site.baseurl }}{{ link.url }}" class="nav-link">
+                <i class="{{link.icon}}"></i> {{ link.title }}
+              </a>
+            {% endif %}
+          </li>
+          {% endfor %}
+
+          <!-- feed is the last link -->
+          <li class="nav-item">
+            <a href="{{ site.url }}{{ site.baseurl }}/feed.xml" class="nav-link" title="Atom/RSS feed">
+              <i class="fa fa-rss"></i> Feed
+            </a>
+          </li>
+        </ul>
+
+
+
+      </div> <!-- /.navbar-collapse -->
+
+  </nav>{% include browser-upgrade.html %}
 </header>
 <!-- 
 {% if site.search %}

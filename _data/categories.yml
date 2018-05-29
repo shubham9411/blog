@@ -1,5 +1,10 @@
 ---
--  career
--  technology
--  fun
--  the other side
+- name: career
+  slug: career
+- name: technology
+  slug: technology
+- name: fun
+  slug: fun
+- name: the other side
+  slug: the-other-side
+

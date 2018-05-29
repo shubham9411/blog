@@ -2743,7 +2743,7 @@ span+.entry-title {
 
 @media screen and (min-device-width:980px) {
     .search-box-margin {
-        margin: 6px 0 6px 150px
+        margin: 6px 0 6px 10px
     }
     #search-box:focus {
         width: 400px;

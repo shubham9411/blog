@@ -2,13 +2,13 @@
   "name": "eLitmus-blog-theme",
   "author": "Shireesh <shireesh@elitmus.com>",
   "license": "MIT",
-  "homepage": "http://elitmus.github.io/",
+  "homepage": "https://shireeshj.github.io/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/elitmus/elitmus.github.io.git"
+    "url": "git://github.com/shireeshj/blog.git"
   },
   "bugs": {
-    "url": "https://github.com/elitmus/elitmus.github.io/issues"
+    "url": "https://github.com/shireeshj/blog/issues"
   },
   "engines": {
     "node": ">= 0.10.0"
