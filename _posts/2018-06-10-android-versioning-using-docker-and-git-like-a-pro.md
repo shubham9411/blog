@@ -23,6 +23,7 @@ Unlike web, android still lacks the ease of version deployments. Specially when 
 ### Introduction
 
 There will be five stages:
+
 1. Signing application
 2. Versioning of application. For that we gonna use git revision and Major.Minor.Patch naming convention.
 3. Building application using a docker. So that running environment doesn't change.
@@ -39,16 +40,17 @@ It's better to start thinking about security right from the big bang.
 From android studio, you can generate a new keystore, a jks file. [Help?](https://developer.android.com/studio/publish/app-signing)
 Copy the keystore file details in a *config.yaml* file like below:
 
-```yaml
+{% highlight yaml %}
 key_store:
   key: /xyz/xyz.jks
   alias: key0
   store_password: wuhoo
   key_password: nibataunga
-```
+{% endhighlight %}
+
 Studio will take care of signing, but to generate signed apk from command line, you'll need to make some changes in your build.gradle. The credentials we have put in above yaml file will be passed as command line args to gradle(Build stage[2]). 
 
-```groovy
+{% highlight groovy %}
 android {
     ...
     signingConfigs {
@@ -70,9 +72,7 @@ android {
         }
     }
 }
-```
-
-
+{% endhighlight %}
 
 
 ### *Stage 2*: Release Versioning, Digging Git 
@@ -86,7 +86,8 @@ I won't go down the road to explain first two and the last one. Let's dig into G
 GitRevision will make versioning easy and consistent. It counts the number of commits from git, so you'll get incremental values everytime you release a new version.
 
 We'll put the below code in build.gradle[app]
-```groovy
+
+{% highlight groovy %}
 def getGitRevision = { ->
     try {
         def stdout = new ByteArrayOutputStream()
@@ -102,17 +103,17 @@ def getGitRevision = { ->
         return 0;
     }
 }
-```
+{% endhighlight %}
 
 And in build.gradle[app]
 
-```groovy
+{% highlight groovy %}
     defaultConfig {
         ...
         versionCode = 10000000*majorVersion+10000*minorVersion + 10*revision
         versionName = 'v' + majorVersion + '.' + minorVersion + '.' + revision + patch
     }
-```
+{% endhighlight %}
 
 
 
@@ -121,7 +122,7 @@ And in build.gradle[app]
 
 We first need to build a docker image with minimum libraries and dependencies required.
 
-```console
+{% highlight docker %}
 FROM openjdk:8
 RUN apt-get update
 RUN cd /opt/
@@ -138,21 +139,24 @@ RUN yes | sdkmanager \
 
 RUN apt-get -y install ruby
 RUN gem install trollop
-```
+{% endhighlight %}
+
 Trollop will be helpful in compiling scripts, spicing the boring command line args.
 
 We are using openjdk as base image for java environment and installed our sdk with version 27. You can change that accordingly.
 
 
 #### Building the image:
-```console
+
+{% highlight bash %}
 docker build -t ${docker_image} -f ./scripts/Dockerfile .
-```
+{% endhighlight %}
 
 Or you can directly pull my latest base image.
-```console
+
+{% highlight bash %}
 docker pull mukarramali98/androidbase
-```
+{% endhighlight %}
 
 
 
@@ -160,7 +164,7 @@ docker pull mukarramali98/androidbase
 
 To automate the process, let's dig into a small script:
 
-```console
+{% highlight bash %}
 #!/usr/bin/env bash
 set -xeuo pipefail
 
@@ -177,7 +181,7 @@ if [ ! "$(docker ps -q -f name=${container_name})" ]; then
 fi
 
 docker exec ${container_name} ruby /${app_name}/scripts/compile.rb -k /${app_name}/config.yaml
-```
+{% endhighlight %}
 
 Here we first check if the container already exists. Then create accordingly.
 While creating the container, we *mount* our current project directory. So next time we run this container, our updated project will already be there in the container.
@@ -188,7 +192,7 @@ While creating the container, we *mount* our current project directory. So next 
 
 We run the container, with our compile script. Pass the signing config file we created earlier.
 
-```ruby
+{% highlight ruby %}
 config = YAML.load_file(key_config_file)
 
 key_store = config['key_store']
@@ -200,7 +204,7 @@ puts `#{File.dirname(__FILE__)}/../gradlew assembleRelease --stacktrace \
     -PAPP_RELEASE_KEY_ALIAS=#{key_store['alias']} \
     -PAPP_RELEASE_STORE_PASSWORD='#{key_store['store_password']}' \
     -PAPP_RELEASE_KEY_PASSWORD='#{key_store['key_password']}'`
-```
+{% endhighlight %}
 
 
 
@@ -209,7 +213,7 @@ puts `#{File.dirname(__FILE__)}/../gradlew assembleRelease --stacktrace \
 So, now we have build a signed apk from a docker container. It's time to push them.
 Connect with your s3 bucket and generate *$HOME/.s3cfg* file, and pass it to ruby script below:
 
-```ruby
+{% highlight ruby %}
 if File.file?(s3_config)
   # Push the generate apk file with the app and version name
   `s3cmd put app/build/outputs/apk/release/app-release.apk s3://#{bucket}/#{app_name}-#{version_name}.apk -m application/vnd.android.package-archive -f -P -c #{s3_config}`
@@ -224,16 +228,17 @@ if File.file?(s3_config)
   `rm latest_version.txt`
   puts "Successfully released new app version."
 end
-```
+{% endhighlight %}
+
 `application/vnd.android.package-archive` is the apk file type descriptor.
 
 
 ### *Stage 5*: Finally, Git Tagging The New Release Version, *#hashtag*
 
-```ruby
+{% highlight ruby %}
 def push_new_tag version_name
   `git tag #{version_name}`
   `git push origin #{version_name}`
   puts "New tag pushed to repo."
 end
-```
+{% endhighlight %}
