@@ -7,13 +7,225 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="/" />
-<updated>2018-05-29T10:23:19+05:30</updated>
+<updated>2018-06-11T11:57:02+05:30</updated>
 <id>/</id>
 <author>
   <name>eLitmus.com</name>
   <uri>/</uri>
   <email>site-admin@elitmus.com</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Android Versioning Using Docker &amp; Git Like A Pro]]></title>
+  <link rel="alternate" type="text/html" href="/technology/android-versioning-using-docker-and-git-like-a-pro/"/>
+  <id>/technology/android-versioning-using-docker-and-git-like-a-pro</id>
+  <updated>2018-06-10 12:25:27 +0530T00:00:00-00:00</updated>
+  <published>2018-06-10T00:00:00+05:30</published>
+  
+  <author>
+    <name>eLitmus.com</name>
+    <uri></uri>
+    <email>site-admin@elitmus.com</email>
+  </author>
+  <category scheme="/tags/#android" term="android" /><category scheme="/tags/#docker" term="docker" /><category scheme="/tags/#git" term="git" /><category scheme="/tags/#deployment" term="deployment" /><category scheme="/tags/#versioning" term="versioning" />
+  <content type="html">
+  
+    &lt;p&gt;Unlike web, android still lacks the ease of version deployments. Specially when you don’t want to use Play Store.&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;There will be five stages:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Signing application&lt;/li&gt;
+  &lt;li&gt;Versioning of application. For that we gonna use git revision and Major.Minor.Patch naming convention.&lt;/li&gt;
+  &lt;li&gt;Building application using a docker. So that running environment doesn’t change.&lt;/li&gt;
+  &lt;li&gt;Pushing new release to s3, while maintaining the previous versions.&lt;/li&gt;
+  &lt;li&gt;Pushing new tag to git, with the new version. So, we’ll have tags for each version.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Basically, we gonna use docker, git, and some simple hacks to put things in work. In the end, I’ve shared a sample application.&lt;/p&gt;
+
+&lt;h3 id=&quot;stage-1-signing-our-application&quot;&gt;&lt;em&gt;Stage 1&lt;/em&gt;: Signing Our Application&lt;/h3&gt;
+
+&lt;p&gt;It’s better to start thinking about security right from the big bang.
+From android studio, you can generate a new keystore, a jks file. &lt;a href=&quot;https://developer.android.com/studio/publish/app-signing&quot;&gt;Help?&lt;/a&gt;
+Copy the keystore file details in a &lt;em&gt;config.yaml&lt;/em&gt; file like below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;key_store&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/xyz/xyz.jks&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;key0&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;store_password&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;wuhoo&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;key_password&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;nibataunga&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Studio will take care of signing, but to generate signed apk from command line, you’ll need to make some changes in your build.gradle. The credentials we have put in above yaml file will be passed as command line args to gradle(Build stage[2]).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;android&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;signingConfigs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;release&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;APP_RELEASE_STORE_FILE&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;storeFile&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;$APP_RELEASE_STORE_FILE&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;storePassword&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$APP_RELEASE_STORE_PASSWORD&amp;quot;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;keyAlias&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$APP_RELEASE_KEY_ALIAS&amp;quot;&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;keyPassword&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$APP_RELEASE_KEY_PASSWORD&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;buildTypes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;release&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;APP_RELEASE_STORE_FILE&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;n&quot;&gt;signingConfig&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signingConfigs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;release&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;stage-2-release-versioning-digging-git&quot;&gt;&lt;em&gt;Stage 2&lt;/em&gt;: Release Versioning, Digging Git&lt;/h3&gt;
+
+&lt;p&gt;I’am here using the &lt;a href=&quot;https://semver.org/&quot;&gt;semantic versioning&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Major.Minor.&lt;em&gt;GitRevision&lt;/em&gt;.Patch&lt;/p&gt;
+
+&lt;p&gt;Let’s dig into GitRevision
+It counts the number of commits from git, so you’ll get incremental values everytime you release a new version. GitRevision will make versioning easy and consistent.&lt;/p&gt;
+
+&lt;p&gt;We’ll put the below code in build.gradle[app]&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getGitRevision&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ByteArrayOutputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;standardOutput&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;commandLine&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;git&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;rev-list&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;--first-parent&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;--count&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;master&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Building revision #&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;ASCII&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toInteger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And in build.gradle[app]&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;defaultConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;versionCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;majorVersion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;minorVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;revision&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;versionName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;v&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;majorVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;minorVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;revision&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;patch&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;docker-image-savage&quot;&gt;Docker Image, Savage&lt;/h3&gt;
+
+&lt;p&gt;We first need to build a docker image with minimum libraries and dependencies required.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-docker&quot; data-lang=&quot;docker&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; openjdk:8&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; apt-get update
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /opt/
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; wget -nc https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ANDROID_HOME /opt/android-sdk-linux&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; mkdir -p &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; unzip -n -d &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; sdk-tools-linux-4333796.zip
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; yes &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sdkmanager --licenses
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; yes &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sdkmanager &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;platform-tools&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;build-tools;27.0.3&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;platforms;android-27&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; apt-get -y install ruby
+&lt;span class=&quot;k&quot;&gt;RUN&lt;/span&gt; gem install trollop&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Trollop will be helpful in compiling scripts, spicing the boring command line args.&lt;/p&gt;
+
+&lt;p&gt;We are using openjdk as base image for java environment and installed our sdk with version 27. You can change that accordingly.&lt;/p&gt;
+
+&lt;h4 id=&quot;building-the-image&quot;&gt;Building the image:&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&lt;/span&gt;docker build -t &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;docker_image&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; -f ./scripts/Dockerfile .&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or you can directly pull my latest base image.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&lt;/span&gt;docker pull mukarramali98/androidbase&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;docker-container-on-the-way&quot;&gt;Docker container on the way&lt;/h3&gt;
+
+&lt;p&gt;To automate the process, let’s dig into a small script:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -xeuo pipefail
+
+&lt;span class=&quot;nv&quot;&gt;app_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xyz
+&lt;span class=&quot;nv&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;androidcontainer
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker ps -q -f &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker ps -aq -f &lt;span class=&quot;nv&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;exited -f &lt;span class=&quot;nv&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# cleanup&lt;/span&gt;
+        docker rm &lt;span class=&quot;nv&quot;&gt;$container_name&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# run your container&lt;/span&gt;
+    docker run -v &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PWD&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;:/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;app_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/ --name &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; -w /&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;app_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; -d -i -t mukarramali98/androidbase
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;container_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; ruby /&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;app_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/scripts/compile.rb -k /&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;app_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/config.yaml&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Here we first check if the container already exists. Then create accordingly.
+While creating the container, we &lt;em&gt;mount&lt;/em&gt; our current project directory. So next time we run this container, our updated project will already be there in the container.&lt;/p&gt;
+
+&lt;h3 id=&quot;stage-3-running-container-build-stage&quot;&gt;&lt;em&gt;Stage 3&lt;/em&gt;: Running container, &lt;em&gt;Build Stage&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;We run the container, with our compile script. Pass the signing config file we created earlier.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YAML&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_config_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;key_store&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;key_store&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;output_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;app/build/outputs/apk/release/app-release.apk&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;sb&quot;&gt;`rm &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output_file&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exists?output_file&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;/../gradlew assembleRelease --stacktrace \&lt;/span&gt;
+&lt;span class=&quot;sb&quot;&gt;    -PAPP_RELEASE_STORE_FILE=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_store&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;key&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt; \&lt;/span&gt;
+&lt;span class=&quot;sb&quot;&gt;    -PAPP_RELEASE_KEY_ALIAS=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_store&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;alias&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt; \&lt;/span&gt;
+&lt;span class=&quot;sb&quot;&gt;    -PAPP_RELEASE_STORE_PASSWORD=&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_store&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;store_password&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;&amp;#39; \&lt;/span&gt;
+&lt;span class=&quot;sb&quot;&gt;    -PAPP_RELEASE_KEY_PASSWORD=&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_store&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;key_password&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;&amp;#39;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;stage-4-pushing-to-s3&quot;&gt;&lt;em&gt;Stage 4&lt;/em&gt;: Pushing to S3&lt;/h3&gt;
+
+&lt;p&gt;So, now we have build a signed apk from a docker container. It’s time to push them.
+Connect with your s3 bucket and generate &lt;em&gt;$HOME/.s3cfg&lt;/em&gt; file, and pass it to ruby script below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s3_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Push the generate apk file with the app and version name&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`s3cmd put app/build/outputs/apk/release/app-release.apk s3://&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;.apk -m application/vnd.android.package-archive -f -P -c &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s3_config&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# application/vnd.android.package-archive is an apk file format descriptor&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# Replace the previous production file&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`s3cmd put app/build/outputs/apk/release/app-release.apk s3://&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;.apk -m application/vnd.android.package-archive -f -P -c &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s3_config&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# To keep the track of latest release&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`echo &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version_code&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;&amp;gt; latest_version.txt`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`s3cmd put latest_version.txt s3://&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;/latest_version.txt -f -P -c &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s3_config&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`rm latest_version.txt`&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Successfully released new app version.&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code&gt;application/vnd.android.package-archive&lt;/code&gt; is the apk file type descriptor.&lt;/p&gt;
+
+&lt;h3 id=&quot;stage-5-finally-git-tagging-the-new-release-version-hashtag&quot;&gt;&lt;em&gt;Stage 5&lt;/em&gt;: Finally, Git Tagging The New Release Version, &lt;em&gt;#hashtag&lt;/em&gt;&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;push_new_tag&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version_name&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`git tag &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`git push origin &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;New tag pushed to repo.&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mukarramali/android_deployment_example.git&quot;&gt;Demo Application&lt;/a&gt;&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;/technology/android-versioning-using-docker-and-git-like-a-pro/&quot;&gt;Android Versioning Using Docker &amp; Git Like A Pro&lt;/a&gt; was originally published by eLitmus.com at &lt;a href=&quot;&quot;&gt;eLitmus Blog&lt;/a&gt; on June 10, 2018.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>

@@ -1,0 +1,662 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Android Versioning Using Docker &amp; Git Like A Pro &#8211; eLitmus Blog</title>
+<meta name="description" content="We learn new things everyday, and we document our learnings here...">
+
+<meta name="keywords" content="android, docker, git, deployment, versioning">
+
+<!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">    
+<meta name="twitter:title" content="Android Versioning Using Docker &amp; Git Like A Pro">
+<meta name="twitter:description" content="<p>Unlike web, android still lacks the ease of version deployments. Specially when you don’t want to use Play Store.</p>
+
+">
+<meta name="twitter:site" content="@elitmus">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+    
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="/blog/images/blog_logo_taglinedorange.png"/>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Versioning Using Docker &amp; Git Like A Pro">
+<meta property="og:description" content="<p>Unlike web, android still lacks the ease of version deployments. Specially when you don’t want to use Play Store.</p>
+
+">
+<meta property="og:url" content="/blog/technology/android-versioning-using-docker-and-git-like-a-pro/">
+
+<meta property="og:site_name" content="eLitmus Blog">
+
+
+
+
+
+
+
+<link rel="canonical" href="https://www.elitmus.com/blog/technology/android-versioning-using-docker-and-git-like-a-pro/">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="eLitmus Blog Feed">
+
+
+	<link rel="author" href="https://plus.google.com/+eLitmus?rel=author">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Icons -->
+<!-- apple touch icons -->
+<link rel="apple-touch-icon" sizes="57x57" href="/blog/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/blog/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/blog/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/blog/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/blog/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/blog/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/blog/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/blog/images/apple-touch-icon-152x152.png">
+<!-- Favicons default 16x16 -->
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/blog/favicon.ico">
+
+<!-- Favicons others -->
+<link rel="icon" type="image/png" href="/blog/images/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/blog/images/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/blog/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/blog/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/blog/images/favicon-32x32.png" sizes="32x32">
+
+<!-- Icons for Windows 8 Tiles -->
+<meta name="msapplication-TileColor" content="#ffffff"/>
+<meta name="msapplication-TileImage" content="/blog/images/mstile-144x144.png">
+
+<!-- For all browsers -->
+
+
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:600,300,300italic|The+Girl+Next+Door" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Source+Code+Pro:300' rel='stylesheet' type='text/css'>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- bootstrap 4 -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/bootstrap.min.css">
+
+<!-- below css file is used for navbar in individual blogposts -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/main.min.css">
+
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+
+<!-- Optional theme -->
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Font Awesome -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/blog/assets/css/font-elitmuslogo.css" />
+
+<link rel="stylesheet" href="/blog/assets/css/customize.css">
+<link rel="stylesheet" href="/blog/assets/css/forkit.css">
+</head>
+
+<body id="post">
+
+  <header class="headroom">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-black fixed-top" role="navigation">
+
+      <a class="navbar-brand" href="/blog/">
+        <img src="https://cdn0.elitmus.net/assets/elitmus-only-logo-6efc8a74032179afdb89829a093e05bd05d627dd4354bbd1ff7f4eb5db8a0af8.svg" class="img-logo">
+        <span><div class="blog-label">blog</div></span>
+      </a>
+
+      <!-- the toggle button -->
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="navbar-toggler-icon"></span>
+        <span class="sr-only">Toggle navigation</span><!-- only for screen readers -->
+      </button>
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
+
+          <!-- first item = dropdown search -->
+          <li class="nav-item">
+            <div class="dropdown search-box-margin">
+
+            
+              <div class="form-inline">
+                 
+
+                <input data-toggle="dropdown" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+
+                <div class="dropdown-menu" id="search-dropdown">
+                  <a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+                </div>
+
+              </div>
+
+
+
+            <!-- the below line will pass "search word" to search.html -->
+
+            <!--
+            <form class="form-inline" action="/blog/search" method="get">
+               
+
+
+              <label for="search_box">Search</label>
+              <input data-toggle="dropdown" type="text" name="query" placeholder="Search..." id="search-box" class="form-control form-control-sm search-input dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+
+              <div class="dropdown-menu" id="search-dropdown">
+                  <a role='presentation' class='dropdown-item search-results'> Type more.... </a>
+              </div>
+
+              <input type="submit" value="search">
+
+            </form>
+            -->
+
+            <!-- end of form -->
+
+
+            </div>
+          </li>
+        </ul>
+
+        
+
+        <!-- every link on the right side -->
+        <ul class="nav navbar-nav navbar-right nav-icon-size-reduce">
+          
+          <li class="nav-item">
+             
+              <a href="/blog/" class="nav-link">
+                <i class="fa fa-home"></i> Home
+              </a>
+            
+          </li>
+          
+          <li class="nav-item">
+             
+              <a href="/blog/posts/" class="nav-link">
+                <i class="fa fa-file-text-o"></i> Posts
+              </a>
+            
+          </li>
+          
+          <li class="nav-item">
+             
+              <a href="//www.elitmus.com/" class="nav-link">
+                <i class="el el-elitmuslogo"></i> eLitmus
+              </a>
+            
+          </li>
+          
+
+          <!-- feed is the last link -->
+          <li class="nav-item">
+            <a href="/blog/feed.xml" class="nav-link" title="Atom/RSS feed">
+              <i class="fa fa-rss"></i> Feed
+            </a>
+          </li>
+        </ul>
+
+
+
+      </div> <!-- /.navbar-collapse -->
+
+  </nav><!--[if lt IE 9]><div class="upgrade"><strong><a href="https://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+</header>
+<!-- 
+
+  <div class="search-wrapper">
+    <div class="search-form">
+      <input type="text" class="search-field" placeholder="Search...">
+      <i class="icon-remove-sign icon-2x"></i>
+      <ul class="search-results post-list"></ul> -->
+<!-- /.search-results -->
+<!-- </div> -->
+<!-- /.search-form -->
+<!-- </div> -->
+<!-- ./search-wrapper -->
+<!--  -->
+
+  
+
+  <div class="container-fluid">
+
+  <div class="row">
+
+
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+        
+
+        <div id="main" role="main" class="marginal">
+          <article class="entry">
+
+            
+
+            <div>
+              <header>
+                <span class="entry-tags">
+                  
+                    <a href="/blog/tags/#android" title="Pages tagged android">android</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#docker" title="Pages tagged docker">docker</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#git" title="Pages tagged git">git</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#deployment" title="Pages tagged deployment">deployment</a>
+                    &nbsp;&bull;&nbsp;
+                  
+                    <a href="/blog/tags/#versioning" title="Pages tagged versioning">versioning</a>
+                    
+                  
+
+                  <div class=' social-sharing pull-right'>        
+     
+</div>
+
+                </span>
+              
+                
+                  <h1 class="no-padding">Android Versioning Using Docker &amp; Git Like A Pro</h1>
+                
+              </header>
+            </div>
+           
+            <div>
+              <div>
+                <span class='badge badge-warning'> <a href="/blog/categories/technology/index.html" > technology </a></span>
+              </div>
+
+              
+
+              <div class="post-content-justify">
+                <p>Unlike web, android still lacks the ease of version deployments. Specially when you don’t want to use Play Store.</p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>There will be five stages:</p>
+
+<ol>
+  <li>Signing application</li>
+  <li>Versioning of application. For that we gonna use git revision and Major.Minor.Patch naming convention.</li>
+  <li>Building application using a docker. So that running environment doesn’t change.</li>
+  <li>Pushing new release to s3, while maintaining the previous versions.</li>
+  <li>Pushing new tag to git, with the new version. So, we’ll have tags for each version.</li>
+</ol>
+
+<p>Basically, we gonna use docker, git, and some simple hacks to put things in work. In the end, I’ve shared a sample application.</p>
+
+<h3 id="stage-1-signing-our-application"><em>Stage 1</em>: Signing Our Application</h3>
+
+<p>It’s better to start thinking about security right from the big bang.
+From android studio, you can generate a new keystore, a jks file. <a href="https://developer.android.com/studio/publish/app-signing">Help?</a>
+Copy the keystore file details in a <em>config.yaml</em> file like below:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">key_store</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/xyz/xyz.jks</span>
+  <span class="l l-Scalar l-Scalar-Plain">alias</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">key0</span>
+  <span class="l l-Scalar l-Scalar-Plain">store_password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">wuhoo</span>
+  <span class="l l-Scalar l-Scalar-Plain">key_password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nibataunga</span></code></pre></figure>
+
+<p>Studio will take care of signing, but to generate signed apk from command line, you’ll need to make some changes in your build.gradle. The credentials we have put in above yaml file will be passed as command line args to gradle(Build stage[2]).</p>
+
+<figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span></span><span class="n">android</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">signingConfigs</span> <span class="o">{</span>
+        <span class="n">release</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">project</span><span class="o">.</span><span class="na">hasProperty</span><span class="o">(</span><span class="s1">&#39;APP_RELEASE_STORE_FILE&#39;</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">storeFile</span> <span class="nf">file</span><span class="o">(</span><span class="s2">&quot;$APP_RELEASE_STORE_FILE&quot;</span><span class="o">)</span>
+                <span class="n">storePassword</span> <span class="s2">&quot;$APP_RELEASE_STORE_PASSWORD&quot;</span>
+                <span class="n">keyAlias</span> <span class="s2">&quot;$APP_RELEASE_KEY_ALIAS&quot;</span>
+                <span class="n">keyPassword</span> <span class="s2">&quot;$APP_RELEASE_KEY_PASSWORD&quot;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">buildTypes</span> <span class="o">{</span>
+        <span class="n">release</span> <span class="o">{</span>
+          <span class="o">...</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">project</span><span class="o">.</span><span class="na">hasProperty</span><span class="o">(</span><span class="s1">&#39;APP_RELEASE_STORE_FILE&#39;</span><span class="o">))</span> <span class="o">{</span>
+              <span class="n">signingConfig</span> <span class="n">signingConfigs</span><span class="o">.</span><span class="na">release</span>
+          <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="stage-2-release-versioning-digging-git"><em>Stage 2</em>: Release Versioning, Digging Git</h3>
+
+<p>I’am here using the <a href="https://semver.org/">semantic versioning</a>.</p>
+
+<p>Major.Minor.<em>GitRevision</em>.Patch</p>
+
+<p>Let’s dig into GitRevision
+It counts the number of commits from git, so you’ll get incremental values everytime you release a new version. GitRevision will make versioning easy and consistent.</p>
+
+<p>We’ll put the below code in build.gradle[app]</p>
+
+<figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span></span><span class="kt">def</span> <span class="n">getGitRevision</span> <span class="o">=</span> <span class="o">{</span> <span class="o">-&gt;</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="kt">def</span> <span class="n">stdout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">()</span>
+        <span class="n">exec</span> <span class="o">{</span>
+            <span class="n">standardOutput</span> <span class="o">=</span> <span class="n">stdout</span>
+            <span class="n">commandLine</span> <span class="s1">&#39;git&#39;</span><span class="o">,</span> <span class="s1">&#39;rev-list&#39;</span><span class="o">,</span> <span class="s1">&#39;--first-parent&#39;</span><span class="o">,</span> <span class="s1">&#39;--count&#39;</span><span class="o">,</span> <span class="s1">&#39;master&#39;</span>
+        <span class="o">}</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s2">&quot;Building revision #&quot;</span><span class="o">+</span><span class="n">stdout</span><span class="o">)</span>
+        <span class="k">return</span> <span class="n">stdout</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="s2">&quot;ASCII&quot;</span><span class="o">).</span><span class="na">trim</span><span class="o">().</span><span class="na">toInteger</span><span class="o">()</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>And in build.gradle[app]</p>
+
+<figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span></span>    <span class="n">defaultConfig</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="n">versionCode</span> <span class="o">=</span> <span class="mi">10000000</span><span class="o">*</span><span class="n">majorVersion</span><span class="o">+</span><span class="mi">10000</span><span class="o">*</span><span class="n">minorVersion</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">revision</span>
+        <span class="n">versionName</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="o">+</span> <span class="n">majorVersion</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">minorVersion</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">revision</span> <span class="o">+</span> <span class="n">patch</span>
+    <span class="o">}</span></code></pre></figure>
+
+<h3 id="docker-image-savage">Docker Image, Savage</h3>
+
+<p>We first need to build a docker image with minimum libraries and dependencies required.</p>
+
+<figure class="highlight"><pre><code class="language-docker" data-lang="docker"><span></span><span class="k">FROM</span><span class="s"> openjdk:8</span>
+<span class="k">RUN</span> apt-get update
+<span class="k">RUN</span> <span class="nb">cd</span> /opt/
+<span class="k">RUN</span> wget -nc https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+<span class="k">ENV</span><span class="s"> ANDROID_HOME /opt/android-sdk-linux</span>
+<span class="k">RUN</span> mkdir -p <span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>
+<span class="k">RUN</span> unzip -n -d <span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span> sdk-tools-linux-4333796.zip
+<span class="k">ENV</span><span class="s"> PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools</span>
+<span class="k">RUN</span> yes <span class="p">|</span> sdkmanager --licenses
+<span class="k">RUN</span> yes <span class="p">|</span> sdkmanager <span class="se">\</span>
+      <span class="s2">&quot;platform-tools&quot;</span> <span class="se">\</span>
+      <span class="s2">&quot;build-tools;27.0.3&quot;</span> <span class="se">\</span>
+      <span class="s2">&quot;platforms;android-27&quot;</span>
+
+<span class="k">RUN</span> apt-get -y install ruby
+<span class="k">RUN</span> gem install trollop</code></pre></figure>
+
+<p>Trollop will be helpful in compiling scripts, spicing the boring command line args.</p>
+
+<p>We are using openjdk as base image for java environment and installed our sdk with version 27. You can change that accordingly.</p>
+
+<h4 id="building-the-image">Building the image:</h4>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>docker build -t <span class="si">${</span><span class="nv">docker_image</span><span class="si">}</span> -f ./scripts/Dockerfile .</code></pre></figure>
+
+<p>Or you can directly pull my latest base image.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>docker pull mukarramali98/androidbase</code></pre></figure>
+
+<h3 id="docker-container-on-the-way">Docker container on the way</h3>
+
+<p>To automate the process, let’s dig into a small script:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="nb">set</span> -xeuo pipefail
+
+<span class="nv">app_name</span><span class="o">=</span>xyz
+<span class="nv">container_name</span><span class="o">=</span>androidcontainer
+
+<span class="k">if</span> <span class="o">[</span> ! <span class="s2">&quot;</span><span class="k">$(</span>docker ps -q -f <span class="nv">name</span><span class="o">=</span><span class="si">${</span><span class="nv">container_name</span><span class="si">}</span><span class="k">)</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="k">$(</span>docker ps -aq -f <span class="nv">status</span><span class="o">=</span>exited -f <span class="nv">name</span><span class="o">=</span><span class="si">${</span><span class="nv">container_name</span><span class="si">}</span><span class="k">)</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="c1"># cleanup</span>
+        docker rm <span class="nv">$container_name</span>
+    <span class="k">fi</span>
+    <span class="c1"># run your container</span>
+    docker run -v <span class="si">${</span><span class="nv">PWD</span><span class="si">}</span>:/<span class="si">${</span><span class="nv">app_name</span><span class="si">}</span>/ --name <span class="si">${</span><span class="nv">container_name</span><span class="si">}</span> -w /<span class="si">${</span><span class="nv">app_name</span><span class="si">}</span> -d -i -t mukarramali98/androidbase
+<span class="k">fi</span>
+
+docker <span class="nb">exec</span> <span class="si">${</span><span class="nv">container_name</span><span class="si">}</span> ruby /<span class="si">${</span><span class="nv">app_name</span><span class="si">}</span>/scripts/compile.rb -k /<span class="si">${</span><span class="nv">app_name</span><span class="si">}</span>/config.yaml</code></pre></figure>
+
+<p>Here we first check if the container already exists. Then create accordingly.
+While creating the container, we <em>mount</em> our current project directory. So next time we run this container, our updated project will already be there in the container.</p>
+
+<h3 id="stage-3-running-container-build-stage"><em>Stage 3</em>: Running container, <em>Build Stage</em></h3>
+
+<p>We run the container, with our compile script. Pass the signing config file we created earlier.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="n">config</span> <span class="o">=</span> <span class="no">YAML</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="n">key_config_file</span><span class="p">)</span>
+
+<span class="n">key_store</span> <span class="o">=</span> <span class="n">config</span><span class="o">[</span><span class="s1">&#39;key_store&#39;</span><span class="o">]</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s1">&#39;app/build/outputs/apk/release/app-release.apk&#39;</span>
+<span class="sb">`rm </span><span class="si">#{</span><span class="n">output_file</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?output_file</span>
+
+<span class="nb">puts</span> <span class="sb">`</span><span class="si">#{</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span><span class="si">}</span><span class="sb">/../gradlew assembleRelease --stacktrace \</span>
+<span class="sb">    -PAPP_RELEASE_STORE_FILE=</span><span class="si">#{</span><span class="n">key_store</span><span class="o">[</span><span class="s1">&#39;key&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb"> \</span>
+<span class="sb">    -PAPP_RELEASE_KEY_ALIAS=</span><span class="si">#{</span><span class="n">key_store</span><span class="o">[</span><span class="s1">&#39;alias&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb"> \</span>
+<span class="sb">    -PAPP_RELEASE_STORE_PASSWORD=&#39;</span><span class="si">#{</span><span class="n">key_store</span><span class="o">[</span><span class="s1">&#39;store_password&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">&#39; \</span>
+<span class="sb">    -PAPP_RELEASE_KEY_PASSWORD=&#39;</span><span class="si">#{</span><span class="n">key_store</span><span class="o">[</span><span class="s1">&#39;key_password&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">&#39;`</span></code></pre></figure>
+
+<h3 id="stage-4-pushing-to-s3"><em>Stage 4</em>: Pushing to S3</h3>
+
+<p>So, now we have build a signed apk from a docker container. It’s time to push them.
+Connect with your s3 bucket and generate <em>$HOME/.s3cfg</em> file, and pass it to ruby script below:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">file?</span><span class="p">(</span><span class="n">s3_config</span><span class="p">)</span>
+  <span class="c1"># Push the generate apk file with the app and version name</span>
+  <span class="sb">`s3cmd put app/build/outputs/apk/release/app-release.apk s3://</span><span class="si">#{</span><span class="n">bucket</span><span class="si">}</span><span class="sb">/</span><span class="si">#{</span><span class="n">app_name</span><span class="si">}</span><span class="sb">-</span><span class="si">#{</span><span class="n">version_name</span><span class="si">}</span><span class="sb">.apk -m application/vnd.android.package-archive -f -P -c </span><span class="si">#{</span><span class="n">s3_config</span><span class="si">}</span><span class="sb">`</span>
+  <span class="c1"># application/vnd.android.package-archive is an apk file format descriptor</span>
+
+  <span class="c1"># Replace the previous production file</span>
+  <span class="sb">`s3cmd put app/build/outputs/apk/release/app-release.apk s3://</span><span class="si">#{</span><span class="n">bucket</span><span class="si">}</span><span class="sb">/</span><span class="si">#{</span><span class="n">app_name</span><span class="si">}</span><span class="sb">.apk -m application/vnd.android.package-archive -f -P -c </span><span class="si">#{</span><span class="n">s3_config</span><span class="si">}</span><span class="sb">`</span>
+
+  <span class="c1"># To keep the track of latest release</span>
+  <span class="sb">`echo </span><span class="si">#{</span><span class="n">version_code</span><span class="si">}</span><span class="sb">&gt; latest_version.txt`</span>
+  <span class="sb">`s3cmd put latest_version.txt s3://</span><span class="si">#{</span><span class="n">bucket</span><span class="si">}</span><span class="sb">/latest_version.txt -f -P -c </span><span class="si">#{</span><span class="n">s3_config</span><span class="si">}</span><span class="sb">`</span>
+  <span class="sb">`rm latest_version.txt`</span>
+  <span class="nb">puts</span> <span class="s2">&quot;Successfully released new app version.&quot;</span>
+<span class="k">end</span></code></pre></figure>
+
+<p><code>application/vnd.android.package-archive</code> is the apk file type descriptor.</p>
+
+<h3 id="stage-5-finally-git-tagging-the-new-release-version-hashtag"><em>Stage 5</em>: Finally, Git Tagging The New Release Version, <em>#hashtag</em></h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">def</span> <span class="nf">push_new_tag</span> <span class="n">version_name</span>
+  <span class="sb">`git tag </span><span class="si">#{</span><span class="n">version_name</span><span class="si">}</span><span class="sb">`</span>
+  <span class="sb">`git push origin </span><span class="si">#{</span><span class="n">version_name</span><span class="si">}</span><span class="sb">`</span>
+  <span class="nb">puts</span> <span class="s2">&quot;New tag pushed to repo.&quot;</span>
+<span class="k">end</span></code></pre></figure>
+
+<p><a href="https://github.com/mukarramali/android_deployment_example.git">Demo Application</a></p>
+
+              </div>
+              <div class="entry-tags">
+                <div class=' social-sharing pull-right'>        
+     
+</div>
+              </div>
+              <div class="clearfix"><br/></div>
+
+                <div class="panel panel-default">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      <div class="panel-body">
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <center>
+                <img src="/blog/images/mukku.jpg" alt="Mukarram Ali photo" class="author-photo img-circle img-responsive"/>
+                
+                <span class="author vcard">
+                  <span class="fn">Mukarram Ali</span>
+                </span>
+
+                <div class="nav-icon-size-reduce social-icons">
+                  
+                  
+                  
+                  
+
+                  
+                    <a href="https://linkedin.com/in/mukarramalibtkitian" title="Mukarram Ali on LinkedIn" target="_blank"><i class="fa fa-linkedin "></i></a>
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                     
+                </div><!-- /.social-icons -->
+              </center>
+            </div>
+
+            <div class="col-sm-12 col-md-8">
+              
+                <span class="author-bio">Mukarram Ali is a member of Technology at eLitmus. Passionate about competitive coding. Loves hard rock music, sketching, trekking, F.R.I.E.N.D.S. </span>
+              
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+  
+
+</div>
+                <div id='discourse-comments'></div>
+
+<script type="text/javascript">
+  DiscourseEmbed = { discourseUrl: 'https://adda.elitmus.com/',
+                     discourseEmbedUrl: 'https://www.elitmus.com/blog/technology/android-versioning-using-docker-and-git-like-a-pro/'
+                   };
+
+  (function() {
+    var d = document.createElement('script'); 
+    d.type = 'text/javascript'; 
+    d.async = true;
+    d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+
+                
+              </div><!-- /.entry-content -->
+            </div><!-- /.entry-wrapper -->
+
+          </article>
+
+          <nav class="navbar nav-justified" role="navigation">
+            <ul class="nav pager">
+              
+                <li class="previous showElem mr-auto"><a href="/blog/career/how-tough-is-it-to-score-well-in-board-exams/" title="How Tough is it to Score Well in Board Exams?">&larr;<span class="showPrevNex"> Previous </span> </a></li>
+              
+              
+            </ul>
+          </nav>
+        
+        </div><!-- /#main -->
+
+      <!--/col-md-2 -->
+      <div class="col-md-2">
+
+      </div>
+
+    </div><!-- /row -->
+    </div>
+    <div class="footer-color">
+      <footer role="contentinfo">
+        <center>
+            <span class='footer-text'>
+    &copy;  2005-<script> document.write(new Date().getFullYear()) </script>, eLitmus.com. | <a href="/terms_of_use/">Terms of Use</a> &middot; <a href="/privacy_policy/">Privacy Policy</a>
+
+  </span>
+        </center>
+      </footer>
+    </div><!-- /.footer-wrapper -->
+    
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-707704-1', 'elitmus.com');
+	  ga('send', 'pageview');
+	</script>
+
+
+
+<!-- Load Modernizr -->
+<script src="/blog/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- adding jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- end of jquery -->
+
+<script src="/blog/assets/js/scripts.min.js"></script>
+<script src="/blog/assets/js/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr-search.js"></script>
+<script src="/blog/assets/js/plugins/headroom.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="/blog/assets/js/vendor/forkit.js"></script>
+  
+
+  </body>
+</html>
